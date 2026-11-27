@@ -11,9 +11,9 @@
 
 | STT | Họ và tên | Mã học viên | Vai trò | Phần việc chính |
 |---|---|---|---|---|
-| 1 | ____ | ____ | Đội trưởng | ____ |
-| 2 | ____ | ____ | Thành viên | ____ |
-| 3 | ____ | ____ | Thành viên | ____ |
+| 1 | Phạm Tuấn Cường | 2A202603584 | Đội trưởng | ____ |
+| 2 | Trần Anh Tú | 2A202603368 | Thành viên | ____ |
+| 3 | Đặng Việt Anh | 2A202603685 | Thành viên | ____ |
 | 4 | Nguyễn Minh Đạt | 2A202603582 | Thành viên | ____ |
 
 **Quy tắc điền**
