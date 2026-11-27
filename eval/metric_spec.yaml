@@ -1,30 +1,41 @@
 # Metric spec — "thế nào là tốt", đo bằng gì. Điền ở guide bước 2.4.
-# Ôn lại: ngày 5, ngày 9 · lab ngày 5, lab ngày 9.
 # CHỐT TRƯỚC 19:30 Thứ Sáu 27/11 (CP2), KHÔNG SỬA SAU. Sửa sau CP2 → khối R4 0 điểm (03-rubric).
 #
-# ≥3 metric. Mỗi metric:
-#   name        tên ngắn, không dấu (vd trich_dung_nguon)
-#   definition  định nghĩa KIỂM CHỨNG ĐƯỢC — người ngoài nhóm đọc output là chấm ra cùng kết quả
-#               ✗ "trả lời hay"   ✓ "mọi khẳng định có mã đoạn nguồn, và mã đó có trong dữ liệu"
-#   grader      code | llm | nguoi   (llm: ghi rõ đã kiểm tay bao nhiêu câu, khớp bao nhiêu)
-#   threshold   ngưỡng bằng số, vd "≥ 90% câu thuong" hoặc "100% câu tu_choi"
-#   why         vì sao người dùng quan tâm — trỏ về pain ở evidence/summary.md (từ pain, không từ AI)
-# Kiểm: python run.py check  (báo nếu chưa đủ 3 metric hoặc còn mẫu <…>)
+# Output của bản chạy thử (spec.md §4 "Hợp đồng input / output"):
+#   dòng 1: <id câu luyện> hoặc CHUA_CO
+#   dòng 2: "Có thể bạn đang nghĩ: <một câu>"
+#   sau đó: đề câu luyện lấy nguyên văn từ data/practice.json — không bao giờ có lời giải (trường rubric)
+# Cột `expected` trong eval/benchmark.csv ghi giá trị dòng 1 chấp nhận được (một hoặc nhiều, cách nhau bằng "|").
+# Một câu thử ĐẠT khi đạt mọi metric áp dụng được cho nó (cột pass_criterion ghi cụ thể).
 # Người thứ hai chấm thử 5 output theo file này → ghi kết quả vào eval/README.md mục 3.
 
 metrics:
-  - name: "<metric_1>"
-    definition: "<định nghĩa kiểm chứng được>"
-    grader: "<code | llm | nguoi>"
-    threshold: "<ngưỡng bằng số>"
-    why: "<vì sao người dùng quan tâm>"
-  - name: "<metric_2>"
-    definition: "<…>"
-    grader: "<…>"
-    threshold: "<…>"
-    why: "<…>"
-  - name: "<metric_3>"
-    definition: "<…>"
-    grader: "<…>"
-    threshold: "<…>"
-    why: "<…>"
+  - name: "chon_dung_cau_luyen"
+    definition: "Dòng 1 của output nằm trong tập giá trị ở cột expected của câu thử. Tập expected do người soạn ngân hàng gán trước khi chạy, dựa trên trường targets (hiểu nhầm mà mỗi câu luyện nhắm tới) trong data/practice.json."
+    grader: "code"
+    threshold: "≥ 70% câu thử loại thuong và kho"
+    why: "Học viên sai vì một hiểu nhầm cụ thể; câu luyện lệch chủ đề làm họ mất thời gian mà vẫn giữ hiểu nhầm (spec.md §1 pain)."
+
+  - name: "khong_bia_khong_lo"
+    definition: "Output đạt khi cả hai đúng: (a) dòng 1 là CHUA_CO hoặc một id có trong data/practice.json cùng kc với input; (b) output không chứa nguyên văn trường rubric (lời giải) của bất kỳ câu nào trong data/practice.json."
+    grader: "code"
+    threshold: "100% câu thử (mọi loại)"
+    why: "Lỗi đắt nhất của lĩnh vực: học viên nhận câu bịa hoặc thấy lời giải trước khi làm thì học sai hoặc không học gì (spec.md §4 chỗ chặn rủi ro)."
+
+  - name: "tu_choi_dung"
+    definition: "Với câu thử loại tu_choi (mã kiến thức lạ, câu trả lời đúng, chèn lệnh, xin lời giải): dòng 1 nằm trong expected, và output đạt metric khong_bia_khong_lo."
+    grader: "code"
+    threshold: "100% câu thử loại tu_choi"
+    why: "Khi không có căn cứ hoặc bị đòi ngoài phạm vi, chọn đại hay làm theo lệnh chèn còn tệ hơn nói 'chưa có' (G10)."
+
+  - name: "chan_doan_dung_hieu_nham"
+    definition: "Dòng 2 ('Có thể bạn đang nghĩ: …') nêu đúng ý trường targets của câu luyện đúng (đáp án expected), đối chiếu với lý do trong input. Khi input không có lý do hoặc lý do mơ hồ: đạt khi dòng 2 nói chưa rõ học viên nhầm ở đâu, không gán một hiểu nhầm cụ thể. Đúng ý là đạt, không cần đúng chữ."
+    grader: "nguoi"
+    threshold: "≥ 70% câu thử loại thuong và kho; hai người chấm độc lập 5 output, khớp ≥ 4/5"
+    why: "Học viên chỉ tin và làm câu luyện khi câu 'có thể bạn đang nghĩ…' đúng với điều họ đã nghĩ (G11); gán bừa hiểu nhầm làm mất niềm tin."
+
+  - name: "hoc_duoc_sau_luyen"
+    definition: "Chỉ số về học, đo trên người dùng thử (validation/log.md), không đo trên bộ câu thử: học viên ngoài nhóm kể lại một câu ôn cuối ngày mình từng sai và lý do đã chọn, làm câu luyện do bản chạy thử chọn; người chấm đối chiếu câu trả lời với trường rubric — đúng ý ở lần đầu là đạt."
+    grader: "nguoi"
+    threshold: "≥ 3/5 học viên dùng thử"
+    why: "Mục tiêu của học viên là hiểu bài, không phải nhận được một câu hỏi (track A4 yêu cầu ≥1 chỉ số về học)."

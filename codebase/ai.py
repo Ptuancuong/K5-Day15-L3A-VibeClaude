@@ -11,7 +11,7 @@ Hợp đồng (giữ nguyên để khung đo được token):
     Lỗi gọi model (hết lượt, sai key, mất mạng): cứ để exception bay ra — khung ghi lỗi vào cột error.
 
 Chế độ giả (mặc định khi .env chưa có MODEL_PROVIDER, hoặc MODEL_PROVIDER=fake):
-    chọn mã giả theo mức yêu cầu, model "fake", token 0 — để luồng chạy hết từ trước CP2 (guide bước 3.2).
+    chọn câu theo số chữ trùng giữa ly_do và targets, model "fake", token 0 — để luồng chạy hết từ trước CP2 (guide bước 3.2).
     Lượt `run.py eval` / `run.py simulate` chạy bằng model giả KHÔNG được tính.
 
 Nối model thật: điền .env (chép từ .env.example), rồi viết nhánh gọi API ở dưới theo docs/connect-model.md
@@ -47,12 +47,15 @@ API_KEY = (os.environ.get("API_KEY") or "").strip()
 @model_call
 def call_model(system: str, user: str) -> dict:
     if MODEL_PROVIDER == "fake":
+        # Giả lập (KHÔNG phải AI): chọn câu có targets trùng nhiều chữ nhất với ly_do; không trùng → câu co_ban.
         request = json.loads(user)
-        selected = next(
-            (item["id"] for item in request["candidates"] if item["level"] == request["level"]),
-            "CHUA_CO",
-        )
-        return {"text": selected, "model": "fake", "tokens_in": 0, "tokens_out": 0}
+        words = set(request.get("ly_do", "").lower().split())
+        scored = sorted(request["candidates"],
+                        key=lambda c: (-len(words & set(c["targets"].lower().split())), c["level"] != "co_ban"))
+        best = scored[0] if scored else None
+        text = json.dumps({"id": best["id"] if best else "CHUA_CO",
+                           "hieu_nham": best["targets"] if best else ""}, ensure_ascii=False)
+        return {"text": text, "model": "fake", "tokens_in": 0, "tokens_out": 0}
 
     # NHÓM VIẾT: gọi model thật ở đây (theo MODEL_PROVIDER, MODEL_NAME, API_KEY) rồi trả đúng 4 khoá.
     # Ví dụ chép được cho từng nhà cung cấp: docs/connect-model.md mục 2.
