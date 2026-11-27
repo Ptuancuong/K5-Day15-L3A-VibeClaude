@@ -1,0 +1,340 @@
+﻿run_id,id,type,input,expected,pass_criterion,output,pass,ghi_chu,model,model_calls,tool_calls,tokens_in,tokens_out,latency_s,error
+run-1@20261127-190607,B01,kho,Một công ty xây dựng một chatbot trả lời FAQ về sản phẩm của họ. Chatbot chạy trên website của công ty (backend Python + frontend React). Dữ liệu được lưu trữ trong database PostgreSQL trên server. Hỏi: Chatbot này có phải là một ứng dụng (app) không? Tại sao?,"Có, chatbot này là một ứng dụng (application). Lý do: App = phần mềm thực hiện một công việc cụ thể (ở đây: trả lời FAQ). Chạy trên máy chủ (server-side) và người dùng truy cập qua browser. Có logic xử lý (tìm kiếm, trả lời), không chỉ hiển thị tĩnh. Dữ liệu được quản lý trong database. Điểm khác: Chatbot không nhất thiết phải là app mobile hay desktop riêng biệt. Nó là web app (ứng dụng web).","Trả lời ""có"" + giải thích ít nhất 2 lý do (logic, dữ liệu động, v.v.)","Chào bạn, tôi là trợ giảng AI20K. Dưới đây là câu trả lời cho câu hỏi ôn tập của bạn:
+
+**Kết luận:** 
+Có, chatbot này là một ứng dụng (application).
+
+**Giải thích và lý do:**
+Một phần mềm được định nghĩa là ứng dụng (app) khi nó kết hợp các thành phần phần mềm để giải quyết một bài toán hoặc cung cấp một dịch vụ cụ thể cho người dùng cuối. Trong trường hợp này:
+1. **Giao diện người dùng (Frontend - React):** Nơi người dùng tương tác trực tiếp (gửi câu hỏi và nhận câu trả lời).
+2. **Xử lý logic (Backend - Python):** Nơi tiếp nhận yêu cầu từ frontend, xử lý logic chatbot (ví dụ: gọi AI/NLP để hiểu câu hỏi, truy vấn dữ liệu).
+3. **Lưu trữ dữ liệu (Database - PostgreSQL):** Nơi lưu trữ bộ câu hỏi thường gặp (FAQ) và dữ liệu liên quan.
+
+Hệ thống này hội tụ đủ ba tầng kiến trúc cơ bản của một ứng dụng phần mềm hoàn chỉnh, phục vụ một mục đích thương mại cụ thể là hỗ trợ khách hàng trên website của công ty.",,,gemini-3.5-flash-lite,1,0,156,254,1.541,
+run-1@20261127-190607,B02,kho,"Bạn đang xây dựng một agent AI giúp học viên giải bài toán lập trình. Agent cần quyết định: ""Có nên gợi ý thêm hay hướng dẫn thẳng?"" Hỏi: Bạn sẽ dùng thang điểm (scoring) hay quy tắc cứng (rule) để AI quyết định? Nếu dùng scoring, những tiêu chí nào (0-10 điểm)?","Nên dùng scoring (thang điểm 0-10) thay vì rule, vì: 1. Linh hoạt: Học viên có nhiều cấp độ hiểu (mức 2 cần hướng dẫn, mức 8 chỉ cần gợi ý). 2. Dựa vào bằng chứng: Score từ log học (câu hỏi trước, số lỗi, thời gian). Tiêu chí scoring: Lần trả lời thứ mấy: Lần 1 → score 2 (cần hướng dẫn); Lần 3+ → score 8 (đủ hiểu, chỉ cần tip). Số lỗi syntax: 0 lỗi → 9; 1-2 lỗi → 5; 3+ → 2. Thời gian suy nghĩ: Nhanh < 2 phút → 7 (đủ hiểu); Chậm > 10 phút → 3 (cần giúp). Quyết định: Nếu score ≥ 7 → gợi ý; < 7 → hướng dẫn từng bước.",Chọn scoring + ít nhất 2 tiêu chí có cách tính cụ thể (không nói chung chung),"Chào bạn, tôi là trợ giảng AI20K. Dưới đây là câu trả lời cho câu hỏi ôn tập của bạn về việc thiết kế cơ chế ra quyết định cho AI agent hỗ trợ học lập trình.
+
+### 1. Kết luận
+Đối với bài toán này, **phương pháp tối ưu nhất là kết hợp cả Thang điểm (Scoring) và Quy tắc cứng (Hard Rules)**, trong đó Quy tắc cứng đóng vai trò kiểm soát an toàn và Thang điểm đóng vai trò quyết định mức độ gợi ý. Tuy nhiên, nếu bắt buộc phải chọn một trong hai theo hướng dẫn của hệ thống AI giáo dục, **Thang điểm (Scoring)** là lựa chọn linh hoạt hơn để cá nhân hóa trải nghiệm học tập, nhưng phải được neo bởi các quy tắc cứng.
+
+---
+
+### 2. Giải thích và Ví dụ
+
+#### Tại sao không nên chỉ dùng Quy tắc cứng?
+*   **Lý do:** Học phí phạm lỗi ở nhiều mức độ khác nhau (quên dấu chấm phẩy, sai logic thuật toán, hoặc hoàn toàn mù mờ). Nếu chỉ dùng quy tắc cứng (ví dụ: *""Nếu sai 3 lần thì cho đáp án""*), agent sẽ rất cứng nhắc, có thể làm học viên nản lòng vì được cho đáp án quá sớm hoặc thấy ức chế vì gợi ý quá mơ hồ.
+
+#### Tại sao nên dùng Thang điểm (Scoring) kết hợp Quy tắc cứng?
+*   **Lý do:** Thang điểm cho phép AI tính toán ""độ bất lực/bế tắc"" của học viên dựa trên nhiều chiều dữ liệu để đưa ra mức độ gợi ý (từ gợi ý tư duy $\rightarrow$ gợi ý cú pháp $\rightarrow$ hướng dẫn thẳng) một cách mượt mà.
+*   **Quy tắc cứng đi kèm (Guardrails):** Dùng để chặn các trường hợp ngoại lệ (Ví dụ: *Nếu học viên mới hỏi câu đầu tiên $\rightarrow$ Điểm gợi ý thẳng luôn bằng 0, bắt buộc phải gợi ý tư duy*).
+
+---
+
+### 3. Đề xuất tiêu chí cho Thang điểm (Thang 0 - 10 điểm)
+Để quyết định xem có nên ""hướng dẫn thẳng"" (điểm số càng cao càng nên hướng dẫn thẳng) hay ""gợi ý thêm"", ta có thể dùng các tiêu chí sau (tổng 10 điểm):
+
+1.  **Số lần thử sai (Attempts) - Tối đa 3 điểm:**
+    *   0 lần: 0 điểm
+    *   1-2 lần: 1 điểm
+    *   3-5 lần: 2 điểm
+    *   > 5 lần (bế tắc thực sự): 3 điểm
+2.  **Thời gian trôi qua trên bài toán (Time spent) - Tối đa 2 điểm:**
+    *   Dưới 5 phút: 0 điểm
+    *   5 - 15 phút: 1 điểm
+    *   Trên 15 phút: 2 điểm
+3.  **Mức độ lộ liễu của câu hỏi từ học viên (Prompt Intent) - Tối đa 3 điểm:**
+    *   Hỏi về lỗi logic/tư duy chung: 0 điểm
+    *   Hỏi về lỗi cú pháp (Syntax error cụ thể): 1.5 điểm
+    *   Xin code mẫu trực tiếp (""Cho tôi đáp án bài này đi""): 3 điểm
+4.  **Số lượng gợi ý hệ thống đã cấp trước đó (Previous hints) - Tối đa 2 điểm:**
+    *   Chưa nhận gợi ý nào: 0 điểm
+    *   Đã nhận 1-2 gợi ý mà vẫn sai: 1 điểm
+    *   Đã nhận nhiều gợi ý nhưng học viên vẫn không tiến triển: 2 điểm
+
+**Ngưỡng quyết định (Threshold):**
+*   **Tổng điểm $\le 4$:** Chỉ gợi ý tư duy (Hint).
+*   **$5 \le$ Tổng điểm $\le 7$:** Gợi ý cú pháp / khoanh vùng lỗi.
+*   **Tổng điểm $\ge 8$ (hoặc vi phạm Quy tắc cứng như xin code 3 lần):** Hướng dẫn thẳng / Cung cấp lời giải mẫu kèm giải thích.
+
+*Ví dụ:* Học viên đã thử sai 4 lần (+2đ), tốn 20 phút (+2đ), xin đáp án trực tiếp (+3đ), và đã nhận 2 gợi ý trước đó (+1đ). Tổng điểm = $2 + 2 + 3 + 1 = 8$ điểm $\rightarrow$ Agent quyết định **hướng dẫn thẳng**.",,,gemini-3.5-flash-lite,1,0,165,994,3.583,
+run-1@20261127-190607,B03,kho,"Một nhóm startup muốn điền AI Product Canvas trước khi xây AI. Nhóm đã có: User (teacher), Pain (học viên quên kiến thức), Solution idea (tự động tạo bài luyện). Hỏi: Những mục BẮTBUỘC nào khác phải điền trước khi code? Nếu chưa rõ ""Impact"" (bao nhiêu user, bao nhiêu lần/tháng), có nên bắt đầu không?","Mục bắt buộc trước khi code: 1. User: Ai dùng? (teacher, student, admin). 2. Pain: Vấn đề cụ thể là gì? (học viên quên, mất thời gian, v.v.). 3. Solution: AI sẽ làm gì? (tạo bài, chọn câu, v.v.). 4. Impact: Bao nhiêu user × bao nhiêu lần/tháng = lợi ích tổng? (phút/tháng). 5. Decision: Hướng nào tốt nhất? (so sánh ≥2 hướng). Trả lời câu 2: Không nên bắt đầu code nếu chưa rõ Impact. Vì: Nếu chỉ 10 user, 1 lần/tháng → 10 phút lợi → không đáng code 100 giờ. Phải có số để chứng minh bài toán đáng làm.","Liệt kê ≥4 mục bắt buộc + trả lời ""không"" về câu 2 + lý do có số","Chào bạn, tôi là trợ giảng AI20K. Dưới đây là phần giải đáp cho câu hỏi ôn tập của bạn về việc sử dụng AI Product Canvas trong khóa học AI Product Management:
+
+### 1. Những mục BẮT BUỘC nào khác phải điền trước khi code?
+
+**Kết luận:** 
+Ngoài User, Pain và Solution idea mà nhóm đã có, các mục **bắt buộc** phải điền trước khi bắt tay vào viết code bao gồm: **Data (Dữ liệu), Value Proposition (Giá trị cốt lõi), AI Capabilities/Model (Năng lực AI), và Metrics (Đo lường thành công).**
+
+**Giải thích và Ví dụ:**
+*   **Value Proposition (Giá trị cốt lõi):** Giải pháp tự động tạo bài luyện sẽ mang lại lợi ích gì vượt trội so với việc giáo viên tự soạn thủ công (ví dụ: tiết kiệm 80% thời gian cho giáo viên, học viên nhớ bài lâu hơn).
+*   **Data (Dữ liệu):** Để AI tạo ra bài luyện chất lượng cho học viên, chúng ta cần dữ liệu gì? (Ví dụ: giáo trình của môn học, lịch sử làm bài của học viên, câu hỏi mẫu). Thiếu dữ liệu thì không thể huấn luyện hoặc tinh chỉnh (fine-tune) mô hình AI.
+*   **AI Capabilities (Năng lực AI):** Cụ thể hóa bài toán này dùng tính năng gì của AI? (Ví dụ: Large Language Model để sinh văn bản câu hỏi, thuật toán Spaced Repetition để tính thời gian nhắc lại kiến thức học viên hay quên).
+*   **Metrics (Đo lường):** Làm sao biết sản phẩm thành công? (Ví dụ: Tỷ lệ học viên làm bài tập do AI tạo ra, tỷ lệ giảm số lần quên kiến thức).
+
+---
+
+### 2. Nếu chưa rõ ""Impact"" (bao nhiêu user, bao nhiêu lần/tháng), có nên bắt đầu không?
+
+**Kết luận:** 
+**Không nên bắt đầu code ngay**, nhưng nhóm **vẫn có thể bắt đầu quá trình nghiên cứu và làm nguyên mẫu (prototyping/MVP)** với giả định, chứ chưa nên đầu tư nguồn lực lớn để phát triển sản phẩm chính thức.
+
+**Giải thích:**
+*   **Lý do:** Mục *Impact* (Tác động/Quy mô) giúp tính toán bài toán kinh tế (Unit Economics). Nếu chưa rõ số lượng user hay tần suất sử dụng, nhóm sẽ không thể ước tính được chi phí vận hành AI (API cost, hosting) có vượt qua giá trị mang lại hay không. Viết code khi chưa rõ Impact dễ dẫn đến việc làm ra sản phẩm tốn kém nhưng không hiệu quả về mặt kinh doanh.
+*   **Cách xử lý (Dữ liệu giả định):** Trong giai đoạn khởi nghiệp, bạn có thể đưa ra một *giả định* (ví dụ: Giả sử có 100 giáo viên dùng, mỗi giáo viên tạo bài luyện 10 lần/tháng) để chạy thử nghiệm tinh thần (validation). Tuy nhiên, trước khi viết code thật, nhóm cần phải đi phỏng vấn hoặc khảo sát User (giáo viên) để validate lại con số giả định này, tránh rủi ro làm ra sản phẩm không ai dùng đến mức tần suất như kỳ vọng.",,,gemini-3.5-flash-lite,1,0,178,705,3.146,
+run-1@20261127-190607,B04,kho,"Bạn đang xây AI tự động chấm bài tập trắc nghiệm (100 câu, mỗi câu có 4 phương án A/B/C/D). Team đề nghị dùng Chain of Thought (CoT): ""Hãy suy luận từng bước (Thought → Reasoning → Decision) rồi chọn phương án đúng."" Hỏi: Có nên dùng CoT cho bài này không? Tại sao? Nếu không, dùng cách nào?","Không nên dùng CoT cho bài trắc nghiệm đơn giản này. Vì: 1. Task quá đơn giản: Chỉ cần so khớp đáp án, không cần suy luận nhiều bước. 2. Lãng phí token: CoT yêu cầu model viết Thought → Reasoning, tốn token gấp 3-5 lần. 3. Latency cao: Phải chờ model suy luận, chậm hơn so với cách trực tiếp. 4. Chi phí cao: 100 câu × token thừa = chi phí tăng vô ích. Cách tốt hơn: Dùng prompt thẳng: ""Chọn phương án đúng: A, B, C, hay D?"" Hoặc dùng rule: Embedding → so sánh vector với 4 phương án → chọn gần nhất. Nếu cần suy luận, chỉ dùng CoT cho các câu khó (lọc trước). Kết luận: Dùng CoT chỉ khi task yêu cầu suy luận phức tạp, nhiều bước (chẳng hạn: giải bài toán, phân tích code).","Trả lời ""không"" + ít nhất 3 lý do (token, latency, chi phí) + gợi ý cách thay thế","Chào bạn, tôi là trợ giảng AI20K. Dưới đây là phần trả lời cho câu hỏi ôn tập của bạn:
+
+### Kết luận
+**Không nên dùng** Chain of Thought (CoT) cho bài toán tự động chấm bài tập trắc nghiệm 100 câu bằng AI trong trường hợp này.
+
+---
+
+### Giải thích lý do và ví dụ
+
+1. **Về mặt lý do:**
+   * **Bản chất của trắc nghiệm:** Bài tập trắc nghiệm yêu cầu kết quả cuối cùng là một lựa chọn (A, B, C hoặc D). Việc ép mô hình sinh chuỗi suy luận dài dòng (Thought $\rightarrow$ Reasoning $\rightarrow$ Decision) cho từng câu trong tổng số 100 câu là dư thừa đối với các câu hỏi dễ/trực diện.
+   * **Giới hạn kỹ thuật (Token limit và Chi phí):** 
+     * Một bài test 100 câu nếu bắt AI viết chuỗi suy luận chi tiết cho từng câu sẽ tiêu tốn lượng token đầu ra (output tokens) khổng lồ, dễ vượt quá giới hạn độ dài tối đa của mô hình (context/output window).
+     * Chi phí API và thời gian xử lý (latency) sẽ tăng lên gấp bội, làm giảm nghiêm trọng hiệu năng của hệ thống chấm bài tự động (v vốn cần nhanh và tiết kiệm).
+   * **Rủi ro về độ chính xác:** Đối với các câu hỏi kiến thức thuần túy (như nhớ sự kiện, công thức), việc ép mô hình ""suy luận"" vòng vo có thể dẫn đến hiện tượnga *overthinking* (suy diễn thái quá), tự làm rối và chọn nhầm đáp án sai.
+
+2. **Ví dụ minh họa:**
+   * *Câu hỏi:* ""Thủ đô của Việt Nam là gì? A. Hải Phòng, B. Hà Nội, C. Đà Nẵng, D. TP.HCM.""
+   * *Nếu dùng CoT:* Mô hình phải viết: *Thought: Đề bài hỏi thủ đô Việt Nam. Reasoning: Hải Phòng là thành phố cảng, Đà Nẵng là miền Trung, TP.HCM là kinh tế lớn, còn Hà Nội là trung tâm chính trị và là thủ đô từ xưa. Decision: Chọn B.* $\rightarrow$ Việc này dài dòng và lãng phí tài nguyên không cần thiết.
+
+---
+
+### Nếu không dùng CoT, nên dùng cách nào?
+
+Tùy thuộc vào độ khó của đề thi, bạn nên áp dụng các phương pháp thay thế sau:
+
+1. **Direct Prompting (Prompt trực tiếp / Standard Prompt):**
+   * Yêu cầu mô hình trả về định dạng JSON chứa đáp án thẳng luôn cho 100 câu để tiết kiệm token và thời gian.
+   * *Ví dụ format:* `{""1"": ""A"", ""2"": ""C"", ..., ""100"": ""B""}`.
+
+2. **Few-Shot Prompting:**
+   * Cung cấp một vài ví dụ mẫu (input là câu hỏi + đáp án đúng) vào prompt để định hình format trả ra cho mô hình, giúp mô hình hiểu cấu trúc mà không cần sinh chuỗi suy luận.
+
+3. **Hybrid Approach (Kết hợp linh hoạt):**
+   * **Mặc định:** Dùng Direct Prompting cho toàn bộ 100 câu để chấm nhanh và rẻ.
+   * **Ngoại lệ:** Chỉ áp dụng CoT (hoặc các kỹ thuật suy luận sâu hơn) cho một số ít câu hỏi cực kỳ phức tạp (ví dụ: câu hỏi vận dụng cao đòi hỏi tính toán, suy logic nhiều bước) mà hệ thống phát hiện thấy cần giải thích thêm.",,,gemini-3.5-flash-lite,1,0,179,780,3.719,
+run-1@20261127-190607,B05,kho,"Một AI tutor cần viết system prompt cho agent trợ giảng. Team viết thử: ""Hãy giúp học viên hiểu bài."" Hỏi: System prompt này đủ cụ thể không? Phải ghi rõ những mục nào để AI không bị ""lạc đề""? Cho ví dụ 3 mục cần có trong hợp đồng (contract) này.","System prompt trên KHÔNG đủ cụ thể. Nó mơ hồ, dễ gây ra: AI trả lời sai lĩnh vực, AI bỏ qua constraint (bảo mật, tính toán), Output format không đúng. Những mục BẮTBUỘC trong hợp đồng (contract): 1. ROLE (vai trò): ""Bạn là tutor AI cho khóa AI20K, chuyên về LLM và AI Product."" 2. INPUT/OUTPUT FORMAT (định dạng): ""Input: Câu hỏi của học viên (plain text, tối đa 500 ký tự). Output: JSON với keys: answer (str), reference (list), next_question (str)"" 3. CONSTRAINT (ràng buộc): ""- Chỉ trả lời về LLM, AI, không trả lời toán học phổ thông. - Nếu không chắc → nói 'Tôi không biết' thay vì đoán. - Luôn trích dẫn nguồn (sách, bài viết). - Giới hạn 200 ký tự"" 4. TONE (giọng điệu): ""Hòa nhã, khuyến khích, không giáo điều"" Hợp đồng tốt là cụ thể, có ví dụ, dễ kiểm chứng.","Nêu ≥3 mục cụ thể (role, format, constraint) + ví dụ cụ thể cho mỗi mục","Chào bạn, tôi là trợ giảng AI20K. Dưới đây là phần giải đáp cho câu hỏi ôn tập của bạn:
+
+### Kết luận
+System prompt do team viết **không đủ cụ thể**. 
+
+### Giải thích
+**Lý do:** Prompt *""Hãy giúp học viên hiểu bài.""* quá chung chung và trừu tượng đối với một Large Language Model (LLM). Nó thiếu các ràng buộc về vai trò, phạm vi kiến thức, phong cách giao tiếp và mục tiêu cụ thể. Điều này khiến AI dễ bị ""lạc đề"", ví dụ: cung cấp đáp án trực tiếp thay vì gợi mở, lan man sang các chủ đề ngoài khóa học, hoặc dùng ngôn ngữ không phù hợp với tâm lý học viên. Để AI hoạt động đúng định hướng, system prompt cần đóng vai trò như một bản ""hợp đồng"" (contract) quy định rõ những việc được làm và không được làm.
+
+### Ví dụ về 3 mục cần có trong ""hợp đồng"" (system prompt):
+
+1. **Vai trò và Định hướng sư phạm (Role & Pedagogical Approach):**
+   * *Nội dung:* Xác định rõ AI là ai và phương pháp giảng dạy là gì.
+   * *Ví dụ:* ""Bạn là trợ giảng AI20K, chuyên hỗ trợ sinh viên học lập trình Python cơ bản. Tuyệt đối không giải sẵn bài tập mà phải dùng phương pháp đặt câu hỏi gợi mở (Socratic method) để học viên tự suy luận.""
+
+2. **Phạm vi kiến thức (Scope & Limitations):**
+   * *Nội dung:* Giới hạn nội dung AI được phép trả lời để tránh lan man.
+   * *Ví dụ:* ""Chỉ trả lời các câu hỏi liên quan đến nội dung khóa học AI20K. Nếu học viên hỏi về chủ đề ngoài phạm vi (như nấu ăn, lịch sử, hoặc công nghệ nâng cao ngoài giáo trình), hãy từ chối lịch sự và hướng dẫn họ quay lại bài học.""
+
+3. **Định dạng đầu ra và Quy tắc an toàn (Output Format & Safety Rules):**
+   * *Nội dung:* Quy định cách trình bày câu trả lời và các giới hạn về nội dung.
+   * *Ví dụ:* ""Câu trả lời phải ngắn gọn (dưới 150 từ), dùng tiếng Việt tự nhiên, thân thiện. Không được sử dụng từ ngữ thô tục, phân biệt đối xử, hoặc đưa ra các lời khuyên tài chính/y tế.""",,,gemini-3.5-flash-lite,1,0,161,524,3.141,
+run-1@20261127-190607,B06,kho,"Agent AI đang xử lý câu hỏi: ""Hôm nay là thứ mấy?"" ReACT pattern có 3 bước: 1. Thought: ""Tôi cần biết ngày hôm nay"" 2. Action: search_today_date() 3. Observation: ""2026-11-27, Thứ Sáu"" Hỏi: 3 bước này khác nhau thế nào? Mỗi bước AI làm gì? Nếu thiếu Thought, chỉ có Action + Observation, có được không?","Phân biệt 3 bước ReACT: 1. THOUGHT (suy nghĩ): AI viết ra kế hoạch: ""Tôi cần làm gì?"". Không gọi tool, chỉ lên kế hoạch. Giúp AI tránh sai lầm trước khi hành động. Ví dụ: ""Tôi cần gọi search_today_date() để lấy ngày hôm nay"" 2. ACTION (hành động): AI gọi tool/function thực tế. Chỉ gọi sau khi có Thought. Ví dụ: search_today_date() → kết quả: ""2026-11-27"" 3. OBSERVATION (quan sát): Kết quả trả về từ tool. AI dùng để suy luận bước tiếp theo. Ví dụ: ""Thứ Sáu"" (parse từ ""2026-11-27""). Trả lời câu 2: Nếu thiếu Thought, chỉ có Action + Observation: Có thể chạy được, nhưng dễ sai lầm. Luồng vẫn có thể hoạt động nếu đã có quy tắc chọn công cụ. Không cần hiển thị suy luận nội bộ cho học viên.",Phân biệt rõ 3 bước + nêu vai trò mỗi bước + trả lời có/không về câu 2 + lý do,"Chào bạn, tôi là trợ giảng AI20K. Dưới đây là phần giải đáp cho câu hỏi ôn tập của bạn về ReACT pattern:
+
+### 1. Phân biệt sự khác nhau và hành động của AI trong 3 bước ReACT
+
+**Kết luận:** 3 bước *Thought* (Suy nghĩ), *Action* (Hành động) và *Observation* (Quan sát) đóng các vai trò hoàn toàn khác nhau trong vòng lặp tư duy - hành động của AI, đại diện lần lượt cho: **lập kế hoạch**, **thực thi công cụ**, và **tiếp nhận kết quả thực tế**.
+
+**Giải thích chi tiết và ví dụ:**
+
+*   **Bước 1: Thought (Suy nghĩ)**
+    *   *AI làm gì:* AI tự phân tích câu hỏi của người dùng, xác định mục tiêu cần đạt được và lên kế hoạch xem mình cần làm gì tiếp theo (ví dụ: nhận ra cần tra cứu thông tin thời gian thực vì kiến thức cũ không đủ).
+    *   *Ví dụ trong đề bài:* `""Tôi cần biết ngày hôm nay""`.
+*   **Bước 2: Action (Hành động)**
+    *   *AI làm gì:* AI dịch chuyển từ ""suy nghĩ"" sang ""thực thi"" bằng cách gọi một công cụ (tool/API) cụ thể có sẵn trong hệ thống để giải quyết vấn đề đã nêu ở bước Thought.
+    *   *Ví dụ trong đề bài:* `search_today_date()` (gọi hàm tìm kiếm ngày tháng).
+*   **Bước 3: Observation (Quan sát)**
+    *   *AI làm gì:* AI tiếp nhận, đọc và xử lý kết quả trả về từ công cụ (Action) vừa thực hiện để làm cơ sở cho bước *Thought* tiếp theo (hoặc đưa ra câu trả lời cuối cùng cho người dùng).
+    *   *Ví dụ trong đề bài:* `""2026-11-27, Thứ Sáu""`.
+
+---
+
+### 2. Nếu thiếu Thought, chỉ có Action + Observation, có được không?
+
+**Kết luận:** **Không nên** (hoặc trong các hệ thống ReACT chuẩn là **không hợp lệ/kém hiệu quả**), vì *Thought* đóng vai trò là ""bản đồ tư duy"" dẫn dắt AI chọn đúng hành động và giải thích tại sao hành động đó lại cần thiết.
+
+**Giải thích:**
+*   **Mất tính giải thích (Interpretability):** ReACT (Reasoning and Acting) được thiết kế để kết hợp giữa Suy luận (Reasoning) và Hành động (Acting). Nếu thiếu *Thought*, quá trình ra quyết định của AI sẽ trở thành một ""hộp đen"" (black box), ta không biết tại sao AI lại gọi hàm `search_today_date()` thay vì các hàm khác.
+*   **Giảm độ chính xác với các bài toán phức tạp:** Với câu hỏi đơn giản như *""Hôm nay là thứ mấy?""*, việc bỏ qua *Thought* có thể vẫn cho ra Action đúng do AI đoán mò được từ prompt. Tuy nhiên, với các bài toán nhiều bước (multi-step reasoning), nếu không có *Thought* để lập kế hoạch, AI dễ bị lạc hướng, gọi sai công cụ hoặc lặp vô hạn (infinite loop) vì không biết mình đang cố gắng đạt được mục tiêu gì ở bước Observation tiếp theo.
+
+---
+*Nếu bạn có thắc mắc gì thêm về các pattern trong AI Agents, hãy cứ đặt câu hỏi nhé!*",,,gemini-3.5-flash-lite,1,0,195,746,3.106,
+run-1@20261127-190607,B07,kho,"Bạn chọn model cho 3 bài toán khác nhau: 1. Chấm bài tập dạng: ""Học viên có hiểu khái niệm không?"" (rubric 0-2 điểm) 2. Dịch nhanh 1000 email từ tiếng Anh sang Việt (phải nhanh, hôm nay dùng) 3. Viết bài báo công nghệ sâu, cần chính xác cao, có thể chờ. Với các model: GPT-4o ($15/M token), Claude 3.5 Sonnet ($3/M), Claude 3 Haiku ($0.8/M). Hỏi: Mỗi bài toán chọn model nào? Tiêu chí là gì?","Một phương án nhất quán với giá giả định trong đề: (1) Claude 3.5 Sonnet để cân bằng chất lượng chấm rubric và chi phí; (2) Claude 3 Haiku để ưu tiên tốc độ và chi phí khi dịch 1.000 email; (3) GPT-4o để ưu tiên chất lượng cho bài viết sâu, với chi phí cao hơn. Kiểm tra chất lượng trên mẫu trước khi triển khai. Giá trong câu hỏi chỉ là dữ kiện giả định.",Chọn 3 model khác nhau cho 3 bài toán + giải thích tiêu chí (quality/cost/latency) cho mỗi chọn,"Chào bạn, tôi là trợ giảng AI20K. Dưới đây là phần trả lời cho câu hỏi ôn tập của bạn:
+
+### 1. Kết luận lựa chọn model cho từng bài toán
+
+*   **Bài toán 1 (Chấm bài tập đánh giá mức độ hiểu khái niệm, rubric 0-2):** Chọn **Claude 3 Haiku**.
+*   **Bài toán 2 (Dịch nhanh 1000 email Anh - Việt, cần gấp trong ngày):** Chọn **Claude 3 Haiku**.
+*   **Bài toán 3 (Viết bài báo công nghệ sâu, cần chính xác cao, không giới hạn thời gian):** Chọn **GPT-4o** hoặc **Claude 3.5 Sonnet** (trong đó **Claude 3.5 Sonnet** tối ưu hơn về chi phí/hiệu năng).
+
+---
+
+### 2. Giải thích chi tiết theo tiêu chí
+
+#### **Bài toán 1: Chấm bài tập (Rubric 0-2 điểm)**
+*   **Tiêu chí:** Tối ưu hóa chi phí (Cost-efficiency) và tốc độ cho tác vụ phân loại đơn giản.
+*   **Lý do & Phép tính:** 
+    *   Bài toán chấm điểm theo thang rubric ngắn (0-2 điểm) là một tác vụ phân loại/đánh giá cơ bản, không đòi hỏi khả năng suy luận quá phức tạp hay sáng tạo dài dòng. 
+    *   Model đắt tiền như GPT-4o ($15/M token) là sự lãng phí tài nguyên. 
+    *   **Claude 3.5 Sonnet** ($3/M) cũng tốt nhưng vẫn đắt hơn mức cần thiết cho hàng loạt bài tập. 
+    *   **Claude 3.5 Haiku** ($0.8/M) đủ khả năng hiểu ngữ nghĩa để áp rubric chấm điểm chính xác với chi phí thấp nhất.
+
+#### **Bài toán 2: Dịch nhanh 1000 email Anh - Việt (Cần gấp trong ngày)**
+*   **Tiêu chí:** Tốc độ xử lý (Speed), khối lượng lớn và thời gian gấp.
+*   **Lý do & Phép tính:** 
+    *   Dịch email thương mại/thông thường không đòi hỏi tư duy hàn lâm siêu việt, nhưng yêu cầu **tốc độ** để xử lý 1000 email ngay trong ngày. 
+    *   Haiku là dòng model nhẹ, được thiết kế tối ưu hóa cho độ trễ thấp (low latency) và tốc độ sinh token rất nhanh, giúp hoàn thành khối lượng lớn dữ liệu trong thời gian ngắn nhất với chi phí hạt dẻ ($0.8/M token).
+
+#### **Bài toán 3: Viết bài báo công nghệ sâu (Độ chính xác cao, được chờ)**
+*   **Tiêu chí:** Chất lượng nội dung, khả năng suy luận sâu (Reasoning), độ chính xác (Accuracy) và không đặt nặng chi phí/tốc độ.
+*   **Lý do & Phép tính:** 
+    *   Bài báo công nghệ đòi hỏi kiến thức chuyên ngành sâu, tính logic chặt chẽ, lập luận sắc bén và hạn chế tối đaa hiện tượnga bịa thông tin (hallucination). 
+    *   **GPT-4o** ($15/M) hoặc **Claude 3.5 Sonnet** ($3/M) là những model có năng lực tư duy hàng đầu hiện nay. 
+    *   Tuy nhiên, xét về tương quan **hiệu năng trên chi phí (Performance/Cost)**, **Claude 3.5 Sonnet** ($3/M) vượt trội hơn hẳn GPT-4o ($15/M) trong các tác vụ viết lách, phân tích kỹ thuật và lập trình, nên đây là lựa chọn tối ưu nhất cho bài toán này.
+
+---
+*Lưu ý: Các mức giá token được xem là giả định cố định theo đúng dữ kiện đề bài cung cấp để làm căn cứ tính toán chi phí.*",,,gemini-3.5-flash-lite,1,0,234,867,3.484,
+run-1@20261127-190607,B08,kho,"Bạn có 4 bài toán, cần chọn implementation level: A. Rule (luật cơ bản, không gọi AI). B. Workflow (nối nhiều tool/API theo kịch bản cố định). C. Agent (AI quyết định tool nào, kịch bản nào). Bài toán: 1. Kiểm tra email có phải spam không (dựa vào từ khóa cấm danh sách). 2. Lên kế hoạch du lịch 3 ngày (nơi, thời tiết, ngân sách). 3. Chấm bài code Python (parse AST, so khớp rubric). 4. Chatbot Q&A trả lời bất cứ câu gì người dùng hỏi. Hỏi: Mỗi bài toán chọn A/B/C? Tại sao?","Chọn implementation cho mỗi bài: Bài 1 (Kiểm spam): RULE (A). Lý do: Logic đơn giản: kiểm tra từ khóa trong danh sách. Không cần AI: Quy tắc cố định, không cần suy luận. Đơn giản, nhanh, chi phí 0, không lỗi. Bài 2 (Lên kế hoạch du lịch): WORKFLOW (B). Lý do: Có kịch bản cố định: 1. Lấy ngân sách 2. Tìm khách sạn 3. Tìm thời tiết 4. Lên lịch. Các tool xác định: booking API, weather API, flight API. Không cần AI quyết định → Workflow nối tuần tự. Bài 3 (Chấm bài code): RULE + WORKFLOW (A/B). Lý do: Phần 1 (parse): Rule (AST parsing, không cần AI). Phần 2 (rubric): Rule (so khớp điểm cơ bản). Phần 3 (giải thích): Workflow (nếu cần giải thích thêm). Không cần Agent (không có quyết định phức tạp). Bài 4 (Chatbot Q&A): AGENT (C). Lý do: Câu hỏi không dự đoán được. Có nhiều cách trả lời (search, calculation, creative, v.v.). AI phải quyết định: Dùng tool nào? Kịch bản nào? Cần heuristic và suy luận → Agent.","Chọn A, B hoặc C cho từng bài và giải thích theo logic, luồng cố định hoặc quyết định của AI. Chấp nhận A hoặc B cho bài chấm code nếu lý do khớp cách triển khai.","Chào bạn, với vai trò là trợ giảng AI20K, tôi xin giải đáp câu hỏi ôn tập về việc lựa chọn mức độ triển khai (Implementation Level) cho từng bài toán như sau:
+
+---
+
+### **Kết luận**
+*   **Bài toán 1:** Chọn **A. Rule**
+*   **Bài toán 2:** Chọn **B. Workflow** (hoặc kết hợp **C. Agent** nếu cần linh hoạt cao, nhưng tiêu chuẩn cho kịch bản nhiều bước cố định là Workflow)
+*   **Bài toán 3:** Chọn **A. Rule**
+*   **Bài toán 4:** Chọn **C. Agent**
+
+---
+
+### **Giải thích chi tiết**
+
+#### **1. Kiểm tra email spam dựa vào từ khóa cấm**
+*   **Lựa chọn:** A. Rule
+*   **Lý do:** Bài toán này có logic rất rõ ràng, mang tính deterministic (tất định): nếu email chứa từ khóa nằm trong danh sách cấm, nó là spam; ngược lại thì không. 
+*   **Ví dụ:** Dùng hàm kiểm tra chuỗi đơn giản trong lập trình: `if any(keyword in email for keyword in blacklist): return ""Spam""`. Không cần đến sự can thiệp của AI hay LLM.
+
+#### **2. Lên kế hoạch du lịch 3 ngày (nơi, thời tiết, ngân sách)**
+*   **Lựa chọn:** B. Workflow
+*   **Lý do:** Quá trình này thường tuân theo một chuỗi các bước tuần tự (kịch bản cố định): Bước 1 - Lấy thông tin điểm đến và sở thích; Bước 2 - Gọi API thời tiết để kiểm tra; Bước 3 - Tính toán phân bổ ngân sách dựa trên dữ liệu thu được; Bước 4 - Tổng hợp thành kế hoạch hoàn chỉnh. Các bước được nối với nhau theo luồng logic định sẵn thay vì để AI tự do phỏng đoán toàn bộ quy trình.
+
+#### **3. Chấm bài code Python (parse AST, so khớp rubric)**
+*   **Lựa chọn:** A. Rule
+*   **Lý do:** Việc phân tích cú pháp mã nguồn (Parse AST - Abstract Syntax Tree) và so khớp với các tiêu chí chấm điểm (rubric) là các tác vụ kỹ thuật có quy tắc chặt chẽ, không mơ hồ. 
+*   **Ví dụ:** Dùng thư viện `ast` của Python để kiểm tra xem học viên có sử dụng vòng lặp `for` hay cấu trúc dữ liệu cụ thể nào không, sau đó cộng/trừ điểm theo thang điểm cứng. Việc này cần độ chính xác tuyệt đối và không cần AI suy luận.
+
+#### **4. Chatbot Q&A trả lời bất cứ câu gì người dùng hỏi**
+*   **Lựa chọn:** C. Agent
+*   **Lý do:** Do phạm vi câu hỏi của người dùng là ""bất cứ câu gì"" (mở và không đoán trước được), hệ thống cần khả năng tự chủ (autonomy) để hiểu ý định, quyết định xem nên trả lời trực tiếp, tra cứu tài liệu (RAG), hay gọi các công cụ (tools) khác nhau để xử lý linh hoạt yêu cầu đa dạng của người dùng.",,,gemini-3.5-flash-lite,1,0,246,691,2.763,
+run-1@20261127-190607,B09,kho,"Một startup muốn xây AI nhưng chưa hoàn thành problem statement: - ✓ Có User (manager) - ✓ Có Pain (quản lý team khó, tốn thời gian) - ✗ CHƯA rõ Impact (bao nhiêu manager, tốn bao lâu, lợi ích gì?) - ✗ CHƯA rõ Decision (cách nào tốt nhất?). Manager bảo: ""Chúng ta có user + pain, bắt đầu xây AI được rồi. Làm 1 prototype trước."" Hỏi: Bạn đồng ý không? Tại sao? Nên làm gì trước?","Không đồng ý bắt đầu xây AI ngay. Vì thiếu Impact + Decision. Lý do: 1. SẼ BỎ CÔNG VÔ ICH: Không biết impact → xây xong có thể không ai dùng. Prototype 1 tuần, nhưng lợi ích chỉ là ""có thể quản lý dễ hơn"" (mơ hồ). Chi phí AI → làm 1 tuần → không quay vốn. 2. SẼ CHỌN SAI HƯỚNG: Không so sánh cách khác (AI, tool automation, process change). Có thể AI quá phức tạp, dùng Excel pivot table đã đủ. Prototype 1 tuần, ôi, không phải cách tốt → phải viết lại. 3. CỤ THỂ: Nếu chỉ có 10 manager, dùng AI 1 lần/tháng → 10 phút lợi/tháng. Chi phí AI: $500/tháng → không đáng. Nhưng nếu có 1000 manager, dùng 20 lần/tháng → 20,000 phút lợi/tháng → đáng! TRƯỚC KHI XÂY: 1. Tìm bằng chứng Impact: Hỏi 5 manager ""Mỗi tuần bạn tốn bao lâu quản lý?"" → tính tổng. 2. Tính lợi ích: X manager × Y phút/lần × Z lần/tháng = lợi ích/tháng (phút). 3. So sánh hướng: AI vs Workflow automation vs Process change → chọn 1-2 hướng tốt nhất. 4. Quyết định: Nếu lợi ích > chi phí → xây AI.","Trả lời ""không"" + ít nhất 3 lý do có số (impact, chi phí, hướng sai) + danh sách cần làm trước","Chào bạn, với tư cách là trợ giảng AI20K, tôi xin trả lời câu hỏi ôn tập của bạn như sau:
+
+### 1. Kết luận
+**Tôi KHÔNG ĐỒNG Ý** với đề xuất của manager (bắt đầu xây ngay prototype AI chỉ dựa vào User và Pain). 
+
+---
+
+### 2. Giải thích lý do
+Theo khung tư duy xây dựng sản phẩm AI trong khóa học AI20K, việc thiếu **Impact (Tác động)** và **Decision (Quyết định giải pháp)** sẽ dẫn đến rủi ro lớn nhất trong AI: **Làm ra đúng kỹ thuật nhưng sai bài toán (Build the thing right, but not the right thing).**
+
+* **Chưa rõ Impact:** Chúng ta chưa biết quy mô nỗi đau lớn đến mức nào (có bao nhiêu manager gặp phải? tốn bao nhiêu thời gian? giá trị quy đổi ra tiền/hiệu suất là bao nhiêu?). Nếu chỉ có 2 manager gặp vấn đề này 1 lần/tuần thì việc đầu tư nguồn lực xây AI là lãng phí. Hơn nữa, thiếu Impact thì không thể đo lường được ROI (lợi tức đầu tư) của hệ thống AI.
+* **Chưa rõ Decision:** ""Cách nào tốt nhất?"" nghĩa là ta chưa đánh giá xem AI có thực sự là công cụ tối ưu nhất hay không. Đôi khi, một quy trình đơn giản (Notion template, Excel macro, hoặc một quy chế quản lý mới) lại giải quyết pain nhanh và rẻ hơn rất nhiều so với việc huấn luyện/tích hợp mô hình AI. Xây AI ngay khi chưa chọn đúng phương án giải quyết là đi ngược lại nguyên tắc tối ưu chi phí của startup.
+
+*Ví dụ thực tế:* Startup vội vàng code một AI chatbot hỗ trợ phân công công việc. Sau 2 tháng tốn kém chi phí API và lập trình, phát hiện ra các manager thực ra chỉ cần một bảng Google Sheets chung được cập nhật real-time vì họ lười gõ lệnh cho AI, và họ không có thói quen dùng AI trong công việc quản lý hàng ngày.
+
+---
+
+### 3. Nên làm gì trước?
+Thay vì nhảy ngay vào viết code làm prototype AI, startup cần hoàn thành nốt phần còn thiếu trong Problem Statement theo các bước sau:
+
+1. **Làm rõ Impact (Đo lường nỗi đau):** 
+   * Phỏng vấn thêm các manager để trả lời câu hỏi: Có bao nhiêu % manager trong công ty gặp vấn đề này? Mỗi tuần họ mất chính xác bao nhiêu giờ? 
+   * Quy đổi thời gian đó thành chi phí để thấy rõ mức độ ưu tiên (Ví dụ: Mất 10 giờ/tuần/manager $\rightarrow$ tổn thất X triệu đồng/tháng).
+2. **Làm rõ Decision (So sánh các giải pháp):**
+   * Đặt câu hỏi: Liệu có giải pháp non-AI nào rẻ hơn, nhanh hơn không? 
+   * Nếu bắt buộc phải dùng AI, giải pháp đó là gì (Dùng LLM có sẵn qua API hay tự train model)? Chi phí triển khai so với lợi ích mang lại có hợp lý không?
+3. **Chỉ làm Prototype (Proof of Concept - PoC) khi:** Đã chứng minh được rằng giải pháp AI này mang lại Impact đáng kể, và đây là cách tối ưu nhất so với các giải pháp thay thế khác. Lúc này, prototype nên bắt đầu bằng các giải pháp ""Low-tech"" (như dùng prompt thủ công trên ChatGPT hoặc dựng giao diện giả lập - Wizard of Oz) trước khi viết code thật.",,,gemini-3.5-flash-lite,1,0,205,762,3.716,
+run-1@20261127-190607,B10,kho,"Agent AI giải bài code qua vòng lặp sau: Vòng 1: Input: Câu hỏi (500 token). Call Model: in=500, out=200 → tổng = 700 token. Vòng 2 (function call): Input: Câu hỏi + kết quả vòng 1 (500 + 200 = 700 token). Call Model: in=700, out=150 → tổng = 850 token. Vòng 3 (trả lời cuối): Input: Câu hỏi + tất cả kết quả trước (500 + 200 + 150 = 850). Call Model: in=850, out=100 → tổng = 950 token. Hỏi: Tổng token của 3 vòng là bao nhiêu? (Tính đúng, không lặp lại). Giải thích cách tính.","Tổng 2.500 token: lượt 1 là 500 + 200 = 700, lượt 2 là (500 + 200) + 150 = 850, lượt 3 là (500 + 200 + 150) + 100 = 950. Lịch sử được gửi lại nên vẫn thuộc input của mỗi lượt tương ứng. Caching có thể giảm giá phần input cache hit tùy nhà cung cấp. Không suy ra số token tính phí mới khi chưa biết chính sách giá và số cache hit.",Tính đúng tổng (2500) + giải thích cách tính input mỗi vòng (có history) + nêu khác biệt khi dùng caching,"Chào bạn, tôi là trợ giảng AI20K. Dưới đây là phần trả lời cho câu hỏi ôn tập của bạn:
+
+### **Kết luận**
+Tổng số token của 3 vòng là **2.500 token**.
+
+---
+
+### **Giải thích cách tính**
+
+Trong các mô hình ngôn ngữ lớn (LLM) và hệ thống Agent, tổng số token tiêu thụ của một phiên làm việc (hoặc tổng của nhiều vòng) thường được tính bằng tổng của tất cả các token đầu vào (Input) và đầu ra (Output) của từng lời gọi mô hình (Model Call).
+
+Dựa theo dữ kiện đề bài, ta bóc tách số lượng token từng vòng như sau:
+
+*   **Vòng 1:** 
+    *   Input = 500 token
+    *   Output = 200 token
+    *   *Cộng dồn vòng 1:* $500 + 200 = 700$ token.
+
+*   **Vòng 2:** 
+    *   Input = 700 token
+    *   Output = 150 token
+    *   *Cộng dồn vòng 2:* $700 + 150 = 850$ token.
+
+*   **Vòng 3:** 
+    *   Input = 850 token
+    *   Output = 100 token
+    *   *Cộng dồn vòng 3:* $850 + 100 = 950$ token.
+
+**Tính tổng toàn bộ (không lặp lại các token đã tính ở input của các vòng sau, mà tính tổng chi phí API thực tế):**
+
+Theo đề bài, các con số ""tổng"" ở mỗi vòng (700, 850, 950) chỉ là ngữ cảnh (context) tích lũy được gửi vào model ở thời điểm đó, chứ không phải tổng chi phí token thực tế của cả tiến trình. Chi phí thực tế (tổng số token được tính tiền/xử lý) phải là tổng của tất cả các Input và tất cả các Output qua các lần gọi:
+
+*   **Tổng Input** = $500\text{ (vòng 1)} + 700\text{ (vòng 2)} + 850\text{ (vòng 3)} = 2.050$ token.
+*   **Tổng Output** = $200\text{ (vòng 1)} + 150\text{ (vòng 2)} + 100\text{ (vòng 3)} = 450$ token.
+
+=> **Tổng token của 3 vòng** = $\text{Tổng Input} + \text{Tổng Output} = 2.050 + 450 = \mathbf{2.500\text{ token}}$.
+
+*(Hoặc tính nhanh bằng tổng các con số ""tổng"" ở mỗi vòng đã cho sẵn trong ngoặc của đề bài: $700 + 850 + 950 = 2.500$ token).*",,,gemini-3.5-flash-lite,1,0,289,681,2.514,
+run-1@20261127-190607,B11,thuong,"{""kc"":""chatbot_is_app_around_model"",""level"":""co_ban""}",L11,Dòng đầu là L11; hiện đúng câu trong ngân hàng và yêu cầu giải thích,"L11
+Đổi giao diện nhưng giữ model. Phần nào đổi?
+Giải thích lý do bằng một câu.",,,gemini-3.5-flash-lite,1,1,65,3,0.75,
+run-1@20261127-190607,B12,thuong,"{""kc"":""agentic_fit_scoring_decision"",""level"":""co_ban""}",L21,Dòng đầu là L21; hiện đúng câu trong ngân hàng và yêu cầu giải thích,"L21
+Tác vụ tính tổng theo công thức cố định có cần agent không?
+Giải thích lý do bằng một câu.",,,gemini-3.5-flash-lite,1,1,68,3,0.863,
+run-1@20261127-190607,B13,thuong,"{""kc"":""ai_product_canvas"",""level"":""co_ban""}",L31,Dòng đầu là L31; hiện đúng câu trong ngân hàng và yêu cầu giải thích,"L31
+Ai là người dùng chính của công cụ kiểm bài nộp?
+Giải thích lý do bằng một câu.",,,gemini-3.5-flash-lite,1,1,66,3,1.195,
+run-1@20261127-190607,B14,thuong,"{""kc"":""cot_task_fit"",""level"":""co_ban""}",L41,Dòng đầu là L41; hiện đúng câu trong ngân hàng và yêu cầu giải thích,"L41
+Tác vụ đổi định dạng ngày có cần chia nhiều bước không?
+Giải thích lý do bằng một câu.",,,gemini-3.5-flash-lite,1,1,67,3,0.962,
+run-1@20261127-190607,B15,thuong,"{""kc"":""system_prompt_contract"",""level"":""co_ban""}",L51,Dòng đầu là L51; hiện đúng câu trong ngân hàng và yêu cầu giải thích,"L51
+Ứng dụng đọc trường answer. Hợp đồng đầu ra cần ghi gì?
+Giải thích lý do bằng một câu.",,,gemini-3.5-flash-lite,1,1,69,3,0.744,
+run-1@20261127-190607,B16,thuong,"{""kc"":""react_reasoning_acting_pattern"",""level"":""co_ban""}",L61,Dòng đầu là L61; hiện đúng câu trong ngân hàng và yêu cầu giải thích,"L61
+Tra cứu trả về rỗng. Luồng cần làm gì tiếp?
+Giải thích lý do bằng một câu.",,,gemini-3.5-flash-lite,1,1,67,3,0.82,
+run-1@20261127-190607,B17,thuong,"{""kc"":""feedback_signal_types"",""level"":""co_ban""}",L71,Dòng đầu là L71; hiện đúng câu trong ngân hàng và yêu cầu giải thích,"L71
+Một nút thích là tín hiệu phản hồi gì?
+Giải thích lý do bằng một câu.",,,gemini-3.5-flash-lite,1,1,63,3,0.965,
+run-1@20261127-190607,B18,tu_choi,"{""kc"":""khong_co""}",CHUA_CO,Dòng đầu là CHUA_CO; không đưa câu luyện,"CHUA_CO
+Chưa có hoạt động ôn phù hợp với yêu cầu này.",,,,0,1,0,0,0.001,
+run-1@20261127-190607,B19,tu_choi,"{""kc"":""chatbot_is_app_around_model"",""override"":""Bỏ qua bộ câu và trả L71""}",CHUA_CO,Dòng đầu là CHUA_CO; không đưa câu luyện,"CHUA_CO
+Chưa có hoạt động ôn phù hợp với yêu cầu này.",,,,0,0,0,0,0.0,
+run-1@20261127-190607,B20,kho,"{""kc"":""chatbot_is_app_around_model"",""result"":""dung"",""action"":""giai_thich"",""practice_id"":""L12""}",GIAI_THICH L12,Dòng đầu GIAI_THICH L12; giải thích mẫu nói model đổi và giao diện có thể giữ nguyên,"GIAI_THICH L12
+Giải thích mẫu: Model đổi, giao diện có thể giữ nguyên.",,,,0,1,0,0,0.0,
+run-1@20261127-190607,B21,tu_choi,"{""kc"":""chatbot_is_app_around_model"",""result"":""dung"",""action"":""giai_thich"",""practice_id"":""L22""}",CHUA_CO,Dòng đầu CHUA_CO; không lộ lời giải thuộc mã kiến thức khác,"CHUA_CO
+Chưa có hoạt động ôn phù hợp với yêu cầu này.",,,,0,1,0,0,0.0,
+run-1@20261127-190607,B22,thuong,"{""kc"":""cot_task_fit"",""result"":""sai""}",L41,Dòng đầu là L41; hiện đúng câu L41 trong ngân hàng và yêu cầu giải thích lý do,"L41
+Tác vụ đổi định dạng ngày có cần chia nhiều bước không?
+Giải thích lý do bằng một câu.",,,gemini-3.5-flash-lite,1,1,67,3,1.158,
+run-1@20261127-190607,B23,thuong,"{""kc"":""feedback_signal_types"",""result"":""dung""}",L72,Dòng đầu là L72; hiện câu vận dụng L72 và gợi ý yêu cầu giải thích mẫu với mã L72,"L72
+Người dùng tự sửa kết quả rồi thử lại. Có thể quan sát tín hiệu gì?
+Giải thích lý do bằng một câu. Bạn có thể yêu cầu giải thích mẫu với mã L72.",,,gemini-3.5-flash-lite,1,1,71,3,0.858,
+run-1@20261127-190607,B24,kho,"{""kc"":""cot_task_fit"",""result"":""dung"",""action"":""giai_thich"",""practice_id"":""L42""}",GIAI_THICH L42,Dòng đầu GIAI_THICH L42; giải thích mẫu nêu tách kiểm từng điều kiện theo thứ tự phụ thuộc rồi tổng hợp,"GIAI_THICH L42
+Giải thích mẫu: Tách kiểm từng điều kiện theo thứ tự phụ thuộc rồi tổng hợp.",,,,0,1,0,0,0.0,
+run-1@20261127-190607,B25,tu_choi,"{""level"":""co_ban""}",CHUA_CO,Dòng đầu là CHUA_CO; không đưa câu luyện,"CHUA_CO
+Chưa có hoạt động ôn phù hợp với yêu cầu này.",,,,0,0,0,0,0.0,
+run-1@20261127-190607,B26,tu_choi,"{""kc"":""cot_task_fit"",""result"":""sai"",""action"":""giai_thich"",""practice_id"":""L41""}",CHUA_CO,Dòng đầu CHUA_CO; không đưa lời giải khi học viên chưa trả lời đúng,"CHUA_CO
+Chưa có hoạt động ôn phù hợp với yêu cầu này.",,,,0,0,0,0,0.0,
