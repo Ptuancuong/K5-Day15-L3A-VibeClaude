@@ -1,40 +1,21 @@
-# Đào data — cách đếm và kết quả
+# Bằng chứng dữ liệu ban đầu — CP1
 
-> Điền ở guide bước 1.2. Ôn lại: ngày 2, ngày 6 · lab ngày 2, lab ngày 6.
-> Không đào data thì xoá file này. Script / công thức đếm để trong repo (vd `evidence/count.py` hoặc ghi công thức Sheets ngay dưới), người khác chạy lại phải ra cùng số.
-> Repo chỉ chứa số đã tổng hợp và vài dòng ví dụ — không chép lại nguyên file data.
+Trong phần ôn tập cuối ngày trên preclass, có **399 / 1.968 lượt trả lời lần đầu bị sai (20,3%)** trong các lượt có kết quả đúng/sai. Đây là tỷ lệ theo lượt trả lời. Day01 ghi nhận 16 lượt sai lần đầu ở mã kiến thức chatbot_is_app_around_model, một chủ đề ứng viên cho demo.
 
-## 1. Cách đếm — viết TRƯỚC khi chạy
+Nguồn: answers.csv và column_dictionary.csv do BTC cấp, giữ local. Lọc nguon = pre_post_post (ôn tập cuối ngày), lan_thu = 1 và was_correct có giá trị True hoặc False. Mã kc_code cho biết chủ đề của câu hỏi. Các số này chưa xác nhận học viên thiếu bài luyện hoặc bài luyện giúp họ hiểu hơn. Nhóm tự soạn nội dung câu demo vì log không chứa nguyên văn câu hỏi và câu trả lời.
 
-- Data dùng: __ (file nào, từ ngày nào đến ngày nào)
-- Đếm gì: __ · trên tập nào: __ · lọc gì: __
-- **Mẫu số là gì:** __ *(lỗi hay gặp nhất là mẫu số sai)*
-- Script / công thức: __
+## Tái lập bằng PowerShell
 
-## 2. Đọc trước, đếm sau
+```powershell
+$first = @(Import-Csv ./data/preclass/answers.csv | Where-Object {
+    $_.nguon -eq 'pre_post_post' -and $_.lan_thu -eq '1' -and $_.was_correct -in @('True','False')
+})
+$wrong = @($first | Where-Object was_correct -eq 'False')
+$first.Count
+$wrong.Count
+$wrong | Where-Object kc_code -eq 'chatbot_is_app_around_model' | Group-Object lesson_id | Select-Object Count,Name
+```
 
-Đã đọc __ dòng đầu và từ điển cột. Các *kiểu* hành vi thấy được (trước khi định nghĩa thứ cần đếm):
-- __
-- __
+## Giả thuyết cần kiểm
 
-## 3. Kết quả
-
-| Đếm gì | x / N | % | Ghi chú |
-|---|---|---|---|
-| | | | |
-| | | | |
-
-Ghi dạng "x/N (y%)". "Nhiều bạn…" không phải số.
-
-## 4. ≥5 ví dụ cụ thể (mã dòng / mã đã ẩn danh, không đoán ai là ai)
-
-1.
-2.
-3.
-4.
-5.
-
-## 5. Giới hạn của data
-
-Data cho biết người ta **làm gì**, không cho biết **vì sao**. Thiếu gì, lệch về phía nào: __
-→ Kiểm lại bằng phỏng vấn / khảo sát nào: __
+Học viên muốn thử một câu khác cùng chủ đề sau khi xem lời giải. Hỏi học viên: “Lần gần nhất trả lời sai câu ôn cuối ngày, bạn đã làm gì để kiểm tra mình hiểu lại?” Ghi bằng mã P1, P2… kèm vai. Khi thử bản demo, dùng một câu kiểm tra riêng thuộc cùng chủ đề để đo kết quả học.

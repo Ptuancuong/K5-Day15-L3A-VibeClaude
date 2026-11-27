@@ -35,3 +35,7 @@ evidence/**/raw-*
 # Nguyên file data BTC cấp (data/preclass, data/training-ops… của repo đề): để ở đây, không commit
 data-btc
 data-btc/
+
+# Data BTC chi dung local, khong commit nguyen bo
+/data/preclass/
+/data/training-ops/

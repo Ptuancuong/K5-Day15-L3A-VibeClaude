@@ -1,7 +1,4 @@
-> Đây là khung repo nộp bài. Điền mọi chỗ `____`, giữ nguyên tên các mục. **Mục 0 xoá đi sau khi tạo repo xong.**
-> Giờ, mốc, luật, rubric: xem `README.md`, `02-guide.md`, `03-rubric.md` trong repo đề (bộ đề BTC phát).
-
-# [Tên nhóm] — [Tên lát cắt]
+# VibeClaude — Một câu luyện sau câu sai ở phần ôn cuối ngày
 
 **Thành viên, lớp, track:** xem [TEAMS.md](TEAMS.md). **Điền TEAMS.md đúng format**: khi chấm và đánh giá, BTC quét file này để ghép điểm cho từng người.
 
@@ -9,29 +6,19 @@
 
 ---
 
-## 0. Tạo repo nhóm từ khung này *(guide bước 1.0 — xoá mục này khi xong)*
+**Track A — EdTech · bản dự kiến CP1.**
 
-**Hai luật:** repo **mới, công khai (Public)** · tên `K5-Day15-<lớp>-<tên nhóm>`, vd `K5-Day15-L3A-StudyPulse` (tên nhóm viết liền, không dấu). Chép **nội dung bên trong** `starter-repo/` — `README.md`, `run.py` phải nằm ngay ở trang đầu repo.
+Sau khi trả lời sai ở phần ôn tập cuối ngày, học viên đã xem lời giải nhưng có thể thiếu một ví dụ khác để tự kiểm tra xem mình đã hiểu chủ đề chưa.
 
-**(a) Không cần terminal — làm trên web GitHub**
-1. **New repository** → tên theo mẫu → **Public** → không tick thêm gì → tạo.
-2. Trên máy mở thư mục `starter-repo/`, **bật hiện file ẩn** (Mac Finder: `Cmd + Shift + .` · Windows: View → Show → Hidden items) để thấy `.gitignore`, `.env.example`.
-3. Trên repo vừa tạo: **Add file → Upload files** → **kéo thả** tất cả file và thư mục bên trong `starter-repo/` → **Commit changes**. Kéo thả mới giữ được thư mục con; lỗi vì nhiều file quá thì tải từng thư mục.
-4. Kiểm: có `.gitignore` chưa (hay thiếu nhất). Thiếu thì **Add file → Create new file**, tên `.gitignore`, dán nội dung từ máy.
-5. Từ giờ sửa file ngay trên web (biểu tượng bút chì → Commit). Phần code vẫn cần **một** người chạy được trên máy: trước mỗi lượt chạy tải **Code → Download ZIP** về thư mục mới (mang `.env` sang), chạy xong chỉ upload file kết quả và file vừa sửa; trong lúc đang chạy không ai sửa `eval/benchmark.csv` trên web.
+**Lát cắt:** Khi một học viên trả lời sai một câu ôn tập cuối ngày, AI dùng mã kiến thức của câu sai để chọn một câu luyện tương đương từ bộ câu hỏi nhóm tự soạn, giúp học viên thử lại bằng một tình huống khác. Xem [cách đếm và giới hạn dữ liệu](evidence/data-mining.md).
 
-**(b) Dùng git**
-```bash
-git clone https://github.com/<tai-khoan>/K5-Day15-L3A-TenNhom.git
-cd K5-Day15-L3A-TenNhom
-cp -R ../duong-dan-toi/starter-repo/. .      # Windows PowerShell: Copy-Item -Recurse -Force ..\duong-dan-toi\starter-repo\* .
-git status                                   # không được có .env, data-btc/
-git add -A && git commit -m "Khung repo từ starter-repo" && git push
-```
+**Trạng thái CP1:** đã điền nội dung canvas; thành viên và mã học viên do nhóm bổ sung trong TEAMS.md, sau đó cập nhật dòng 7 của canvas bằng tên thật. Đã kiểm tra URL repo không dùng đăng nhập: HTTP 200, hiển thị Public. Chưa nộp Form CP1 vì bộ đề local chưa có link form. Tên nhóm VibeClaude và lớp L3A lấy theo tên repo, nhóm cần kiểm lại.
 
-**Xong khi:** mở link repo bằng **cửa sổ ẩn danh** thấy được file (link nộp CP1) · đã mời thành viên (Settings → Collaborators) · đã điền `TEAMS.md` và `python run.py check` không báo gì ở phần "Kiểm TEAMS.md".
+**Chạy kiểm tra:** cần Python 3.10 trở lên, chạy `python run.py check` (Windows có thể dùng `py -3 run.py check`). Đã chạy bằng Python 3.11: lệnh kiểm tra chạy được, còn cảnh báo thiếu tên/mã thành viên và benchmark/metric mẫu. Chưa đạt trạng thái sạch cảnh báo; benchmark và metric sẽ hoàn thiện ở CP2.
 
----
+**Dữ liệu:** dữ liệu BTC chỉ dùng local tại data/preclass/ và đã thêm quy tắc bỏ qua Git. Repo chỉ chứa số tổng hợp, phương pháp đếm và ví dụ ngắn được phép; không đăng lại bộ dữ liệu gốc.
+
+**Khai báo dùng công cụ:** Codex hỗ trợ đọc đề, đề xuất lát cắt, soạn bản nháp CP1 và đếm dữ liệu bằng PowerShell. Nhóm chưa kiểm chứng nhu cầu luyện thêm với học viên; thành viên cần đọc, kiểm lại và chịu trách nhiệm trước khi nộp.
 
 ## Nhóm làm gì, khung làm gì
 

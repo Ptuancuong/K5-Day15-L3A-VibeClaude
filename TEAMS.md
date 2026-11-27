@@ -11,10 +11,10 @@
 
 | STT | Họ và tên | Mã học viên | Vai trò | Phần việc chính |
 |---|---|---|---|---|
-| 1 | Phạm Tuấn Cường | 2A202603584 | Đội trưởng | ____ |
-| 2 | Trần Anh Tú | 2A202603368 | Thành viên | ____ |
-| 3 | Đặng Việt Anh | 2A202603685 | Thành viên | ____ |
-| 4 | Nguyễn Minh Đạt | 2A202603582 | Thành viên | ____ |
+| 1 | Phạm Tuấn Cường | 2A202603584 | Đội trưởng | Tích hợp bản demo và nộp checkpoint |
+| 2 | Trần Anh Tú | 2A202603368 | Thành viên | Phân tích log preclass và hỏi học viên để kiểm chứng nhu cầu |
+| 3 | Đặng Việt Anh | 2A202603685 | Thành viên | Soạn câu luyện theo mã kiến thức và đáp án chuẩn |
+| 4 | Nguyễn Minh Đạt | 2A202603582 | Thành viên | Xây luồng chọn câu luyện và chạy bộ câu thử |
 
 **Quy tắc điền**
 - **Lớp:** `L3A` hoặc `L3B`. **Track:** một chữ `A` (EdTech), `B` (Y tế), `C` (Du lịch), `D` (Thương mại điện tử), `E` (Tài chính) hoặc `F` (Làn khác). **Link repo:** link GitHub công khai của nhóm.
