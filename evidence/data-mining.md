@@ -19,7 +19,3 @@ $wrong | Where-Object kc_code -eq 'chatbot_is_app_around_model' | Group-Object l
 ## Giả thuyết cần kiểm
 
 Học viên muốn thử một câu khác cùng chủ đề sau khi xem lời giải. Hỏi học viên: “Lần gần nhất trả lời sai câu ôn cuối ngày, bạn đã làm gì để kiểm tra mình hiểu lại?” Ghi bằng mã P1, P2… kèm vai. Khi thử bản demo, dùng một câu kiểm tra riêng thuộc cùng chủ đề để đo kết quả học.
-
-## Trích dẫn dữ liệu CP2
-
-Một bản ghi đã bỏ trường định danh có các giá trị: nguon = pre_post_post, lan_thu = 1, was_correct = False, kc_code = chatbot_is_app_around_model. Nguồn: answers.csv (BTC). Bản ghi minh họa cách lọc lượt sai, không chứa lời học viên.

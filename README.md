@@ -12,9 +12,9 @@ Sau khi trả lời sai ở phần ôn tập cuối ngày, học viên đã xem 
 
 **Lát cắt:** Khi một học viên trả lời sai một câu ôn tập cuối ngày, AI dùng mã kiến thức của câu sai để chọn một câu luyện tương đương từ bộ câu hỏi nhóm tự soạn, giúp học viên thử lại bằng một tình huống khác. Xem [cách đếm và giới hạn dữ liệu](evidence/data-mining.md).
 
-**CP1:** canvas, thành viên và phân công đã được đưa lên GitHub.
+**Trạng thái CP1:** đã điền nội dung canvas; thành viên và mã học viên do nhóm bổ sung trong TEAMS.md, sau đó cập nhật dòng 7 của canvas bằng tên thật. Đã kiểm tra URL repo không dùng đăng nhập: HTTP 200, hiển thị Public. Chưa nộp Form CP1 vì bộ đề local chưa có link form. Tên nhóm VibeClaude và lớp L3A lấy theo tên repo, nhóm cần kiểm lại.
 
-**CP2:** xem sơ đồ và ngưỡng trong spec.md. Chạy python run.py check để kiểm tệp. Chạy python run.py ở chế độ mock và nhập {"kc":"chatbot_is_app_around_model","level":"van_dung"} để thử chọn câu.
+**Chạy kiểm tra:** cần Python 3.10 trở lên, chạy `python run.py check` (Windows có thể dùng `py -3 run.py check`). Đã chạy bằng Python 3.11: lệnh kiểm tra chạy được, còn cảnh báo thiếu tên/mã thành viên và benchmark/metric mẫu. Chưa đạt trạng thái sạch cảnh báo; benchmark và metric sẽ hoàn thiện ở CP2.
 
 **Dữ liệu:** dữ liệu BTC chỉ dùng local tại data/preclass/ và đã thêm quy tắc bỏ qua Git. Repo chỉ chứa số tổng hợp, phương pháp đếm và ví dụ ngắn được phép; không đăng lại bộ dữ liệu gốc.
 
