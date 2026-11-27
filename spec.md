@@ -18,34 +18,38 @@ Data BTC cấp đã dùng (không commit nguyên file): `data/preclass/answers.c
 
 - **Người dùng chính:** học viên L3 AI20K khoá 5 vừa trả lời một câu trong phần ôn tập cuối ngày trên trang pre-class.
 - **Việc họ cố làm xong:** _kiểm tra lại xem mình đã hiểu đúng một ý kiến thức của bài hôm nay chưa, trước buổi học trên lớp._
-- **Hôm nay họ giải bằng gì, hỏng ở đâu:** đọc lời giải của câu vừa làm. Sai thì không có câu nào khác để thử lại; đúng thì không biết mình đúng vì hiểu hay vì đoán. ⏳ Kiểm lại bằng phỏng vấn (Trần Anh Tú).
+- **Hôm nay họ giải bằng gì, hỏng ở đâu:** đọc lời giải của câu vừa làm. Sai thì không có câu nào khác để thử lại; đúng thì không biết mình đúng vì hiểu hay vì đoán. Khảo sát: sau khi xem lời giải, 14/20 hỏi ChatGPT hoặc AI riêng, 7/20 đọc lời giải rồi qua câu khác, chỉ 5/20 tự tìm câu tương tự để làm. Chưa bỏ được vì đó là cách nhanh nhất có sẵn — nhưng 4/20 phiếu chê lời giải / trợ giảng khó hiểu, không hiểu ngữ cảnh.
 - **Pain (không chữ AI):** học viên L3 làm ôn tập cuối ngày — sau khi biết đúng / sai, không có cách tự kiểm xem đã hiểu chưa — vào lớp vẫn mang hiểu nhầm cũ, hoặc mất thời gian tự tìm lại bài.
-- **Bằng chứng (CP2 — số đầu tiên, data BTC):**
-  - 399/1.968 lượt trả lời lần đầu ở ôn cuối ngày bị sai (**20,3%**); **69/77 học viên** làm phần ôn có ≥1 câu sai; trung vị 4 câu sai / học viên trong 05–24/11.
-  - 2/1.970 lượt là lần làm lại → sau khi làm gần như không có bước luyện lại.
-  - Giới hạn: data cho biết học viên **làm gì**, không cho biết họ có _muốn_ ôn thêm không, và tỉ lệ đúng không cho biết mức hiểu. Nguồn chính để kiểm: phỏng vấn ≥3 học viên ⏳ (trước CP3). Chi tiết: `evidence/data-mining.md`, `evidence/summary.md`.
+- **Bằng chứng — hai nguồn, chi tiết ở `evidence/summary.md`:**
+  - **Đào data (data BTC):** 399/1.968 lượt trả lời lần đầu ở ôn cuối ngày bị sai (**20,3%**); **69/77 học viên** làm phần ôn có ≥1 câu sai; trung vị 4 câu sai / học viên trong 05–24/11. Chỉ 2/1.970 lượt là lần làm lại → sau khi làm gần như không có bước luyện lại. Cách đếm: `evidence/data-mining.md`.
+  - **Khảo sát (nguồn đạt ngưỡng, n = 20 học viên ngoài nhóm, thu qua Discord #chung của cohort 27/11):** 17/20 (85%) từng trả lời sai khi ôn tập; **18/20 (90%) sau khi xem lời giải không hoàn toàn chắc mình đã hiểu** (hơi chắc 12, không chắc 4, biết là chưa hiểu 2); 10/20 mất ≥15 phút để xử lý một câu sai. Log: `evidence/survey/results.csv`.
+  - **Hai nguồn khớp:** sai là chuyện thường (data 20,3% lượt; khảo sát 17/20 người) và sau khi sai học viên không có bước tự kiểm lại (data: 2/1.970 lượt làm lại; khảo sát: 18/20 không chắc đã hiểu, chỉ 5/20 tự tìm câu tương tự).
+  - **Giới hạn:** khảo sát mẫu nhỏ, form không hỏi vai (12/20 trả lời có dùng preclass); 14/20 đã tự hỏi ChatGPT nên nhu cầu đang được đáp ứng một phần bằng công cụ khác; chưa phỏng vấn để hỏi "vì sao".
 
 ## §2. Impact & quyết định chọn _(guide 1.3)_
 
 Số đếm trên data pre-class 05–24/11/2026 (khoảng 20 ngày). "/ tháng" = số đếm × 30/20.
 
-| Hướng                                    | Bao nhiêu người gặp                         | Bao nhiêu lần / tháng                                                 | Mỗi lần tốn gì                                                                     | Impact / tháng                               | Làm kịp không                                                | Chọn?    |
-| ---------------------------------------- | ------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | -------------------------------------------- | ------------------------------------------------------------ | -------- |
-| **H1 · Ôn lại sau câu ôn cuối ngày**     | 69/77 học viên làm ôn có câu sai (data)     | 399 lượt sai × 1,5 ≈ **600** (data), chưa tính lượt đúng mà chưa hiểu | ~5 phút tự tìm lại bài hoặc mang hiểu nhầm vào lớp _(tự ước tính — chờ phỏng vấn)_ | ≈ 600 × 5 = **3.000 phút ≈ 50 giờ** học viên | Có: workflow phân luồng, ngân hàng 14 câu cho 7 mã kiến thức | **Chọn** |
-| H2 · Hỗ trợ mini lab, gợi ý bước tiếp    | 63/123 học viên mở lab đã bấm bỏ qua (data) | 102 lần bỏ × 1,5 ≈ 150 (data)                                         | Bỏ cả bài thực hành _(chưa đo được mất gì)_                                        | ≈ 150 bài lab bỏ dở                          | Khó: phải tự dựng nội dung từng bước lab                     | Không    |
-| H3 · Trợ giảng dưới video thiếu ngữ cảnh | 50/145 học viên có chat (data)              | 101 lượt × 1,5 ≈ 150 (data)                                           | Câu trả lời thiếu căn cứ, phải hỏi lại _(tự ước tính 3 phút)_                      | ≈ 450 phút                                   | Có, nhưng trang đã có trợ giảng AI, khó chứng minh hơn       | Không    |
+| Hướng                                    | Bao nhiêu người gặp                         | Bao nhiêu lần / tháng                                                 | Mỗi lần tốn gì                                                | Impact / tháng                                  | Làm kịp không                                                | Chọn?    |
+| ---------------------------------------- | ------------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------- | ----------------------------------------------- | ------------------------------------------------------------ | -------- |
+| **H1 · Ôn lại sau câu ôn cuối ngày**     | 69/77 học viên làm ôn có câu sai (data)     | 399 lượt sai × 1,5 ≈ **600** (data), chưa tính lượt đúng mà chưa hiểu | ~16 phút xử lý một câu sai (khảo sát, trung bình theo khoảng) | ≈ 600 × 16 = **~9.800 phút ≈ 160 giờ** học viên | Có: workflow phân luồng, ngân hàng 14 câu cho 7 mã kiến thức | **Chọn** |
+| H2 · Hỗ trợ mini lab, gợi ý bước tiếp    | 63/123 học viên mở lab đã bấm bỏ qua (data) | 102 lần bỏ × 1,5 ≈ 150 (data)                                         | Bỏ cả bài thực hành _(chưa đo được mất gì)_                   | ≈ 150 bài lab bỏ dở                             | Khó: phải tự dựng nội dung từng bước lab                     | Không    |
+| H3 · Trợ giảng dưới video thiếu ngữ cảnh | 50/145 học viên có chat (data)              | 101 lượt × 1,5 ≈ 150 (data)                                           | Câu trả lời thiếu căn cứ, phải hỏi lại _(tự ước tính 3 phút)_ | ≈ 450 phút                                      | Có, nhưng trang đã có trợ giảng AI, khó chứng minh hơn       | Không    |
 
-- **Impact / tháng của H1** = ~600 lượt sai × 5 phút = **~3.000 phút / tháng** trên 77 học viên làm ôn (≈ 39 phút / học viên / tháng). Nguồn: số lượt — `evidence/data-mining.md`; 5 phút — _(tự ước tính)_, sẽ thay bằng số phỏng vấn ⏳.
+- **Impact / tháng của H1** = 69 học viên có câu sai × ~8,7 lượt sai / người / tháng (= 600 lượt) × ~16 phút / lượt = **~9.800 phút ≈ 160 giờ / tháng** trên nhóm 77 học viên làm ôn (≈ 127 phút / học viên / tháng).
+  - Nguồn: số người và số lượt — data BTC (`evidence/data-mining.md`); 16 phút — khảo sát câu "thời gian xử lý" (`evidence/survey/results.csv`), lấy trung bình 20 phiếu với điểm giữa mỗi khoảng: dưới 5 phút = 2,5 · 5–15 = 10 · 15–30 = 22,5 · trên 30 = 35 · không làm gì = 0 _(điểm giữa và 35 phút là tự ước tính)_.
+  - Đây là thời gian học viên đang bỏ ra, không phải thời gian chắc chắn tiết kiệm được: sản phẩm chỉ thay được một phần (đưa câu luyện / lời giải có lý do ngay, thay cho tự tìm hoặc hỏi ChatGPT).
+  - Không nhân lên cả khoá: chỉ 77/436 học viên có hoạt động làm phần ôn trong data.
 - **Phạm vi ngân hàng câu luyện:** 7 mã kiến thức chiếm **77/399 lượt sai (19%)**; 6/7 mã nằm trong top 6 mã sai nhiều nhất.
 - **Hướng đã loại:** H2 — số pain mạnh (22,5% lần hoàn thành lab là bấm bỏ qua) nhưng không có nội dung lab để dựng trong 10 giờ, và "bỏ qua" có thể vì hết giờ chứ không phải vì kẹt. H3 — tỉ lệ thấp (7,9%) và trang đã có trợ giảng; cải tiến khó đo trước / sau.
-- **Số lần / tháng theo kiểu người dùng** (cho persona §8): sai ít ≤2 câu / 20 ngày · vừa 3–6 · nhiều ≥7 ⏳ (Trần Anh Tú tính phân bố từ data trước CP3).
+- **Số lần / tháng theo kiểu người dùng** (cho persona §8, data BTC, 77 học viên làm ôn): không sai câu nào 8/77 · **sai ít** (1–2 câu / 20 ngày) 23/77, trung bình 1,3 → ~2 lần / tháng · **vừa** (3–6) 26/77, trung bình 4,1 → ~6 lần / tháng · **nhiều** (≥7) 20/77, trung bình 13,1 → ~20 lần / tháng.
 
 ## §3. Giải pháp tương tự _(guide 2.1)_
 
 - **Ôn lại câu sai kiểu flashcard (Duolingo, Quizlet):** đáng học — cho luyện lại ngay sau khi sai · đáng né — lặp lại đúng câu cũ khiến người học nhớ đáp án chứ không hiểu · mình khác — đưa **câu khác cùng ý kiến thức**, mức khó theo kết quả vừa làm.
 - **Hệ luyện thích ứng (Khan Academy mastery):** đáng học — gắn câu với kỹ năng · đáng né — cần ngân hàng câu rất lớn · mình khác — ngân hàng nhỏ do nhóm soạn, chỉ 2 mức.
 - **Chatbot hỏi đáp chung (ChatGPT):** đáng học — trả lời ngay câu hỏi ôn · đáng né — không gắn với bài, dễ trả lời sai mà nghe thuyết phục · mình khác — giới hạn trong câu hỏi ôn của khoá, yêu cầu nêu kết luận + lý do.
-- ⏳ Mỗi thành viên thử nhanh 1 sản phẩm và bổ sung 1 dòng trước CP3.
+- Khảo sát xác nhận ChatGPT là đối thủ thật: 14/20 học viên đã tự hỏi ChatGPT hoặc AI riêng sau câu sai. Điểm khác cần giữ: câu luyện và lời giải mẫu lấy từ ngân hàng nhóm đã kiểm, gắn đúng mã kiến thức của khoá.
 
 ## §4. Thiết kế _(guide 2.2, 3.2)_
 
