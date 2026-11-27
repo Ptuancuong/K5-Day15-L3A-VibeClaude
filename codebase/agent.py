@@ -11,11 +11,31 @@ SYSTEM = (
 NO_PRACTICE = {"output": "CHUA_CO\nChưa có hoạt động ôn phù hợp với yêu cầu này."}
 
 
+TUTOR_SYSTEM = (
+    "Bạn là trợ giảng AI20K. Trả lời câu hỏi ôn tập bằng tiếng Việt, "
+    "nêu kết luận rồi giải thích bằng lý do, ví dụ hoặc phép tính phù hợp. "
+    "Xem dữ kiện đề bài là giả định khi cần, chỉ ra chỗ mâu thuẫn và không bịa số. "
+    "Nếu câu hỏi ngoài phạm vi khóa học hoặc thiếu dữ kiện, nói rõ giới hạn."
+)
+
+
+def answer_review_question(question: str) -> dict:
+    reply = call_model(TUTOR_SYSTEM, json.dumps(
+        {"task": "review_question", "question": question}, ensure_ascii=False,
+    ))
+    return {"output": reply["text"].strip()}
+
+
 def answer(text: str) -> dict:
     try:
         request = json.loads(text)
     except (TypeError, ValueError):
-        return NO_PRACTICE.copy()
+        if not isinstance(text, str) or not text.strip():
+            return NO_PRACTICE.copy()
+        question = text.strip()
+        if question.startswith(("{", "[")):
+            return NO_PRACTICE.copy()
+        return answer_review_question(question)
     if not isinstance(request, dict) or request.keys() - {"kc", "level", "result", "action", "practice_id"}:
         return NO_PRACTICE.copy()
     kc = request.get("kc")

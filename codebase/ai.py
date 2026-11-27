@@ -48,6 +48,16 @@ API_KEY = (os.environ.get("API_KEY") or "").strip()
 def call_model(system: str, user: str) -> dict:
     if MODEL_PROVIDER == "fake":
         request = json.loads(user)
+        if request.get("task") == "review_question":
+            question = request["question"]
+            excerpt = question if len(question) <= 100 else question[:97] + "..."
+            return {
+                "text": (
+                    f"[Mock CP2] Đã nhận câu hỏi ôn tập: {excerpt}\n"
+                    "Mẫu phản hồi: nêu kết luận, giải thích lý do và đưa ví dụ hoặc phép tính nếu phù hợp."
+                ),
+                "model": "fake", "tokens_in": 0, "tokens_out": 0,
+            }
         selected = next(
             (item["id"] for item in request["candidates"] if item["level"] == request["level"]),
             "CHUA_CO",

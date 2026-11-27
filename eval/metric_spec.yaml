@@ -1,30 +1,19 @@
-# Metric spec — "thế nào là tốt", đo bằng gì. Điền ở guide bước 2.4.
-# Ôn lại: ngày 5, ngày 9 · lab ngày 5, lab ngày 9.
-# CHỐT TRƯỚC 19:30 Thứ Sáu 27/11 (CP2), KHÔNG SỬA SAU. Sửa sau CP2 → khối R4 0 điểm (03-rubric).
-#
-# ≥3 metric. Mỗi metric:
-#   name        tên ngắn, không dấu (vd trich_dung_nguon)
-#   definition  định nghĩa KIỂM CHỨNG ĐƯỢC — người ngoài nhóm đọc output là chấm ra cùng kết quả
-#               ✗ "trả lời hay"   ✓ "mọi khẳng định có mã đoạn nguồn, và mã đó có trong dữ liệu"
-#   grader      code | llm | nguoi   (llm: ghi rõ đã kiểm tay bao nhiêu câu, khớp bao nhiêu)
-#   threshold   ngưỡng bằng số, vd "≥ 90% câu thuong" hoặc "100% câu tu_choi"
-#   why         vì sao người dùng quan tâm — trỏ về pain ở evidence/summary.md (từ pain, không từ AI)
-# Kiểm: python run.py check  (báo nếu chưa đủ 3 metric hoặc còn mẫu <…>)
-# Người thứ hai chấm thử 5 output theo file này → ghi kết quả vào eval/README.md mục 3.
+# Chuẩn CP2: khóa theo mốc BTC 19:30 ngày 27/11.
+# Nhóm ca theo hành vi được kiểm tra, dùng định nghĩa bên dưới thay vì cột type.
 
 metrics:
-  - name: "<metric_1>"
-    definition: "<định nghĩa kiểm chứng được>"
-    grader: "<code | llm | nguoi>"
-    threshold: "<ngưỡng bằng số>"
-    why: "<vì sao người dùng quan tâm>"
-  - name: "<metric_2>"
-    definition: "<…>"
-    grader: "<…>"
-    threshold: "<…>"
-    why: "<…>"
-  - name: "<metric_3>"
-    definition: "<…>"
-    grader: "<…>"
-    threshold: "<…>"
-    why: "<…>"
+  - name: chon_dung_cau_luyen
+    definition: "Ca có expected là mã câu luyện trong practice.json. Đạt khi dòng đầu khớp expected, mã đó có cùng kc với input, câu hiển thị khớp ngân hàng và đầu ra có yêu cầu giải thích."
+    grader: code
+    threshold: "≥90% ca chọn câu luyện (bộ CP2: tối thiểu 7/7)"
+    why: "Học viên cần câu luyện đúng kiến thức và được nhắc giải thích lựa chọn."
+  - name: tra_loi_va_giai_thich
+    definition: "Ca hỏi đáp bằng văn bản hoặc ca có expected bắt đầu bằng GIAI_THICH. Người chấm đối chiếu output thực tế với từng yêu cầu trong pass_criterion. Expected là đáp án tham khảo. Ca tra lời giải phải đúng mã và đúng ý cốt lõi."
+    grader: nguoi
+    threshold: "≥90% ca hỏi đáp và tra lời giải (bộ CP2: tối thiểu 10/11)"
+    why: "Học viên cần lời giải đúng và có lý do để tự đối chiếu."
+  - name: tu_choi_dung
+    definition: "Ca có type tu_choi. Đạt khi dòng đầu là CHUA_CO và output không hiện câu luyện hay lời giải ngoài yêu cầu."
+    grader: code
+    threshold: "100% ca từ chối (bộ CP2: 3/3)"
+    why: "Tránh đưa bài sai phạm vi hoặc lộ lời giải của chủ đề khác."
