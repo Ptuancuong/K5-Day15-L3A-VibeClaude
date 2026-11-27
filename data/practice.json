@@ -5,8 +5,7 @@
     "topic": "Chatbot và mô hình",
     "level": "co_ban",
     "question": "Đổi giao diện nhưng giữ model. Phần nào đổi?",
-    "rubric": "Ứng dụng đổi, model giữ nguyên.",
-    "targets": "Nghĩ chatbot và model là một thứ, nên đổi giao diện là đổi cả AI."
+    "rubric": "Ứng dụng đổi, model giữ nguyên."
   },
   {
     "id": "L12",
@@ -14,8 +13,7 @@
     "topic": "Chatbot và mô hình",
     "level": "van_dung",
     "question": "Đổi model nhưng giữ giao diện. Phần nào đổi?",
-    "rubric": "Model đổi, giao diện có thể giữ nguyên.",
-    "targets": "Nghĩ chất lượng trả lời do giao diện quyết định, không nhận ra model là phần thay được bên trong ứng dụng."
+    "rubric": "Model đổi, giao diện có thể giữ nguyên."
   },
   {
     "id": "L21",
@@ -23,8 +21,7 @@
     "topic": "Khi nào cần agent",
     "level": "co_ban",
     "question": "Tác vụ tính tổng theo công thức cố định có cần agent không?",
-    "rubric": "Không, dùng phép tính cố định.",
-    "targets": "Nghĩ việc gì có AI cũng nên dùng agent, kể cả khi các bước đã cố định."
+    "rubric": "Không, dùng phép tính cố định."
   },
   {
     "id": "L22",
@@ -32,8 +29,7 @@
     "topic": "Khi nào cần agent",
     "level": "van_dung",
     "question": "Tác vụ phải chọn công cụ theo kết quả từng bước có phù hợp với agent không?",
-    "rubric": "Có thể phù hợp vì phải quyết định bước kế tiếp từ kết quả.",
-    "targets": "Nghĩ agent chỉ là gọi model nhiều lần, không nhận ra agent cần khi bước sau phụ thuộc kết quả bước trước."
+    "rubric": "Có thể phù hợp vì phải quyết định bước kế tiếp từ kết quả."
   },
   {
     "id": "L31",
@@ -41,8 +37,7 @@
     "topic": "Canvas sản phẩm",
     "level": "co_ban",
     "question": "Ai là người dùng chính của công cụ kiểm bài nộp?",
-    "rubric": "Người trực tiếp soát bài nộp, ví dụ học viên.",
-    "targets": "Nhầm người dùng chính với người mua hoặc người quản lý, thay vì người trực tiếp làm việc đó."
+    "rubric": "Người trực tiếp soát bài nộp, ví dụ học viên."
   },
   {
     "id": "L32",
@@ -50,8 +45,7 @@
     "topic": "Canvas sản phẩm",
     "level": "van_dung",
     "question": "Nêu một kết quả quan sát được mà người nộp bài cần đạt.",
-    "rubric": "Xác định đủ file bắt buộc trước khi nộp.",
-    "targets": "Viết mục tiêu chung chung như 'tiện hơn' thay vì một kết quả quan sát được."
+    "rubric": "Xác định đủ file bắt buộc trước khi nộp."
   },
   {
     "id": "L41",
@@ -59,8 +53,7 @@
     "topic": "Chọn cách xử lý bài toán",
     "level": "co_ban",
     "question": "Tác vụ đổi định dạng ngày có cần chia nhiều bước không?",
-    "rubric": "Thường không, có thể dùng quy tắc đổi định dạng.",
-    "targets": "Nghĩ chia bước suy luận luôn làm kết quả tốt hơn, với mọi tác vụ."
+    "rubric": "Thường không, có thể dùng quy tắc đổi định dạng."
   },
   {
     "id": "L42",
@@ -68,8 +61,7 @@
     "topic": "Chọn cách xử lý bài toán",
     "level": "van_dung",
     "question": "Tác vụ đối chiếu nhiều điều kiện phụ thuộc nhau nên chia bước thế nào?",
-    "rubric": "Tách kiểm từng điều kiện theo thứ tự phụ thuộc rồi tổng hợp.",
-    "targets": "Gộp mọi điều kiện phụ thuộc nhau vào một lần suy luận, không biết khi nào cần chia bước."
+    "rubric": "Tách kiểm từng điều kiện theo thứ tự phụ thuộc rồi tổng hợp."
   },
   {
     "id": "L51",
@@ -77,8 +69,7 @@
     "topic": "Hợp đồng đầu ra",
     "level": "co_ban",
     "question": "Ứng dụng đọc trường answer. Hợp đồng đầu ra cần ghi gì?",
-    "rubric": "Ghi trường answer, kiểu dữ liệu và khi nào xuất hiện.",
-    "targets": "Nghĩ system prompt chỉ cần mô tả vai trò, không cần ghi định dạng đầu ra cụ thể."
+    "rubric": "Ghi trường answer, kiểu dữ liệu và khi nào xuất hiện."
   },
   {
     "id": "L52",
@@ -86,8 +77,7 @@
     "topic": "Hợp đồng đầu ra",
     "level": "van_dung",
     "question": "Ứng dụng cần phân biệt có kết quả với thiếu dữ liệu. Hợp đồng cần thêm gì?",
-    "rubric": "Thêm trạng thái rõ ràng, ví dụ ok hoặc missing_data.",
-    "targets": "Nghĩ model luôn có câu trả lời, không tính trường hợp thiếu dữ liệu."
+    "rubric": "Thêm trạng thái rõ ràng, ví dụ ok hoặc missing_data."
   },
   {
     "id": "L61",
@@ -95,8 +85,7 @@
     "topic": "Quan sát kết quả công cụ",
     "level": "co_ban",
     "question": "Tra cứu trả về rỗng. Luồng cần làm gì tiếp?",
-    "rubric": "Kiểm tra lại truy vấn hoặc báo thiếu căn cứ.",
-    "targets": "Nghĩ luồng cứ trả lời tiếp dù công cụ không trả gì, bỏ qua bước quan sát kết quả."
+    "rubric": "Kiểm tra lại truy vấn hoặc báo thiếu căn cứ."
   },
   {
     "id": "L62",
@@ -104,8 +93,7 @@
     "topic": "Quan sát kết quả công cụ",
     "level": "van_dung",
     "question": "Công cụ trả kết quả mâu thuẫn. Luồng nên kiểm gì trước khi kết luận?",
-    "rubric": "Đối chiếu nguồn và điều kiện truy vấn trước khi kết luận.",
-    "targets": "Tin ngay kết quả công cụ đầu tiên, không đối chiếu khi các kết quả mâu thuẫn."
+    "rubric": "Đối chiếu nguồn và điều kiện truy vấn trước khi kết luận."
   },
   {
     "id": "L71",
@@ -113,8 +101,7 @@
     "topic": "Tín hiệu phản hồi",
     "level": "co_ban",
     "question": "Một nút thích là tín hiệu phản hồi gì?",
-    "rubric": "Phản hồi tường minh.",
-    "targets": "Lẫn phản hồi tường minh (người dùng chủ động đánh giá) với phản hồi ngầm."
+    "rubric": "Phản hồi tường minh."
   },
   {
     "id": "L72",
@@ -122,7 +109,6 @@
     "topic": "Tín hiệu phản hồi",
     "level": "van_dung",
     "question": "Người dùng tự sửa kết quả rồi thử lại. Có thể quan sát tín hiệu gì?",
-    "rubric": "Việc sửa và thử lại là tín hiệu hành vi.",
-    "targets": "Nghĩ chỉ đánh giá hay khảo sát mới là phản hồi, bỏ qua tín hiệu hành vi như sửa rồi thử lại."
+    "rubric": "Việc sửa và thử lại là tín hiệu hành vi."
   }
 ]

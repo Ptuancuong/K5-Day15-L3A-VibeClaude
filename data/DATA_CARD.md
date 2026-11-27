@@ -18,34 +18,23 @@
 
 ## Dataset 2 · Ngân hàng câu luyện (`data/practice.json`) — nhóm tự viết
 
-|                  |                                                                                                                                                                                                            |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Dùng để làm gì   | Nguồn duy nhất của công cụ `practice_candidates(kc)`; đề câu luyện hiện cho học viên lấy nguyên văn từ file này                                                                                            |
-| Từ đâu           | Nhóm tự viết theo 7 mã kiến thức có nhiều lượt sai nhất trong Dataset 1 (6/7 mã thuộc top 6; tổng 77/399 lượt sai). Không chép câu hỏi của khoá                                                            |
-| Trường           | `id, kc, topic, level (co_ban · van_dung), question, rubric, targets` — `targets` là hiểu nhầm câu đó nhắm tới; `rubric` là lời giải, **không bao giờ** được gửi cho model hay hiện trước khi học viên làm |
-| Số dòng          | 14 câu (7 mã kiến thức × 2 câu)                                                                                                                                                                            |
-| Phiên bản / ngày | 27/11/2026 — `question`, `rubric`: Nguyễn Minh Đạt; `targets`: bản nháp do đội trưởng thêm ⏳ Đặng Việt Anh kiểm                                                                                           |
-| Nhãn             | `synthetic` (người viết tay, không sinh bằng script hay prompt)                                                                                                                                            |
-| Người kiểm       | ⏳ người thứ hai kiểm `rubric` và `targets`; ghi số câu đã kiểm tay                                                                                                                                        |
-
-## Dataset 2b · Câu ôn cuối ngày (`data/review_questions.json`) — nhóm tự viết
-
-|                  |                                                                                                                                                                                                                                                                                                                                           |
-| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Dùng để làm gì   | Nguồn cho công cụ `get_review_question(review_id)`: đề câu ôn học viên vừa sai, làm ngữ cảnh cho AI khi chọn câu luyện                                                                                                                                                                                                                    |
-| Từ đâu           | Đặng Việt Anh viết 10 câu hỏi ôn (ban đầu soạn làm câu thử hỏi đáp), mỗi câu gắn một `kc_code` có thật trong Dataset 1 (R01–R06: 6 mã có câu luyện; R07–R10: `model_tier_selection`, `select_rule_workflow_agent_level`, `complete_ai_problem_statement`, `token_generation_loop_count` — xếp hạng 7–10 theo lượt sai, chưa có câu luyện) |
-| Trường           | `id, kc, question, reference_answer, author` — `reference_answer` không gửi cho model                                                                                                                                                                                                                                                     |
-| Số dòng          | 10                                                                                                                                                                                                                                                                                                                                        |
-| Phiên bản / ngày | 27/11/2026                                                                                                                                                                                                                                                                                                                                |
-| Nhãn             | `synthetic` (người viết tay, không chép câu hỏi của khoá)                                                                                                                                                                                                                                                                                 |
+| | |
+|---|---|
+| Dùng để làm gì | Nguồn duy nhất của công cụ `practice_candidates(kc)` (nhánh B, C); đề câu luyện và lời giải mẫu lấy nguyên văn từ file này |
+| Từ đâu | Nhóm tự viết theo 7 mã kiến thức có nhiều lượt sai nhất trong Dataset 1 (6/7 mã thuộc top 6; tổng 77/399 lượt sai). Không chép câu hỏi của khoá |
+| Trường | `id, kc, topic, level (co_ban · van_dung), question, rubric` — `rubric` là lời giải mẫu: không gửi cho model; chỉ hiện ở nhánh C khi học viên đã trả lời đúng và tự yêu cầu |
+| Số dòng | 14 câu (7 mã kiến thức × 2 mức) |
+| Phiên bản / ngày | 27/11/2026 — Nguyễn Minh Đạt |
+| Nhãn | `synthetic` (người viết tay, không sinh bằng script hay prompt) |
+| Người kiểm | ⏳ Đặng Việt Anh kiểm `question` và `rubric`; ghi số câu đã kiểm tay |
 
 ## Dataset 3 · Bộ câu thử (`eval/benchmark.csv`)
 
-|                |                                                                                                                                                                                                                           |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Dùng để làm gì | Đánh giá bản chạy thử theo `eval/metric_spec.yaml`                                                                                                                                                                        |
-| Từ đâu         | 8 câu chỉ gồm mã kiến thức lấy từ Dataset 1 (`data_that`); 16 câu nhóm viết lý do giả định hoặc dùng câu ôn Dataset 2b (`tu_viet`). Trước CP3 thêm câu lấy nguyên lời học viên từ phỏng vấn (`nguoi_dung`) ⏳ Trần Anh Tú |
-| Số dòng        | 24 (thuong 12 · kho 8 · tu_choi 4)                                                                                                                                                                                        |
-| Nhãn           | thật (mã kiến thức) + tự viết                                                                                                                                                                                             |
+| | |
+|---|---|
+| Dùng để làm gì | Đánh giá bản chạy thử theo `eval/metric_spec.yaml` |
+| Từ đâu | B01–B10: 10 câu hỏi ôn Đặng Việt Anh viết, kèm đáp án tham khảo (`tu_viet`); B11–B17: 7 câu chỉ gồm mã kiến thức lấy từ Dataset 1 (`data_that`); B18–B21: câu từ chối, tấn công, tra lời giải (`tu_viet`). Trước CP3 thêm câu lấy nguyên lời học viên từ phỏng vấn (`nguoi_dung`) ⏳ Trần Anh Tú |
+| Số dòng | 21 (thuong 7 · kho 11 · tu_choi 3) |
+| Nhãn | thật (mã kiến thức) + tự viết |
 
 Data `synthetic` **không phải bằng chứng pain**. Nếu sau này dùng AI để viết biến thể câu chữ thì ghi prompt, model và người kiểm ở đây.
