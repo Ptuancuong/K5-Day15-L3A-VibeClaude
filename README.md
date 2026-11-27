@@ -128,13 +128,13 @@ Nhóm dùng stack khác (Node, Streamlit, notebook…): sửa hàm `run_app()` t
 
 ## Bảy hạng mục bắt buộc — nằm ở file nào
 
-| #   | Hạng mục                       | File                                                                              |
-| --- | ------------------------------ | --------------------------------------------------------------------------------- |
-| 1   | Bằng chứng pain                | `evidence/` (tổng hợp ở `evidence/summary.md`)                                    |
-| 2   | Impact có số                   | `spec.md` §2                                                                      |
-| 3   | Thiết kế giải pháp             | `spec.md` §4                                                                      |
-| 4   | Bản chạy thử làm trọn lát cắt  | `codebase/` · lệnh ở mục "Lệnh"                                                   |
-| 5   | Định nghĩa "tốt" + bộ câu thử  | `data/DATA_CARD.md` · `eval/`                                                     |
-| 6   | Mô phỏng chi phí khi dùng thật | `cost/`                                                                           |
-| 7   | Slide + demo + video dự phòng  | slide trong repo (PDF, PPTX, HTML…) hoặc link slide ở form CP4 · link video: ____ |
-| +   | _Bonus:_ người dùng thử        | `validation/log.md`                                                               |
+| #   | Hạng mục                       | File                                                                                                                                                            |
+| --- | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Bằng chứng pain                | `evidence/` (tổng hợp ở `evidence/summary.md`)                                                                                                                  |
+| 2   | Impact có số                   | `spec.md` §2                                                                                                                                                    |
+| 3   | Thiết kế giải pháp             | `spec.md` §4                                                                                                                                                    |
+| 4   | Bản chạy thử làm trọn lát cắt  | `codebase/` · lệnh ở mục "Lệnh"                                                                                                                                 |
+| 5   | Định nghĩa "tốt" + bộ câu thử  | `data/DATA_CARD.md` · `eval/`                                                                                                                                   |
+| 6   | Mô phỏng chi phí khi dùng thật | `cost/`                                                                                                                                                         |
+| 7   | Slide + demo + video dự phòng  | slide trong repo (PDF, PPTX, HTML…) hoặc link slide ở form CP4 · video CP3 (bản chạy thử gọi Gemini thật, 30 giây): https://www.youtube.com/watch?v=UZnrJJcyIzE |
+| +   | _Bonus:_ người dùng thử        | `validation/log.md`                                                                                                                                             |
