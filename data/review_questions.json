@@ -1,0 +1,72 @@
+[
+  {
+    "id": "R01",
+    "kc": "chatbot_is_app_around_model",
+    "question": "Một công ty xây dựng một chatbot trả lời FAQ về sản phẩm của họ. Chatbot chạy trên website của công ty (backend Python + frontend React). Dữ liệu được lưu trữ trong database PostgreSQL trên server. Hỏi: Chatbot này có phải là một ứng dụng (app) không? Tại sao?",
+    "reference_answer": "Có, chatbot này là một ứng dụng (application). Lý do: App = phần mềm thực hiện một công việc cụ thể (ở đây: trả lời FAQ). Chạy trên máy chủ (server-side) và người dùng truy cập qua browser. Có logic xử lý (tìm kiếm, trả lời), không chỉ hiển thị tĩnh. Dữ liệu được quản lý trong database. Điểm khác: Chatbot không nhất thiết phải là app mobile hay desktop riêng biệt. Nó là web app (ứng dụng web).",
+    "author": "Đặng Việt Anh"
+  },
+  {
+    "id": "R02",
+    "kc": "agentic_fit_scoring_decision",
+    "question": "Bạn đang xây dựng một agent AI giúp học viên giải bài toán lập trình. Agent cần quyết định: \"Có nên gợi ý thêm hay hướng dẫn thẳng?\" Hỏi: Bạn sẽ dùng thang điểm (scoring) hay quy tắc cứng (rule) để AI quyết định? Nếu dùng scoring, những tiêu chí nào (0-10 điểm)?",
+    "reference_answer": "Nên dùng scoring (thang điểm 0-10) thay vì rule, vì: 1. Linh hoạt: Học viên có nhiều cấp độ hiểu (mức 2 cần hướng dẫn, mức 8 chỉ cần gợi ý). 2. Dựa vào bằng chứng: Score từ log học (câu hỏi trước, số lỗi, thời gian). Tiêu chí scoring: Lần trả lời thứ mấy: Lần 1 → score 2 (cần hướng dẫn); Lần 3+ → score 8 (đủ hiểu, chỉ cần tip). Số lỗi syntax: 0 lỗi → 9; 1-2 lỗi → 5; 3+ → 2. Thời gian suy nghĩ: Nhanh < 2 phút → 7 (đủ hiểu); Chậm > 10 phút → 3 (cần giúp). Quyết định: Nếu score ≥ 7 → gợi ý; < 7 → hướng dẫn từng bước.",
+    "author": "Đặng Việt Anh"
+  },
+  {
+    "id": "R03",
+    "kc": "ai_product_canvas",
+    "question": "Một nhóm startup muốn điền AI Product Canvas trước khi xây AI. Nhóm đã có: User (teacher), Pain (học viên quên kiến thức), Solution idea (tự động tạo bài luyện). Hỏi: Những mục BẮTBUỘC nào khác phải điền trước khi code? Nếu chưa rõ \"Impact\" (bao nhiêu user, bao nhiêu lần/tháng), có nên bắt đầu không?",
+    "reference_answer": "Mục bắt buộc trước khi code: 1. User: Ai dùng? (teacher, student, admin). 2. Pain: Vấn đề cụ thể là gì? (học viên quên, mất thời gian, v.v.). 3. Solution: AI sẽ làm gì? (tạo bài, chọn câu, v.v.). 4. Impact: Bao nhiêu user × bao nhiêu lần/tháng = lợi ích tổng? (phút/tháng). 5. Decision: Hướng nào tốt nhất? (so sánh ≥2 hướng). Trả lời câu 2: Không nên bắt đầu code nếu chưa rõ Impact. Vì: Nếu chỉ 10 user, 1 lần/tháng → 10 phút lợi → không đáng code 100 giờ. Phải có số để chứng minh bài toán đáng làm.",
+    "author": "Đặng Việt Anh"
+  },
+  {
+    "id": "R04",
+    "kc": "cot_task_fit",
+    "question": "Bạn đang xây AI tự động chấm bài tập trắc nghiệm (100 câu, mỗi câu có 4 phương án A/B/C/D). Team đề nghị dùng Chain of Thought (CoT): \"Hãy suy luận từng bước (Thought → Reasoning → Decision) rồi chọn phương án đúng.\" Hỏi: Có nên dùng CoT cho bài này không? Tại sao? Nếu không, dùng cách nào?",
+    "reference_answer": "Không nên dùng CoT cho bài trắc nghiệm đơn giản này. Vì: 1. Task quá đơn giản: Chỉ cần so khớp đáp án, không cần suy luận nhiều bước. 2. Lãng phí token: CoT yêu cầu model viết Thought → Reasoning, tốn token gấp 3-5 lần. 3. Latency cao: Phải chờ model suy luận, chậm hơn so với cách trực tiếp. 4. Chi phí cao: 100 câu × token thừa = chi phí tăng vô ích. Cách tốt hơn: Dùng prompt thẳng: \"Chọn phương án đúng: A, B, C, hay D?\" Hoặc dùng rule: Embedding → so sánh vector với 4 phương án → chọn gần nhất. Nếu cần suy luận, chỉ dùng CoT cho các câu khó (lọc trước). Kết luận: Dùng CoT chỉ khi task yêu cầu suy luận phức tạp, nhiều bước (chẳng hạn: giải bài toán, phân tích code).",
+    "author": "Đặng Việt Anh"
+  },
+  {
+    "id": "R05",
+    "kc": "system_prompt_contract",
+    "question": "Một AI tutor cần viết system prompt cho agent trợ giảng. Team viết thử: \"Hãy giúp học viên hiểu bài.\" Hỏi: System prompt này đủ cụ thể không? Phải ghi rõ những mục nào để AI không bị \"lạc đề\"? Cho ví dụ 3 mục cần có trong hợp đồng (contract) này.",
+    "reference_answer": "System prompt trên KHÔNG đủ cụ thể. Nó mơ hồ, dễ gây ra: AI trả lời sai lĩnh vực, AI bỏ qua constraint (bảo mật, tính toán), Output format không đúng. Những mục BẮTBUỘC trong hợp đồng (contract): 1. ROLE (vai trò): \"Bạn là tutor AI cho khóa AI20K, chuyên về LLM và AI Product.\" 2. INPUT/OUTPUT FORMAT (định dạng): \"Input: Câu hỏi của học viên (plain text, tối đa 500 ký tự). Output: JSON với keys: answer (str), reference (list), next_question (str)\" 3. CONSTRAINT (ràng buộc): \"- Chỉ trả lời về LLM, AI, không trả lời toán học phổ thông. - Nếu không chắc → nói 'Tôi không biết' thay vì đoán. - Luôn trích dẫn nguồn (sách, bài viết). - Giới hạn 200 ký tự\" 4. TONE (giọng điệu): \"Hòa nhã, khuyến khích, không giáo điều\" Hợp đồng tốt là cụ thể, có ví dụ, dễ kiểm chứng.",
+    "author": "Đặng Việt Anh"
+  },
+  {
+    "id": "R06",
+    "kc": "react_reasoning_acting_pattern",
+    "question": "Agent AI đang xử lý câu hỏi: \"Hôm nay là thứ mấy?\" ReACT pattern có 3 bước: 1. Thought: \"Tôi cần biết ngày hôm nay\" 2. Action: search_today_date() 3. Observation: \"2026-11-27, Thứ Sáu\" Hỏi: 3 bước này khác nhau thế nào? Mỗi bước AI làm gì? Nếu thiếu Thought, chỉ có Action + Observation, có được không?",
+    "reference_answer": "Phân biệt 3 bước ReACT: 1. THOUGHT (suy nghĩ): AI viết ra kế hoạch: \"Tôi cần làm gì?\". Không gọi tool, chỉ lên kế hoạch. Giúp AI tránh sai lầm trước khi hành động. Ví dụ: \"Tôi cần gọi search_today_date() để lấy ngày hôm nay\" 2. ACTION (hành động): AI gọi tool/function thực tế. Chỉ gọi sau khi có Thought. Ví dụ: search_today_date() → kết quả: \"2026-11-27\" 3. OBSERVATION (quan sát): Kết quả trả về từ tool. AI dùng để suy luận bước tiếp theo. Ví dụ: \"Thứ Sáu\" (parse từ \"2026-11-27\"). Trả lời câu 2: Nếu thiếu Thought, chỉ có Action + Observation: Có thể chạy được, nhưng dễ sai lầm. Luồng vẫn có thể hoạt động nếu đã có quy tắc chọn công cụ. Không cần hiển thị suy luận nội bộ cho học viên.",
+    "author": "Đặng Việt Anh"
+  },
+  {
+    "id": "R07",
+    "kc": "model_tier_selection",
+    "question": "Bạn chọn model cho 3 bài toán khác nhau: 1. Chấm bài tập dạng: \"Học viên có hiểu khái niệm không?\" (rubric 0-2 điểm) 2. Dịch nhanh 1000 email từ tiếng Anh sang Việt (phải nhanh, hôm nay dùng) 3. Viết bài báo công nghệ sâu, cần chính xác cao, có thể chờ. Với các model: GPT-4o ($15/M token), Claude 3.5 Sonnet ($3/M), Claude 3 Haiku ($0.8/M). Hỏi: Mỗi bài toán chọn model nào? Tiêu chí là gì?",
+    "reference_answer": "Một phương án nhất quán với giá giả định trong đề: (1) Claude 3.5 Sonnet để cân bằng chất lượng chấm rubric và chi phí; (2) Claude 3 Haiku để ưu tiên tốc độ và chi phí khi dịch 1.000 email; (3) GPT-4o để ưu tiên chất lượng cho bài viết sâu, với chi phí cao hơn. Kiểm tra chất lượng trên mẫu trước khi triển khai. Giá trong câu hỏi chỉ là dữ kiện giả định.",
+    "author": "Đặng Việt Anh"
+  },
+  {
+    "id": "R08",
+    "kc": "select_rule_workflow_agent_level",
+    "question": "Bạn có 4 bài toán, cần chọn implementation level: A. Rule (luật cơ bản, không gọi AI). B. Workflow (nối nhiều tool/API theo kịch bản cố định). C. Agent (AI quyết định tool nào, kịch bản nào). Bài toán: 1. Kiểm tra email có phải spam không (dựa vào từ khóa cấm danh sách). 2. Lên kế hoạch du lịch 3 ngày (nơi, thời tiết, ngân sách). 3. Chấm bài code Python (parse AST, so khớp rubric). 4. Chatbot Q&A trả lời bất cứ câu gì người dùng hỏi. Hỏi: Mỗi bài toán chọn A/B/C? Tại sao?",
+    "reference_answer": "Chọn implementation cho mỗi bài: Bài 1 (Kiểm spam): RULE (A). Lý do: Logic đơn giản: kiểm tra từ khóa trong danh sách. Không cần AI: Quy tắc cố định, không cần suy luận. Đơn giản, nhanh, chi phí 0, không lỗi. Bài 2 (Lên kế hoạch du lịch): WORKFLOW (B). Lý do: Có kịch bản cố định: 1. Lấy ngân sách 2. Tìm khách sạn 3. Tìm thời tiết 4. Lên lịch. Các tool xác định: booking API, weather API, flight API. Không cần AI quyết định → Workflow nối tuần tự. Bài 3 (Chấm bài code): RULE + WORKFLOW (A/B). Lý do: Phần 1 (parse): Rule (AST parsing, không cần AI). Phần 2 (rubric): Rule (so khớp điểm cơ bản). Phần 3 (giải thích): Workflow (nếu cần giải thích thêm). Không cần Agent (không có quyết định phức tạp). Bài 4 (Chatbot Q&A): AGENT (C). Lý do: Câu hỏi không dự đoán được. Có nhiều cách trả lời (search, calculation, creative, v.v.). AI phải quyết định: Dùng tool nào? Kịch bản nào? Cần heuristic và suy luận → Agent.",
+    "author": "Đặng Việt Anh"
+  },
+  {
+    "id": "R09",
+    "kc": "complete_ai_problem_statement",
+    "question": "Một startup muốn xây AI nhưng chưa hoàn thành problem statement: - ✓ Có User (manager) - ✓ Có Pain (quản lý team khó, tốn thời gian) - ✗ CHƯA rõ Impact (bao nhiêu manager, tốn bao lâu, lợi ích gì?) - ✗ CHƯA rõ Decision (cách nào tốt nhất?). Manager bảo: \"Chúng ta có user + pain, bắt đầu xây AI được rồi. Làm 1 prototype trước.\" Hỏi: Bạn đồng ý không? Tại sao? Nên làm gì trước?",
+    "reference_answer": "Không đồng ý bắt đầu xây AI ngay. Vì thiếu Impact + Decision. Lý do: 1. SẼ BỎ CÔNG VÔ ICH: Không biết impact → xây xong có thể không ai dùng. Prototype 1 tuần, nhưng lợi ích chỉ là \"có thể quản lý dễ hơn\" (mơ hồ). Chi phí AI → làm 1 tuần → không quay vốn. 2. SẼ CHỌN SAI HƯỚNG: Không so sánh cách khác (AI, tool automation, process change). Có thể AI quá phức tạp, dùng Excel pivot table đã đủ. Prototype 1 tuần, ôi, không phải cách tốt → phải viết lại. 3. CỤ THỂ: Nếu chỉ có 10 manager, dùng AI 1 lần/tháng → 10 phút lợi/tháng. Chi phí AI: $500/tháng → không đáng. Nhưng nếu có 1000 manager, dùng 20 lần/tháng → 20,000 phút lợi/tháng → đáng! TRƯỚC KHI XÂY: 1. Tìm bằng chứng Impact: Hỏi 5 manager \"Mỗi tuần bạn tốn bao lâu quản lý?\" → tính tổng. 2. Tính lợi ích: X manager × Y phút/lần × Z lần/tháng = lợi ích/tháng (phút). 3. So sánh hướng: AI vs Workflow automation vs Process change → chọn 1-2 hướng tốt nhất. 4. Quyết định: Nếu lợi ích > chi phí → xây AI.",
+    "author": "Đặng Việt Anh"
+  },
+  {
+    "id": "R10",
+    "kc": "token_generation_loop_count",
+    "question": "Agent AI giải bài code qua vòng lặp sau: Vòng 1: Input: Câu hỏi (500 token). Call Model: in=500, out=200 → tổng = 700 token. Vòng 2 (function call): Input: Câu hỏi + kết quả vòng 1 (500 + 200 = 700 token). Call Model: in=700, out=150 → tổng = 850 token. Vòng 3 (trả lời cuối): Input: Câu hỏi + tất cả kết quả trước (500 + 200 + 150 = 850). Call Model: in=850, out=100 → tổng = 950 token. Hỏi: Tổng token của 3 vòng là bao nhiêu? (Tính đúng, không lặp lại). Giải thích cách tính.",
+    "reference_answer": "Tổng 2.500 token: lượt 1 là 500 + 200 = 700, lượt 2 là (500 + 200) + 150 = 850, lượt 3 là (500 + 200 + 150) + 100 = 950. Lịch sử được gửi lại nên vẫn thuộc input của mỗi lượt tương ứng. Caching có thể giảm giá phần input cache hit tùy nhà cung cấp. Không suy ra số token tính phí mới khi chưa biết chính sách giá và số cache hit.",
+    "author": "Đặng Việt Anh"
+  }
+]

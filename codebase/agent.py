@@ -1,13 +1,16 @@
 """Luồng chính — workflow cố định, 1 quyết định AI (spec.md §4).
 
-Input (một dòng JSON):  {"kc": "<mã kiến thức>", "result": "sai", "ly_do": "<vì sao học viên chọn như vậy>"}
+Input (một dòng JSON):  {"cau_on": "R01", "ly_do": "<vì sao học viên trả lời như vậy>"}
+                   hoặc {"kc": "<mã kiến thức>", "ly_do": "..."}
+    - "cau_on" (mã câu ôn trong data/review_questions.json) hoặc "kc" — cần một trong hai.
     - "result" mặc định "sai"; "ly_do" tuỳ chọn. Khoá lạ → CHUA_CO.
 Output: dòng 1 máy đọc được: <id câu luyện> hoặc CHUA_CO
         dòng 2: "Có thể bạn đang nghĩ: …" (chẩn đoán của AI)
         sau đó: đề câu luyện lấy NGUYÊN VĂN từ ngân hàng, không bao giờ kèm lời giải.
 
 Bước 1 (code)  đọc + kiểm input
-Bước 2 (tool)  practice_candidates(kc) — mọi câu cùng mã kiến thức, không có lời giải
+Bước 2a (tool) get_review_question(cau_on) — đề câu ôn vừa sai + mã kiến thức (nếu input có cau_on)
+Bước 2b (tool) practice_candidates(kc) — mọi câu cùng mã kiến thức, không có lời giải
 Bước 3 (AI)    đọc ly_do → đoán hiểu nhầm → chọn 1 id trong danh sách, hoặc CHUA_CO
 Bước 4 (code)  chặn rủi ro: id phải thuộc danh sách bước 2; đề lấy từ ngân hàng, không lấy chữ của model
 
@@ -16,15 +19,16 @@ Nhánh "câu đúng → giải thích lại" (bản CP2 trước) tạm bỏ: kh
 import json
 
 from ai import call_model
-from tools import practice_candidates
+from tools import get_review_question, practice_candidates
 from tracing import note
 
-ALLOWED_KEYS = {"kc", "result", "ly_do"}
+ALLOWED_KEYS = {"kc", "cau_on", "result", "ly_do"}
 MAX_LY_DO = 500
 
 SYSTEM = (
     "Bạn giúp học viên khoá AI20K luyện lại sau khi trả lời sai một câu ôn cuối ngày.\n"
-    "Bạn nhận JSON gồm: ly_do (lời học viên giải thích vì sao đã chọn đáp án sai, có thể trống) "
+    "Bạn nhận JSON gồm: ly_do (lời học viên giải thích vì sao đã trả lời như vậy, có thể trống), "
+    "cau_on_vua_sai (đề câu ôn học viên vừa sai, có thể không có) "
     "và candidates (các câu luyện cùng mã kiến thức; targets = hiểu nhầm mà câu đó nhắm tới).\n"
     "Việc của bạn: đoán học viên đang hiểu nhầm điều gì, rồi chọn ĐÚNG MỘT câu có targets khớp nhất.\n"
     "Luật:\n"
@@ -49,20 +53,35 @@ def answer(text: str) -> dict:
     if not isinstance(request, dict) or request.keys() - ALLOWED_KEYS:
         return _no_practice("Yêu cầu có trường không hỗ trợ.")
     kc = request.get("kc")
+    cau_on_id = request.get("cau_on")
     result = request.get("result", "sai")
     ly_do = request.get("ly_do", "")
-    if not isinstance(kc, str) or not kc.strip() or not isinstance(ly_do, str):
-        return _no_practice("Thiếu mã kiến thức của câu vừa sai.")
+    if not isinstance(ly_do, str) or (cau_on_id is not None and not isinstance(cau_on_id, str)):
+        return _no_practice("Yêu cầu sai định dạng.")
     if result != "sai":
         return _no_practice("Bản này chỉ gợi ý câu luyện sau câu trả lời sai.")
 
-    # Bước 2 — công cụ: các câu luyện cùng mã kiến thức (không có lời giải)
+    # Bước 2a — công cụ: câu ôn học viên vừa sai (nếu có) → lấy mã kiến thức và đề làm ngữ cảnh
+    cau_on = None
+    if cau_on_id:
+        cau_on = get_review_question(cau_on_id.strip())
+        if not cau_on:
+            return _no_practice("Không tìm thấy câu ôn này.")
+        kc = cau_on["kc"]
+        if not kc:
+            return _no_practice("Chưa có câu luyện cho câu ôn này. Bạn xem lại đoạn bài tương ứng nhé.")
+    if not isinstance(kc, str) or not kc.strip():
+        return _no_practice("Thiếu mã kiến thức hoặc mã câu ôn của câu vừa sai.")
+
+    # Bước 2b — công cụ: các câu luyện cùng mã kiến thức (không có lời giải)
     candidates = practice_candidates(kc.strip())
     if not candidates:
         return _no_practice("Chưa có câu luyện cho ý kiến thức này. Bạn xem lại đoạn bài tương ứng nhé.")
 
     # Bước 3 — AI: đoán hiểu nhầm, chọn 1 câu
     payload = {"ly_do": ly_do.strip()[:MAX_LY_DO], "candidates": candidates}
+    if cau_on:
+        payload["cau_on_vua_sai"] = cau_on["question"]
     reply = call_model(SYSTEM, json.dumps(payload, ensure_ascii=False))
     try:
         decision = json.loads(reply["text"].strip())
