@@ -7,13 +7,13 @@
 
 | Nguồn                                               | Đạt ngưỡng?                  | File                         |
 | --------------------------------------------------- | ---------------------------- | ---------------------------- |
-| Đào data (x/N, %, cách đếm chạy lại được, ≥5 ví dụ) | ☐                            | `evidence/data-mining.md`    |
-| Phỏng vấn (≥3 người ngoài nhóm, đúng người dùng)    | ☐                            | `evidence/interviews/P1.md`… |
+| Đào data (x/N, %, cách đếm chạy lại được, ≥5 ví dụ) | ☐ đã chạy lại, có x/N, %, cách đếm; ví dụ mới là 6 mã kiến thức, chưa có ví dụ từng dòng | `evidence/data-mining.md`    |
+| Phỏng vấn (≥3 người ngoài nhóm, đúng người dùng)    | Không thực hiện              | —                            |
 | Khảo sát (≥20 người ngoài nhóm, đúng người dùng)    | ☑ n = 20 (xem lưu ý ở mục 4) | `evidence/survey/`           |
 
 ## 2. Số chính
 
-- Đào data: log preclass 399/1.968 lượt trả lời lần đầu bị sai (20,3%), số 1.968 lượt khớp với `data/DATA_CARD.md` (xem cách đếm ở `evidence/data-mining.md`); người viết phần khảo sát chưa tự chạy lại phép đếm trên file gốc.
+- Đào data: log preclass 399/1.968 lượt trả lời lần đầu bị sai (20,3%), đã chạy lại trên `answers.csv` gốc ngày 27/11/2026, khớp số (69/77 học viên có ≥1 câu sai; cách đếm và phân bố ở `evidence/data-mining.md`).
 - Phỏng vấn: không thực hiện.
 - Khảo sát: n = 20 người ngoài nhóm (21 phiếu, đã loại 1 phiếu của thành viên nhóm) ·
   - 17/20 (85%) từng trả lời sai khi dùng preclass-online hoặc phần mềm ôn tập khác (rất hay 5, thỉnh thoảng 9, hiếm khi 3; chưa bao giờ 3).
@@ -22,13 +22,7 @@
   - 10/20 mất từ 15 phút trở lên để xử lý câu sai (15–30 phút: 7, trên 30 phút: 3).
   - Nguồn: `evidence/survey/results.csv` (đã ẩn danh).
 
-Phỏng vấn nhiều vai thì đếm theo từng vai, không cộng chung.
-
-|     | Vai | Gặp pain? | Số lần / 1 tháng qua | Lần gần nhất mất | Đang xoay xở bằng |
-| --- | --- | --------- | -------------------- | ---------------- | ----------------- |
-| P1  |     |           |                      |                  |                   |
-| P2  |     |           |                      |                  |                   |
-| P3  |     |           |                      |                  |                   |
+Nhóm không thực hiện phỏng vấn (chỉ làm khảo sát), nên không có bảng P1–P3.
 
 ## 3. ≥5 trích dẫn hoặc ví dụ nguyên văn (có nguồn, bỏ tên)
 
@@ -54,4 +48,4 @@ Data nói: 399/1.968 lượt trả lời lần đầu ở ôn tập cuối ngày
 ## 5. Kết luận
 
 Giả thuyết ở evidence/hypothesis.md: đúng một phần. Khảo sát (n = 20, học viên cohort 5, thu qua Discord #chung) cho thấy 17/20 từng trả lời sai, 18/20 không hoàn toàn chắc mình đã hiểu sau khi xem lời giải, và chỉ 5/20 tự tìm thêm câu tương tự để làm. Nhu cầu tự kiểm tra lại là có thật. Tuy nhiên 14/20 đã tự hỏi ChatGPT hoặc AI riêng, và 4 phiếu nêu lời giải khó hiểu, nên pain không chỉ là "thiếu câu luyện" mà còn gồm chất lượng lời giải.
-Điều vẫn chưa biết: (1) câu luyện tương đương có giúp học viên hiểu hơn không, chưa thử; (2) số liệu log 399/1.968 chưa được người viết phần khảo sát chạy lại trên file gốc (số 1.968 khớp `data/DATA_CARD.md`); (3) không thực hiện phỏng vấn nên chưa kiểm lại khảo sát bằng nguồn khác; (4) mẫu nhỏ (n = 20), chưa xác nhận người trả lời là đúng người dùng vì form không có câu hỏi vai.
+Điều vẫn chưa biết: (1) câu luyện tương đương có giúp học viên hiểu hơn không, chưa thử; (2) không thực hiện phỏng vấn nên chưa kiểm lại khảo sát bằng nguồn khác; (3) mẫu nhỏ (n = 20), chưa xác nhận người trả lời là đúng người dùng vì form không có câu hỏi vai.
