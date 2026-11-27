@@ -19,6 +19,9 @@ Nối model thật: điền .env (chép từ .env.example), rồi viết nhánh 
 """
 import json
 import os
+from urllib.error import HTTPError, URLError
+from urllib.parse import quote
+from urllib.request import Request, urlopen
 
 from tracing import model_call
 
@@ -44,6 +47,41 @@ MODEL_NAME = (os.environ.get("MODEL_NAME") or "").strip()
 API_KEY = (os.environ.get("API_KEY") or "").strip()
 
 
+def call_gemini(system: str, user: str) -> dict:
+    if not API_KEY:
+        raise RuntimeError("Thiếu API_KEY trong .env.")
+    model = MODEL_NAME or "gemini-3.5-flash-lite"
+    url = "https://generativelanguage.googleapis.com/v1beta/models/" + quote(model, safe="") + ":generateContent"
+    body = {
+        "systemInstruction": {"parts": [{"text": system}]},
+        "contents": [{"role": "user", "parts": [{"text": user}]}],
+    }
+    request = Request(
+        url, data=json.dumps(body).encode("utf-8"),
+        headers={"Content-Type": "application/json", "x-goog-api-key": API_KEY},
+        method="POST",
+    )
+    try:
+        with urlopen(request, timeout=30) as response:
+            data = json.load(response)
+    except HTTPError as error:
+        raise RuntimeError(f"Gemini API trả HTTP {error.code}.") from None
+    except (URLError, TimeoutError):
+        raise RuntimeError("Không kết nối được Gemini API hoặc quá thời gian chờ.") from None
+    candidates = data.get("candidates") or []
+    parts = candidates[0].get("content", {}).get("parts", []) if candidates else []
+    text = "".join(part.get("text", "") for part in parts if not part.get("thought")).strip()
+    if not text:
+        raise RuntimeError("Gemini không trả nội dung câu trả lời.")
+    usage = data.get("usageMetadata", {})
+    return {
+        "text": text,
+        "model": data.get("modelVersion") or model,
+        "tokens_in": int(usage.get("promptTokenCount", 0)),
+        "tokens_out": int(usage.get("candidatesTokenCount", 0)) + int(usage.get("thoughtsTokenCount", 0)),
+    }
+
+
 @model_call
 def call_model(system: str, user: str) -> dict:
     if MODEL_PROVIDER == "fake":
@@ -63,6 +101,9 @@ def call_model(system: str, user: str) -> dict:
             "CHUA_CO",
         )
         return {"text": selected, "model": "fake", "tokens_in": 0, "tokens_out": 0}
+
+    if MODEL_PROVIDER == 'gemini':
+        return call_gemini(system, user)
 
     # NHÓM VIẾT: gọi model thật ở đây (theo MODEL_PROVIDER, MODEL_NAME, API_KEY) rồi trả đúng 4 khoá.
     # Ví dụ chép được cho từng nhà cung cấp: docs/connect-model.md mục 2.
