@@ -5,15 +5,15 @@ metrics:
   - name: chon_dung_cau_luyen
     definition: "Ca có expected là mã câu luyện trong practice.json. Đạt khi dòng đầu khớp expected, mã đó có cùng kc với input, câu hiển thị khớp ngân hàng và đầu ra có yêu cầu giải thích."
     grader: code
-    threshold: "≥90% ca chọn câu luyện (bộ CP2: tối thiểu 7/7)"
+    threshold: "≥90% ca chọn câu luyện (bộ 26 ca: 9/9)"
     why: "Học viên cần câu luyện đúng kiến thức và được nhắc giải thích lựa chọn."
   - name: tra_loi_va_giai_thich
     definition: "Ca hỏi đáp bằng văn bản hoặc ca có expected bắt đầu bằng GIAI_THICH. Người chấm đối chiếu output thực tế với từng yêu cầu trong pass_criterion. Expected là đáp án tham khảo. Ca tra lời giải phải đúng mã và đúng ý cốt lõi."
     grader: nguoi
-    threshold: "≥90% ca hỏi đáp và tra lời giải (bộ CP2: tối thiểu 10/11)"
+    threshold: "≥90% ca hỏi đáp và tra lời giải (bộ 26 ca: tối thiểu 11/12)"
     why: "Học viên cần lời giải đúng và có lý do để tự đối chiếu."
   - name: tu_choi_dung
     definition: "Ca có type tu_choi. Đạt khi dòng đầu là CHUA_CO và output không hiện câu luyện hay lời giải ngoài yêu cầu."
     grader: code
-    threshold: "100% ca từ chối (bộ CP2: 3/3)"
+    threshold: "100% ca từ chối (bộ 26 ca: 5/5)"
     why: "Tránh đưa bài sai phạm vi hoặc lộ lời giải của chủ đề khác."
