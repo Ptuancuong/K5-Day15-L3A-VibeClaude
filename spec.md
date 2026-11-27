@@ -1,10 +1,10 @@
-# AI SPEC — [Tên lát cắt] · Nhóm [tên nhóm] · Phòng [XXX] · Zone [X]
+# AI SPEC — Một câu luyện sau câu sai ôn cuối ngày · VibeClaude
 
 > Mốc nộp: §7 chốt chuẩn "đạt" tại **CP2 19:30 Thứ Sáu 27/11** · §0–§7 nộp **CP3 10:00 Thứ Bảy 28/11** · đủ §0–§10 **CP4 14:30 Thứ Bảy 28/11** · §10 changelog ghi tiếp đến **23:59 Thứ Bảy 28/11**.
 > Đầu mỗi mục ghi bước guide (`02-guide.md` trong repo đề) chỉ cách điền. Mỗi mục ngắn, có số và nguồn; chi tiết để ở file được trỏ tới. Xoá dòng hướng dẫn trong ngoặc vuông khi điền xong.
 
-Track: [ ] A · [ ] B · [ ] C · [ ] D · [ ] E — bài toán: [đề gợi ý trong file track, hoặc bài toán nhóm tự mở rộng] __
-Data BTC cấp đã dùng (nếu có — không commit nguyên file): __
+Track A (EdTech, A4) — luyện lại một ý kiến thức sau câu sai ở phần ôn cuối ngày.
+Data BTC cấp dùng local để tổng hợp số liệu phần ôn cuối ngày. Xem evidence/data-mining.md.
 
 ## §0. Hiện tại việc này diễn ra thế nào *(guide 1.1)*
 - Luồng hiện tại của việc này, trong khoá hoặc trên app thật (3–5 bước; ảnh chụp từ tài khoản của mình, đã che thông tin):
@@ -33,28 +33,28 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): __
 - [sản phẩm / tính năng gần giống]: một điều đáng học · một điều đáng né · mình khác gì
 
 ## §4. Thiết kế *(guide 2.2, 3.2)*
-- **Lát cắt MỘT CÂU** (1 người dùng · 1 việc · 1 quyết định AI · 1 kết quả):
-- Không làm (≥3 điều):
-- **Sơ đồ** (ảnh / Mermaid / draw.io): [chèn ở đây]
-- **Hình dạng:** [ ] workflow cố định · [ ] một agent · [ ] nhiều agent — 2 dòng lý do, và vì sao **không** chọn hình dạng phức tạp hơn:
-- **AI dựa vào đâu** — mỗi công cụ (khớp `codebase/tools.py`):
 
-  | Công cụ | Input | Output | Tác động ra ngoài? |
-  |---|---|---|---|
-  |  |  |  |  |
+- **Lát cắt** giữ như CP1. Học viên nhận một câu luyện cùng kiến thức trong tình huống khác. Output nhắc học viên giải thích lựa chọn.
+- **Hình dạng** workflow cố định. Việc tra ứng viên và kiểm mã chạy bằng code, model chọn một câu trong danh sách. Công cụ chỉ đọc ngân hàng local.
+- **Ngoài phạm vi** chấm tự động, cập nhật điểm LMS, truy cập log cá nhân.
 
-- **Mức tự động:** [ ] AI gợi ý, người quyết · [ ] AI tự làm khi chắc, chuyển người khi không · [ ] AI tự làm — lý do (sai thì ai chịu gì, sửa đắt hay rẻ):
-- **Chỗ chặn rủi ro** (rủi ro lớn nhất của lát cắt bị chặn ở đâu, bằng gì):
-- **Chỗ người duyệt** (việc AI không được tự làm):
-- **Nguyên tắc thiết kế** (≥3, bắt buộc G10):
+```mermaid
+flowchart LR
+    A["Input: mã kiến thức và mức luyện"] --> B["Tra câu luyện trong ngân hàng"]
+    B --> C["AI Core: chọn một mã câu"]
+    C --> D["Chặn rủi ro: kiểm mã, chủ đề và mức"]
+    D --> E["Output: câu luyện và yêu cầu giải thích"]
+    B -->|Thiếu ứng viên| F["CHUA_CO"]
+    D -->|Mã không hợp lệ| F
+```
 
-  | Nguyên tắc | Chỗ cụ thể trên sơ đồ / trong bản chạy thử |
-  |---|---|
-  | G10 — thu hẹp phạm vi khi không chắc |  |
-  |  |  |
-  |  |  |
+| Công cụ | Input | Output | Tác động ra ngoài |
+|---|---|---|---|
+| practice_candidates | Mã kiến thức | Mã câu, mức và nội dung ứng viên | Không |
 
-- Phần nào còn giả (công cụ trả dữ liệu giả, model chế độ giả…) — ghi rõ, không giả làm thật:
+- G10: đầu vào sai, thiếu ứng viên hoặc kết quả model không hợp lệ đều trả CHUA_CO.
+- Đáp án chuẩn nằm riêng trong ngân hàng. Model chỉ nhận nội dung ứng viên, mã và mức. Học viên tự nhập lời giải khi thử với nhóm, người chấm đối chiếu rubric.
+- CP2 chạy mock có đánh dấu model fake và token bằng 0. CP3 thay mock bằng API thật tại cùng điểm gọi.
 
 ## §5. Chỗ khó — 4 lớp + ≥6 kịch bản + 2 tấn công *(guide 2.3)*
 
@@ -71,9 +71,11 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): __
 - Bị đòi ngoài phạm vi (lớp 3): · Trường hợp đặc thù lĩnh vực (lớp 4):
 
 ## §7. Đánh giá & chuẩn "đạt" *(guide 2.4, 4.1)*
-- Data card: `data/DATA_CARD.md` · bộ câu thử: `eval/benchmark.csv` — __ câu (thuong __ · kho __ · tu_choi __) · metric: `eval/metric_spec.yaml` (__ metric)
-- **Chuẩn "đạt"** (chốt **trước 19:30 Thứ Sáu 27/11**, giữ nguyên đến 23:59 Thứ Bảy 28/11): "Đạt khi ≥ __% câu qua, và __"
-- Kết quả: lượt 1 __/__ (__%) · lượt 2 __/__ (__%) — run ID: __ / __ → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
+
+- Data card: [data/DATA_CARD.md](data/DATA_CARD.md). Benchmark: [eval/benchmark.csv](eval/benchmark.csv), 20 ca gồm 9 thường, 7 khó và 4 từ chối. Có 7 ca bắt nguồn từ mã kiến thức có lượt sai thật. Câu luyện tự soạn.
+- Chuẩn nhóm dùng để chốt CP2: đạt khi **≥90% ca tổng thể qua**, **≥90% ca thường/khó chọn đúng mã và hiện đúng câu**, **100% ca từ chối xử lý đúng**, và **≥90% ca thường/khó hiện yêu cầu giải thích**. Với bộ hiện tại tương ứng tối thiểu 18/20 tổng, 15/16 chọn đúng, 4/4 từ chối và 15/16 có câu luyện kèm yêu cầu giải thích. Xem [metric_spec.yaml](eval/metric_spec.yaml).
+- Khi thử với học viên, dùng tình huống mới cùng mã kiến thức và ghi tỷ lệ đạt trên số người thử. Chỉ ghi đạt khi câu trả lời và lời giải thích đều nêu đúng ý cốt lõi theo rubric. Chưa có kết quả với học viên. Phép đo này được báo riêng với benchmark chọn câu.
+- Kết quả API thật: đo từ CP3. Kiểm tra mock CP2: 20/20 ca, gồm 16/16 chọn đúng và có yêu cầu giải thích, 4/4 từ chối. Kết quả mock chỉ kiểm tra luồng.
 
 ## §8. Chi phí khi dùng thật *(guide 4.2)*
 - Persona + giá: `cost/personas.yaml` · lượt mô phỏng: `cost/simulate-__.csv` (__ phiên)

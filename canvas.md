@@ -10,4 +10,4 @@
 | 5 | Lát cắt MỘT CÂU  | Sau khi học viên trả lời một câu ôn cuối ngày, AI chọn một hoạt động ôn theo kết quả để học viên tự kiểm tra kiến thức: Đối với câu trả lời đúng, có thêm phần tạo lại câu hỏi dạng này và thêm phần hỏi lại lời giải thích của AI; nếu sai, thử một câu luyện cùng kiến thức trong tình huống mới. |
 | 6 | AI tự làm đến đâu + lý do  | AI gợi ôn theo kết quả đã có và chọn câu luyện từ ngân hàng khi học viên trả lời sai. Học viên tự giải thích và đối chiếu với lời giải chuẩn. Khi thiếu nội dung phù hợp, công cụ báo chưa có hoạt động ôn. |
 | 7 | Phân công có tên | Phạm Tuấn Cường — Tích hợp bản demo và nộp checkpoint · Trần Anh Tú — Phân tích log preclass và hỏi học viên để kiểm chứng nhu cầu · Đặng Việt Anh — Soạn câu luyện theo mã kiến thức và đáp án chuẩn · Nguyễn Minh Đạt — Xây luồng chọn câu luyện và chạy bộ câu thử |
-| — | (CP2) Đã đổi gì so với CP1 | Chưa đến bước cập nhật CP2; không chốt chuẩn đạt trong bản CP1 này. |
+| — | (CP2) Đã đổi gì so với CP1 | Mock đã chạy cả hai nhánh. Câu đúng nhận câu tương tự và có thể hỏi lời giải mẫu. Câu sai nhận câu luyện cùng kiến thức trong tình huống mới. |

@@ -1,0 +1,114 @@
+[
+  {
+    "id": "L11",
+    "kc": "chatbot_is_app_around_model",
+    "topic": "Chatbot và mô hình",
+    "level": "co_ban",
+    "question": "Đổi giao diện nhưng giữ model. Phần nào đổi?",
+    "rubric": "Ứng dụng đổi, model giữ nguyên."
+  },
+  {
+    "id": "L12",
+    "kc": "chatbot_is_app_around_model",
+    "topic": "Chatbot và mô hình",
+    "level": "van_dung",
+    "question": "Đổi model nhưng giữ giao diện. Phần nào đổi?",
+    "rubric": "Model đổi, giao diện có thể giữ nguyên."
+  },
+  {
+    "id": "L21",
+    "kc": "agentic_fit_scoring_decision",
+    "topic": "Khi nào cần agent",
+    "level": "co_ban",
+    "question": "Tác vụ tính tổng theo công thức cố định có cần agent không?",
+    "rubric": "Không, dùng phép tính cố định."
+  },
+  {
+    "id": "L22",
+    "kc": "agentic_fit_scoring_decision",
+    "topic": "Khi nào cần agent",
+    "level": "van_dung",
+    "question": "Tác vụ phải chọn công cụ theo kết quả từng bước có phù hợp với agent không?",
+    "rubric": "Có thể phù hợp vì phải quyết định bước kế tiếp từ kết quả."
+  },
+  {
+    "id": "L31",
+    "kc": "ai_product_canvas",
+    "topic": "Canvas sản phẩm",
+    "level": "co_ban",
+    "question": "Ai là người dùng chính của công cụ kiểm bài nộp?",
+    "rubric": "Người trực tiếp soát bài nộp, ví dụ học viên."
+  },
+  {
+    "id": "L32",
+    "kc": "ai_product_canvas",
+    "topic": "Canvas sản phẩm",
+    "level": "van_dung",
+    "question": "Nêu một kết quả quan sát được mà người nộp bài cần đạt.",
+    "rubric": "Xác định đủ file bắt buộc trước khi nộp."
+  },
+  {
+    "id": "L41",
+    "kc": "cot_task_fit",
+    "topic": "Chọn cách xử lý bài toán",
+    "level": "co_ban",
+    "question": "Tác vụ đổi định dạng ngày có cần chia nhiều bước không?",
+    "rubric": "Thường không, có thể dùng quy tắc đổi định dạng."
+  },
+  {
+    "id": "L42",
+    "kc": "cot_task_fit",
+    "topic": "Chọn cách xử lý bài toán",
+    "level": "van_dung",
+    "question": "Tác vụ đối chiếu nhiều điều kiện phụ thuộc nhau nên chia bước thế nào?",
+    "rubric": "Tách kiểm từng điều kiện theo thứ tự phụ thuộc rồi tổng hợp."
+  },
+  {
+    "id": "L51",
+    "kc": "system_prompt_contract",
+    "topic": "Hợp đồng đầu ra",
+    "level": "co_ban",
+    "question": "Ứng dụng đọc trường answer. Hợp đồng đầu ra cần ghi gì?",
+    "rubric": "Ghi trường answer, kiểu dữ liệu và khi nào xuất hiện."
+  },
+  {
+    "id": "L52",
+    "kc": "system_prompt_contract",
+    "topic": "Hợp đồng đầu ra",
+    "level": "van_dung",
+    "question": "Ứng dụng cần phân biệt có kết quả với thiếu dữ liệu. Hợp đồng cần thêm gì?",
+    "rubric": "Thêm trạng thái rõ ràng, ví dụ ok hoặc missing_data."
+  },
+  {
+    "id": "L61",
+    "kc": "react_reasoning_acting_pattern",
+    "topic": "Quan sát kết quả công cụ",
+    "level": "co_ban",
+    "question": "Tra cứu trả về rỗng. Luồng cần làm gì tiếp?",
+    "rubric": "Kiểm tra lại truy vấn hoặc báo thiếu căn cứ."
+  },
+  {
+    "id": "L62",
+    "kc": "react_reasoning_acting_pattern",
+    "topic": "Quan sát kết quả công cụ",
+    "level": "van_dung",
+    "question": "Công cụ trả kết quả mâu thuẫn. Luồng nên kiểm gì trước khi kết luận?",
+    "rubric": "Đối chiếu nguồn và điều kiện truy vấn trước khi kết luận."
+  },
+  {
+    "id": "L71",
+    "kc": "feedback_signal_types",
+    "topic": "Tín hiệu phản hồi",
+    "level": "co_ban",
+    "question": "Một nút thích là tín hiệu phản hồi gì?",
+    "rubric": "Phản hồi tường minh."
+  },
+  {
+    "id": "L72",
+    "kc": "feedback_signal_types",
+    "topic": "Tín hiệu phản hồi",
+    "level": "van_dung",
+    "question": "Người dùng tự sửa kết quả rồi thử lại. Có thể quan sát tín hiệu gì?",
+    "rubric": "Việc sửa và thử lại là tín hiệu hành vi."
+  }
+]
