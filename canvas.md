@@ -7,7 +7,7 @@
 | 2 | Người dùng chính  | Học viên AI20K vừa trả lời một câu trong phần ôn tập cuối ngày trên preclass. |
 | 3 | Pain một câu  | Sau khi làm câu ôn cuối ngày, học viên có thể chọn đúng nhưng chưa giải thích được lý do, hoặc chọn sai và cần một tình huống khác để luyện lại cùng kiến thức. |
 | 4 | Bằng chứng đầu  | Giả thuyết: học viên cần giải thích vì sao câu đã chọn đúng hoặc thử lại sau câu sai. Log BTC ghi nhận 399/1.968 lượt trả lời lần đầu bị sai (20,3%). Sẽ hỏi học viên về cách họ ôn lại sau cả hai kết quả. Tỷ lệ đúng không cho biết mức hiểu. |
-| 5 | Lát cắt MỘT CÂU  | Sau khi học viên trả lời một câu ôn cuối ngày, AI chọn một hoạt động ôn theo kết quả để học viên tự kiểm tra kiến thức: nếu đúng, giải thích vì sao đáp án đúng; nếu sai, thử một câu luyện cùng kiến thức trong tình huống mới. |
+| 5 | Lát cắt MỘT CÂU  | Sau khi học viên trả lời một câu ôn cuối ngày, AI chọn một hoạt động ôn theo kết quả để học viên tự kiểm tra kiến thức: Đối với câu trả lời đúng, có thêm phần tạo lại câu hỏi dạng này và thêm phần hỏi lại lời giải thích của AI; nếu sai, thử một câu luyện cùng kiến thức trong tình huống mới. |
 | 6 | AI tự làm đến đâu + lý do  | AI gợi ôn theo kết quả đã có và chọn câu luyện từ ngân hàng khi học viên trả lời sai. Học viên tự giải thích và đối chiếu với lời giải chuẩn. Khi thiếu nội dung phù hợp, công cụ báo chưa có hoạt động ôn. |
 | 7 | Phân công có tên | Phạm Tuấn Cường — Tích hợp bản demo và nộp checkpoint · Trần Anh Tú — Phân tích log preclass và hỏi học viên để kiểm chứng nhu cầu · Đặng Việt Anh — Soạn câu luyện theo mã kiến thức và đáp án chuẩn · Nguyễn Minh Đạt — Xây luồng chọn câu luyện và chạy bộ câu thử |
 | — | (CP2) Đã đổi gì so với CP1 | Chưa đến bước cập nhật CP2; không chốt chuẩn đạt trong bản CP1 này. |
