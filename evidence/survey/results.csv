@@ -1,0 +1,21 @@
+﻿id,dung_preclass,cong_cu_khac,hay_tra_loi_sai,lan_gan_nhat,sau_khi_xem_loi_giai,chac_da_hieu,thoi_gian_xu_ly,cau8_ban_cu_hoac_moi,cau8_tra_loi,dieu_kho_chiu_nhat
+1,Có,Hiện tại thì không,Rất hay (gần như mỗi lần),Tuần này,"Hỏi trợ giảng, Hỏi ChatGPT hoặc AI riêng",Hơi chắc,15–30 phút,cu(xong_viec),Xong một phần,"Nhiều khi AI hay tự biên tự diễn, bánh vẽ khiến bài bị đi lệch với yêu cầu đề bài"
+2,Có,không,Thỉnh thoảng,Tuần trước,"Đọc lời giải rồi qua câu khác, Xem lại video hoặc bài pre-class",Hơi chắc,5–15 phút,cu(xong_viec),Xong,
+3,Không,Chatbot AI,Hiếm khi,Tuần trước,"Đọc lời giải rồi qua câu khác, Xem lại video hoặc bài pre-class, Tự tìm thêm câu tương tự để làm",Hơi chắc,5–15 phút,cu(xong_viec),Xong một phần,
+4,Không,AI agent + Slide + Repo lab,Thỉnh thoảng,Tuần này,"Đọc lời giải rồi qua câu khác, Hỏi ChatGPT hoặc AI riêng, Tự tìm thêm câu tương tự để làm",Hơi chắc,5–15 phút,cu(xong_viec),Xong một phần,
+5,Không,ChatGPT và slide,Rất hay (gần như mỗi lần),Tuần này,Hỏi ChatGPT hoặc AI riêng,Hơi chắc,Trên 30 phút,cu(xong_viec),Xong,
+6,Có,Không,Thỉnh thoảng,Hôm nay,"Hỏi trợ giảng, Hỏi ChatGPT hoặc AI riêng",Không chắc,5–15 phút,cu(xong_viec),Xong,Snoop trả lời ngoo vcl
+7,Không,Slide trên lms ,Chưa bao giờ,Chưa bao giờ,"Xem lại video hoặc bài pre-class, Hỏi ChatGPT hoặc AI riêng",Hơi chắc,15–30 phút,cu(xong_viec),Xong,Hoàn thành nhưng lại không hoàn toàn hiểu những gì đã làm 
+8,Không,không,Chưa bao giờ,Chưa bao giờ,Bỏ qua,Không chắc,Không làm gì thêm,cu(xong_viec),Bỏ giữa chừng,
+9,Có,ko,Rất hay (gần như mỗi lần),Hôm nay,"Xem lại video hoặc bài pre-class, Hỏi ChatGPT hoặc AI riêng, Tự tìm thêm câu tương tự để làm",Hơi chắc,5–15 phút,cu(xong_viec),Xong,
+10,Không,"chatgpt, codex, claude",Thỉnh thoảng,Tuần này,"Đọc lời giải rồi qua câu khác, Xem lại video hoặc bài pre-class, Hỏi ChatGPT hoặc AI riêng",Hơi chắc,Trên 30 phút,moi(hieu_ra_cho_sai),Hiểu một phần,khiến thức quá khó 
+11,Có,không,Rất hay (gần như mỗi lần),Hôm nay,"Đọc lời giải rồi qua câu khác, Xem lại video hoặc bài pre-class, Hỏi bạn, Hỏi ChatGPT hoặc AI riêng, Tự tìm thêm câu tương tự để làm",Hơi chắc,15–30 phút,moi(hieu_ra_cho_sai),Hiểu một phần,không
+12,Không,Không,Chưa bao giờ,Chưa bao giờ,Bỏ qua,Biết là chưa hiểu,Không làm gì thêm,moi(hieu_ra_cho_sai),Vẫn chưa hiểu,Không khó chịu
+13,Có,có ,Hiếm khi,Tuần trước,"Đọc lời giải rồi qua câu khác, Xem lại video hoặc bài pre-class, Hỏi bạn, Hỏi trợ giảng, Hỏi ChatGPT hoặc AI riêng, Tự tìm thêm câu tương tự để làm, Bỏ qua",Không chắc,Dưới 5 phút,moi(hieu_ra_cho_sai),"Có, hiểu rõ",
+14,Không,https://aitc-interactive.pages.dev/,Thỉnh thoảng,Lâu hơn,Xem lại video hoặc bài pre-class,Hơi chắc,15–30 phút,moi(hieu_ra_cho_sai),"Có, hiểu rõ",Không có
+15,Có,Tự ôn cùng với AI,Thỉnh thoảng,Tuần này,Hỏi ChatGPT hoặc AI riêng,Chắc đã hiểu,15–30 phút,moi(hieu_ra_cho_sai),Hiểu một phần,
+16,Có,Không,Rất hay (gần như mỗi lần),Tuần này,"Xem lại video hoặc bài pre-class, Hỏi bạn, Hỏi ChatGPT hoặc AI riêng",Hơi chắc,15–30 phút,moi(hieu_ra_cho_sai),"Có, hiểu rõ",Không hiểu phần giải thích của snoop
+17,Có,Có,Hiếm khi,Tuần trước,Đọc lời giải rồi qua câu khác,Biết là chưa hiểu,Dưới 5 phút,moi(hieu_ra_cho_sai),Hiểu một phần,Snoop không hiểu ngữ cảnh hỏi
+18,Có,Không ,Thỉnh thoảng,Lâu hơn,Hỏi ChatGPT hoặc AI riêng,Không chắc,5–15 phút,moi(hieu_ra_cho_sai),Hiểu một phần,Phần giải thích hơi khó hiểu
+19,Có,Không có,Thỉnh thoảng,Hôm nay,Hỏi ChatGPT hoặc AI riêng,Chắc đã hiểu,15–30 phút,moi(hieu_ra_cho_sai),"Có, hiểu rõ",Không có
+20,Có,Không,Thỉnh thoảng,Tuần này,"Hỏi bạn, Hỏi ChatGPT hoặc AI riêng",Hơi chắc,Trên 30 phút,moi(hieu_ra_cho_sai),"Có, hiểu rõ",Snoop giải thích khó hiểu

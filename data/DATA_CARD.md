@@ -48,4 +48,16 @@
 | Số dòng        | 24 (thuong 12 · kho 8 · tu_choi 4)                                                                                                                                                                                        |
 | Nhãn           | thật (mã kiến thức) + tự viết                                                                                                                                                                                             |
 
+## Dataset 4 · Khảo sát học viên (Google Form) — chỉ để đào bằng chứng
+
+|                      |                                                                                                                                                                                                                                                                  |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Dùng để làm gì       | Bằng chứng pain: học viên làm gì sau khi trả lời sai, có chắc đã hiểu không (`evidence/summary.md`). Không dùng làm nguồn cho công cụ                                                                                                                              |
+| Từ đâu               | Nhóm tự khảo sát bằng Google Form, đăng ở kênh Discord `#chung` của cohort lúc 17:15 ngày 27/11/2026; thu phiếu đến 17:54                                                                                                                                       |
+| Xử lý những bước gì  | Loại 1 phiếu của thành viên nhóm; bỏ cột dấu thời gian và cột liên hệ; đánh số lại 1–20 (`evidence/survey/results.csv`)                                                                                                                                            |
+| Số dòng              | 20 phiếu hợp lệ (21 phiếu thu được)                                                                                                                                                                                                                              |
+| Phiên bản / ngày lấy | Xuất CSV ngày 27/11/2026. Bộ câu hỏi đã dùng: `evidence/survey/questions.md`                                                                                                                                                                                     |
+| Nhãn                 | thật (ẩn danh)                                                                                                                                                                                                                                                   |
+| Giới hạn             | Mẫu nhỏ (n = 20), thu ở kênh chung của cohort nên có thể lệch về người chủ động điền; form không có câu hỏi vai nên chưa kiểm được "đúng người dùng"; câu 8 đổi nội dung giữa lúc thu (9 phiếu bản cũ, 11 phiếu bản mới) nên không dùng làm số chính                  |
+
 Data `synthetic` **không phải bằng chứng pain**. Nếu sau này dùng AI để viết biến thể câu chữ thì ghi prompt, model và người kiểm ở đây.
