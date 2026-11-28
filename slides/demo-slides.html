@@ -1,12 +1,11 @@
 <!doctype html><meta charset=utf-8><title>VibeClaude — Ôn lại sau câu ôn cuối ngày</title><!-- Bản xuất tĩnh của slide Claude: https://claude.ai/artifact/3SsVyqoaabY6yNURaAz144 (sửa ở đó) --><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"><style>@page{size:1920px 1080px;margin:0} html,body{margin:0}* { margin: 0 } body { font: 32px/1.2 sans-serif; margin:0 }
 body > section { width: 1920px !important; height: 1080px !important; overflow: hidden !important; box-sizing: border-box !important; position: relative; isolation: isolate; page-break-after: always }
-section[hidden], aside, noscript { display: none !important }
+section[hidden], aside { display: none !important }
 h1 { font-size: 96px; font-weight: 600 } h2 { font-size: 64px; font-weight: 600 } h3 { font-size: 44px; font-weight: 600 }
 p, li, h1, h2, h3, td, th { overflow-wrap: break-word; text-wrap: pretty }
 table { width: 100%; border-collapse: separate; border-spacing: 0; border: solid #0003; border-width: 2px 0 0 2px }
 th, td { padding: .35em .6em; text-align: left; border: solid #0003; border-width: 0 2px 2px 0 }
-x-shape, x-icon, x-embed { display: block } .flow x-shape{background:#5b6470}
-.in{animation:none!important}</style><style>:root {
+x-shape { display: block } .flow x-shape{background:#5b6470} .in{animation:none!important}</style><style>:root {
   --ink: #1b1f24;
   --muted: #5b6470;
   --line: #d9dde3;
@@ -37,15 +36,16 @@ section {
 
 /* chữ */
 .kicker {
-  font-size: 24px;
+  font-size: 60px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--accent);
-  margin: 0 0 12px;
+  margin: 0 0 8px;
 }
 .title {
-  font-size: 56px;
+  font-size: 44px;
   font-weight: 700;
   line-height: 1.15;
   color: var(--ink);
@@ -111,6 +111,25 @@ section {
   flex-direction: column;
   gap: 24px;
 }
+.row4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 32px;
+}
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.block-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 16px;
+}
+.hl {
+  color: var(--accent);
+}
 
 /* số lớn */
 .stat {
@@ -118,7 +137,7 @@ section {
   padding: 4px 0 4px 24px;
 }
 .stat .n {
-  font-size: 72px;
+  font-size: 52px;
   font-weight: 800;
   line-height: 1;
   color: var(--ink);
@@ -282,69 +301,69 @@ tr.pick {
   animation: rise 500ms ease-out both;
   animation-delay: calc(var(--i, 0) * 120ms);
 }
-</style><body><section id="pain">
-  <p class="kicker">
-    Nhóm VibeClaude · L3A · Track A EdTech · Pain &amp; impact
-  </p>
+</style><body><section id="van-de">
+  <p class="kicker">Vấn đề</p>
   <h1 class="title">
     Học viên sai câu ôn, đọc lời giải xong vẫn không chắc mình đã hiểu
   </h1>
-  <div class="cols">
-    <div class="stack">
-      <div class="stat in" style="--i: 0">
-        <p class="n">18/20</p>
-        <p class="l">không hoàn toàn chắc đã hiểu sau khi xem lời giải</p>
-        <p class="s">Khảo sát học viên ngoài nhóm, n = 20, 27/11</p>
-      </div>
-      <div class="stat in" style="--i: 1">
-        <p class="n">20,3% · 2/1.970</p>
-        <p class="l">lượt ôn cuối ngày bị sai lần đầu · lượt làm lại sau đó</p>
-        <p class="s">
-          Data BTC answers.csv, 05–24/11 · 69/77 học viên có câu sai
-        </p>
-      </div>
-      <div class="stat in" style="--i: 2">
-        <p class="n">≈ 160 giờ / tháng</p>
-        <p class="l">69 học viên × ~8,7 lượt sai × ~16 phút mỗi lượt</p>
-        <p class="s">
-          16 phút: trung bình khảo sát theo điểm giữa khoảng (tự ước tính)
-        </p>
-      </div>
+  <div class="row4">
+    <div class="stat in" style="--i: 0">
+      <p class="n">18/20</p>
+      <p class="l">không hoàn toàn chắc đã hiểu sau khi xem lời giải</p>
+      <p class="s">Khảo sát học viên ngoài nhóm, n = 20</p>
     </div>
-    <div class="stack">
-      <div class="quote in" style="--i: 1">
-        <p class="q">
-          “Hoàn thành nhưng lại không hoàn toàn hiểu những gì đã làm”
-        </p>
-        <p class="who">Phiếu khảo sát 7</p>
-      </div>
-      <div class="quote in" style="--i: 2">
-        <p class="q">“Snoop không hiểu ngữ cảnh hỏi”</p>
-        <p class="who">Phiếu khảo sát 17</p>
-      </div>
-      <p class="note">
-        Đang xoay xở: 14/20 hỏi ChatGPT · 7/20 đọc lời giải rồi qua câu khác ·
-        chỉ 5/20 tự tìm câu tương tự.
+    <div class="stat in" style="--i: 1">
+      <p class="n">399/1.968</p>
+      <p class="l">lượt trả lời lần đầu ở ôn cuối ngày bị sai (20,3%)</p>
+      <p class="s">Data BTC, 05–24/11 · 69/77 học viên có câu sai</p>
+    </div>
+    <div class="stat in" style="--i: 2">
+      <p class="n">chỉ 2</p>
+      <p class="l">
+        lượt làm lại trong 1.970 lượt ôn — sau khi sai gần như không ai luyện
+        lại
       </p>
-      <p class="note">
-        Đã loại: gợi ý mini lab (63/123 học viên bỏ lab, nhưng không có nội dung
-        lab để dựng kịp) · trợ giảng thiếu ngữ cảnh (101/1.260 lượt, 7,9%).
-      </p>
+      <p class="s">Data BTC, lan_thu = 2</p>
+    </div>
+    <div class="stat in" style="--i: 3">
+      <p class="n">≈ 160 giờ</p>
+      <p class="l">mỗi tháng học viên tốn cho câu sai</p>
+      <p class="s">69 người × ~8,7 lượt × ~16 phút (khảo sát)</p>
     </div>
   </div>
+  <div class="row2" style="margin-top: 48px">
+    <div class="quote in" style="--i: 2">
+      <p class="q">
+        “Hoàn thành nhưng lại không hoàn toàn hiểu những gì đã làm”
+      </p>
+      <p class="who">Phiếu khảo sát 7</p>
+    </div>
+    <div class="quote in" style="--i: 3">
+      <p class="q">“Snoop không hiểu ngữ cảnh hỏi”</p>
+      <p class="who">Phiếu khảo sát 17</p>
+    </div>
+  </div>
+  <p class="note" style="margin-top: 28px">
+    Đang xoay xở: 14/20 hỏi ChatGPT · 7/20 đọc lời giải rồi qua câu khác · chỉ
+    5/20 tự tìm câu tương tự.
+  </p>
   <div class="foot">
-    <p>Nguồn: evidence/summary.md · evidence/survey/results.csv · spec.md §2</p>
+    <p>
+      Nhóm VibeClaude · L3A · Track A EdTech · Nguồn: evidence/summary.md ·
+      evidence/data-mining.md · spec.md §2
+    </p>
     <p>1</p>
   </div>
   <aside>
-    Mở bằng con số khảo sát 18/20, rồi nối sang data BTC: 20,3% lượt sai và chỉ
-    2/1.970 lượt làm lại. Impact 160 giờ/tháng là thời gian học viên đang tốn,
-    sản phẩm chỉ thay được một phần. Không nhân lên cả khoá vì chỉ 77/436 học
-    viên có làm phần ôn.
+    Mở bằng con số khảo sát 18/20. Data BTC khớp: 399 trên 1.968 lượt trả lời
+    lần đầu bị sai, nhưng trong 1.970 lượt ôn chỉ có 2 lượt làm lại, nghĩa là
+    sau khi sai gần như không ai luyện lại. 160 giờ mỗi tháng là thời gian học
+    viên đang tốn, sản phẩm chỉ thay được một phần. Không nhân lên cả khoá vì
+    chỉ 77/436 học viên có làm phần ôn.
   </aside>
 </section>
-<section id="solution">
-  <p class="kicker">Giải pháp &amp; demo</p>
+<section id="giai-phap">
+  <p class="kicker">Giải pháp</p>
   <h2 class="title">
     Workflow phân luồng — mỗi lượt gọi Gemini tối đa một lần
   </h2>
@@ -375,8 +394,9 @@ tr.pick {
         </div>
       </div>
       <p class="note">
-        Chặn rủi ro: lời giải bị bỏ trước khi gửi model · id lạ bị chặn · khoá
-        JSON lạ bị chặn. Còn mở: nhánh A trả lời từ trí nhớ model.
+        Câu luyện và lời giải do nhóm soạn trước (14 câu, 7 mã kiến thức) — AI
+        chỉ chọn, không viết nội dung. Lời giải bị bỏ trước khi gửi model · id
+        lạ và khoá JSON lạ bị chặn.
       </p>
     </div>
     <div class="stack demo">
@@ -411,219 +431,95 @@ tr.pick {
   </div>
   <aside>
     Vì sao workflow chứ không phải agent: chọn nhánh dựa trên dạng input, code
-    làm chắc hơn model, rẻ và đo được từng nhánh. Câu luyện và lời giải mẫu do
-    người soạn trước (14 câu, 7 mã kiến thức), AI không viết nội dung mới. Demo
-    trực tiếp bằng py -3 run.py: một ca thường (L11) và một ca tấn công
-    (CHUA_CO). Mạng hỏng thì chiếu video dự phòng.
+    làm chắc hơn model, rẻ và đo được từng nhánh. Rủi ro còn mở: nhánh A trả lời
+    từ trí nhớ model. Demo trực tiếp bằng py -3 run.py: một ca thường (L11) và
+    một ca tấn công (CHUA_CO). Mạng hỏng thì chiếu video dự phòng.
   </aside>
 </section>
-<section id="eval">
-  <p class="kicker">Đánh giá thế nào</p>
-  <h2 class="title">
-    85% câu thử qua ở cả hai lượt — chưa đạt chuẩn vì nhánh hỏi đáp
+<section id="ket-luan">
+  <p class="kicker">Kết luận</p>
+  <h2 class="title" style="margin-bottom: 32px">
+    <span class="hl">ITERATE</span> — pain có thật, chi phí rẻ, nhưng nhánh hỏi
+    đáp chưa đủ tin cậy
   </h2>
-  <div class="cols-6-4" style="grid-template-columns: 0.85fr 1.15fr">
-    <div class="stack">
-      <p class="lead in" style="--i: 0">
-        <b>26 câu thử</b> — thường 9 · khó 12 · từ chối 5 (2 câu tấn công);
-        10/26 từ người dùng hoặc data thật.
-      </p>
-      <p class="lead in" style="--i: 1">
-        <b>3 metric</b> — chọn đúng câu luyện (code) · hỏi đáp và tra lời giải
-        (người chấm) · từ chối đúng (code).
-      </p>
-      <p class="lead in" style="--i: 2">
-        <b>Chuẩn “đạt”</b> chốt 19:30 ngày 27/11: ≥90% · ≥90% · 100%, và ≥3/5
-        học viên dùng thử làm đúng câu luyện.
-      </p>
-      <p class="lead in" style="--i: 3">
-        <b>Cải tiến</b> giữa hai lượt: viết lại prompt nhánh hỏi đáp.
-      </p>
-    </div>
-    <div class="stack">
-      <table class="in" style="--i: 1">
+  <div class="cols">
+    <div class="in" style="--i: 0">
+      <p class="block-title">Đánh giá thế nào · 26 câu thử, 2 lượt</p>
+      <table>
         <tr>
-          <th style="width: 44%">Metric</th>
-          <th style="width: 16%; text-align: right">Ngưỡng</th>
-          <th style="width: 20%; text-align: right">Lượt 1</th>
-          <th style="width: 20%; text-align: right">Lượt 2</th>
+          <th style="width: 46%">Metric (ngưỡng)</th>
+          <th style="width: 27%; text-align: right">Lượt 1</th>
+          <th style="width: 27%; text-align: right">Lượt 2</th>
         </tr>
         <tr>
-          <td>Chọn câu luyện</td>
-          <td style="text-align: right">≥90%</td>
+          <td>Chọn câu luyện (≥90%)</td>
           <td style="text-align: right; color: #1f7a4d">9/9 đạt</td>
           <td style="text-align: right; color: #1f7a4d">9/9 đạt</td>
         </tr>
         <tr>
-          <td>Hỏi đáp + lời giải</td>
-          <td style="text-align: right">≥90%</td>
+          <td>Hỏi đáp + lời giải (≥90%)</td>
           <td style="text-align: right; color: #b3261e">8/12 trượt</td>
           <td style="text-align: right; color: #b3261e">8/12 trượt</td>
         </tr>
         <tr>
-          <td>Từ chối</td>
-          <td style="text-align: right">100%</td>
+          <td>Từ chối (100%)</td>
           <td style="text-align: right; color: #1f7a4d">5/5 đạt</td>
           <td style="text-align: right; color: #1f7a4d">5/5 đạt</td>
-        </tr>
-        <tr>
-          <td>Chỉ số học</td>
-          <td style="text-align: right">≥3/5</td>
-          <td style="text-align: right">chưa đo</td>
-          <td style="text-align: right">chưa đo</td>
         </tr>
         <tr class="pick">
           <td>Tổng</td>
-          <td style="text-align: right"></td>
           <td style="text-align: right">22/26</td>
           <td style="text-align: right">22/26</td>
         </tr>
       </table>
-      <p class="note">
-        Lỗi chính, cả 4 ở nhánh A: B03, B09 thiếu lý do có số · B07 chọn trùng
-        model cho hai bài · B10 bỏ ý caching. Prompt mới không sửa được, token
-        vào tăng 2.611 → 6.171.
+      <p class="note" style="margin-top: 12px">
+        Chỉ số học (≥3/5 học viên) chưa đo. 4 câu trượt đều ở nhánh hỏi đáp.
       </p>
     </div>
+    <div class="in" style="--i: 1">
+      <p class="block-title">Chi phí khi dùng thật · gemini-3.5-flash-lite</p>
+      <div class="stack">
+        <div class="stat">
+          <p class="n">$0,00072</p>
+          <p class="l">mỗi task thành công (chia tỉ lệ đạt 85%)</p>
+        </div>
+        <div class="stat">
+          <p class="n">$3,36 / tháng</p>
+          <p class="l">nếu cả 700 học viên L3 dùng · cơ sở 124 người: $0,59</p>
+        </div>
+        <p class="note">
+          50 phiên mô phỏng chạy thật · model lớn gemini-4-hydrogen: $0,0023 /
+          task
+        </p>
+      </div>
+    </div>
   </div>
+  <p class="block-title" style="margin-top: 36px">Nếu có thêm 1 tuần</p>
+  <ol class="next">
+    <li>
+      Cho nhánh hỏi đáp dựa trên tài liệu bài thay vì trí nhớ model, nhắm 4 câu
+      trượt.
+    </li>
+    <li>
+      Đo chỉ số học với 5 học viên thật: làm câu luyện có đúng ngay lần đầu
+      không.
+    </li>
+    <li>
+      Thêm 2–3 câu luyện cho mỗi mã kiến thức và mức để Gemini có lựa chọn thật.
+    </li>
+  </ol>
   <div class="foot">
     <p>
-      run-1@20261127-190607 → run-3@20261127-202217 · run-2 lỗi HTTP 429, không
-      tính · gemini-3.5-flash-lite · eval/report.md
+      run-1@20261127-190607 → run-3@20261127-202217 · simulate-1@20261128-083947
+      · eval/report.md · cost/cost-estimate.md
     </p>
     <p>3</p>
   </div>
   <aside>
-    Kết quả thấp nhưng trung thực: nhánh chọn câu luyện và nhánh từ chối đạt ở
-    cả hai lượt, nhánh hỏi đáp kẹt ở 8/12. Lỗi nguy hiểm nhất là câu trả lời
-    trông đầy đủ nhưng thiếu ý hoặc sai ràng buộc đề, học viên khó tự phát hiện.
-    Lượt 2 là file run-3 vì run-2 bị lỗi giới hạn lượt gọi của gói miễn phí.
-  </aside>
-</section>
-<section id="cost">
-  <p class="kicker">Chi phí khi dùng thật</p>
-  <h2 class="title">
-    Chưa tới $0,001 mỗi task thành công — chi phí không phải rào cản
-  </h2>
-  <table class="in" style="--i: 0">
-    <tr>
-      <th style="width: 34%">Model (giá vào · ra, $ / 1M token)</th>
-      <th style="width: 18%; text-align: right">/ task thành công</th>
-      <th style="width: 16%; text-align: right">/ tháng · 77 người</th>
-      <th style="width: 16%; text-align: right">/ tháng · 124 người</th>
-      <th style="width: 16%; text-align: right">/ tháng · 700 người</th>
-    </tr>
-    <tr class="pick">
-      <td>gemini-3.5-flash-lite (0,30 · 2,50)</td>
-      <td style="text-align: right">$0,00072</td>
-      <td style="text-align: right">$0,37</td>
-      <td style="text-align: right">$0,59</td>
-      <td style="text-align: right">$3,36</td>
-    </tr>
-    <tr>
-      <td>gemini-4-hydrogen (1,50 · 7,50)</td>
-      <td style="text-align: right">$0,0023</td>
-      <td style="text-align: right">$1,20</td>
-      <td style="text-align: right">$1,93</td>
-      <td style="text-align: right">$10,91</td>
-    </tr>
-  </table>
-  <div class="row3" style="margin-top: 48px">
-    <div class="stat in" style="--i: 1">
-      <p class="n">50</p>
-      <p class="l">phiên mô phỏng chạy thật qua bản chạy thử</p>
-      <p class="s">simulate-1@20261128-083947 · seed 42 · 0 lỗi</p>
-    </div>
-    <div class="stat in" style="--i: 2">
-      <p class="n">$0,005</p>
-      <p class="l">/ học viên / tháng (cơ sở, 124 người)</p>
-      <p class="s">so với ≈ 127 phút / học viên / tháng đang tốn</p>
-    </div>
-    <div class="stat in" style="--i: 3">
-      <p class="n">85%</p>
-      <p class="l">tỉ lệ đạt dùng để tính (lượt 2)</p>
-      <p class="s">chi phí / task = chi phí / phiên ÷ 0,85</p>
-    </div>
-  </div>
-  <p class="note" style="margin-top: 36px">
-    Persona từ data BTC: dùng ít 31/77 (1,5 lần / tháng) · vừa 26/77 (6,2) ·
-    nhiều 20/77 (19,6). Cơ sở 124 = 77/436 × 700 (tự ước tính). Chưa tính
-    hosting, giờ công chấm và soạn câu luyện.
-  </p>
-  <div class="foot">
-    <p>
-      Nguồn: cost/cost-estimate.md · giá ai.google.dev/gemini-api/docs/pricing,
-      xem 25/11/2026
-    </p>
-    <p>4</p>
-  </div>
-  <aside>
-    Ba kịch bản: thấp là 77 học viên đang làm phần ôn, cơ sở giữ tỉ lệ người làm
-    ôn và áp lên 700 học viên L3, cao là cả lớp dùng. Chi phí mỗi task thành
-    công đã chia cho tỉ lệ đạt 85% của lượt 2, không coi như đạt 100%. Model lớn
-    đắt gấp khoảng 3,2 lần và chưa đo được nó có nâng tỉ lệ đạt không.
-  </aside>
-</section>
-<section id="verdict">
-  <p class="kicker">Kết luận</p>
-  <p class="verdict">ITERATE</p>
-  <h2 class="title" style="margin-bottom: 32px">
-    Pain có thật, chi phí rẻ — nhưng nhánh hỏi đáp chưa đủ tin cậy
-  </h2>
-  <div class="row3">
-    <div class="card in" style="--i: 0">
-      <p class="tag">Giữ</p>
-      <p class="t">
-        <b>18/20</b> không chắc đã hiểu · <b>2/1.970</b> lượt làm lại · chọn câu
-        luyện <b>9/9</b> · chặn tấn công <b>5/5</b>
-      </p>
-    </div>
-    <div class="card in" style="--i: 1">
-      <p class="tag">Chi phí</p>
-      <p class="t">
-        <b>$3,36 / tháng</b> nếu cả 700 học viên L3 dùng model nhỏ — không phải
-        lý do để dừng
-      </p>
-    </div>
-    <div class="card in" style="--i: 2">
-      <p class="tag">Chưa đạt</p>
-      <p class="t">
-        Hỏi đáp <b>8/12 (67%)</b> ở cả hai lượt, cần ≥90% · chỉ số học
-        <b>chưa đo</b>
-      </p>
-    </div>
-  </div>
-  <h3
-    style="
-      font-size: 32px;
-      font-weight: 700;
-      margin: 44px 0 14px;
-      color: #1b1f24;
-    "
-  >
-    Nếu có thêm 1 tuần
-  </h3>
-  <ol class="next">
-    <li>
-      Cho nhánh hỏi đáp dựa trên tài liệu bài thay vì trí nhớ model, nhắm 4 câu
-      trượt; đo lại trên câu hỏi mới.
-    </li>
-    <li>
-      Đo chỉ số học với 5 học viên: sai câu ôn → làm câu luyện → đúng ở lần đầu?
-      Chuẩn đã chốt ≥3/5.
-    </li>
-    <li>
-      Thêm 2–3 câu luyện cho mỗi mã kiến thức và mức để Gemini có lựa chọn thật;
-      phỏng vấn ≥3 học viên.
-    </li>
-  </ol>
-  <div class="foot">
-    <p>Số lấy từ trang 1, 3, 4 · eval/report.md mục 4 · spec.md §4, §7</p>
-    <p>5</p>
-  </div>
-  <aside>
-    Go / iterate / stop: chọn iterate. Không stop vì pain có hai nguồn khớp nhau
-    và chi phí rất thấp. Không go vì nhánh hỏi đáp chưa đạt chuẩn đã chốt và
-    chưa đo được học viên có học được không.
+    Chọn iterate. Không stop vì pain có hai nguồn khớp nhau và chi phí rất thấp.
+    Không go vì nhánh hỏi đáp chỉ 8/12, dưới chuẩn 90% đã chốt, và chưa đo được
+    học viên có học được không. Lượt 2 là file run-3 vì run-2 bị lỗi giới hạn
+    lượt gọi (HTTP 429). Chi phí mỗi task đã chia cho tỉ lệ đạt 85%, không coi
+    như đạt 100%.
   </aside>
 </section>
