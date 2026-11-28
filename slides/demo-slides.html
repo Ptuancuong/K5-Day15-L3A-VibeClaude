@@ -131,6 +131,31 @@ section {
   color: var(--accent);
 }
 
+/* bìa */
+.cover-title {
+  font-size: 80px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--ink);
+  margin: 24px 0 32px;
+}
+.member {
+  border-top: 6px solid var(--accent);
+  padding-top: 20px;
+}
+.member .name {
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+.member .role {
+  font-size: 24px;
+  line-height: 1.35;
+  color: var(--muted);
+  margin: 0;
+}
+
 /* số lớn */
 .stat {
   border-left: 6px solid var(--accent);
@@ -301,7 +326,41 @@ tr.pick {
   animation: rise 500ms ease-out both;
   animation-delay: calc(var(--i, 0) * 120ms);
 }
-</style><body><section id="van-de">
+</style><section id="bia">
+  <p class="kicker">Nhóm VibeClaude · L3A · Track A EdTech</p>
+  <h1 class="cover-title">Ôn lại ngay sau một câu ôn cuối ngày</h1>
+  <p class="lead" style="max-width: 1400px">
+    Học viên vừa sai một câu ôn: AI giải thích kèm lý do, hoặc chọn một câu
+    luyện cùng mã kiến thức để làm lại ngay.
+  </p>
+  <div class="row4" style="margin-top: auto">
+    <div class="member in" style="--i: 0">
+      <p class="name">Phạm Tuấn Cường</p>
+      <p class="role">Đội trưởng · tích hợp demo, nộp checkpoint</p>
+    </div>
+    <div class="member in" style="--i: 1">
+      <p class="name">Trần Anh Tú</p>
+      <p class="role">Phân tích log, khảo sát học viên</p>
+    </div>
+    <div class="member in" style="--i: 2">
+      <p class="name">Đặng Việt Anh</p>
+      <p class="role">Soạn câu luyện và đáp án chuẩn</p>
+    </div>
+    <div class="member in" style="--i: 3">
+      <p class="name">Nguyễn Minh Đạt</p>
+      <p class="role">Luồng chọn câu luyện, bộ câu thử</p>
+    </div>
+  </div>
+  <div class="foot">
+    <p>AI20K K5 · Day 15 Hackathon · 28/11/2026</p>
+    <p></p>
+  </div>
+  <aside>
+    Giới thiệu tên đề tài và 4 thành viên, mỗi người một việc chính. Sau đó sang
+    phần vấn đề.
+  </aside>
+</section>
+<section id="van-de">
   <p class="kicker">Vấn đề</p>
   <h1 class="title">
     Học viên sai câu ôn, đọc lời giải xong vẫn không chắc mình đã hiểu
@@ -352,7 +411,7 @@ tr.pick {
       Nhóm VibeClaude · L3A · Track A EdTech · Nguồn: evidence/summary.md ·
       evidence/data-mining.md · spec.md §2
     </p>
-    <p>1</p>
+    <p>2</p>
   </div>
   <aside>
     Mở bằng con số khảo sát 18/20. Data BTC khớp: 399 trên 1.968 lượt trả lời
@@ -427,7 +486,7 @@ tr.pick {
       Nguồn: spec.md §4 · codebase/agent.py · video dự phòng
       youtube.com/watch?v=UZnrJJcyIzE
     </p>
-    <p>2</p>
+    <p>3</p>
   </div>
   <aside>
     Vì sao workflow chứ không phải agent: chọn nhánh dựa trên dạng input, code
@@ -513,7 +572,7 @@ tr.pick {
       run-1@20261127-190607 → run-3@20261127-202217 · simulate-1@20261128-083947
       · eval/report.md · cost/cost-estimate.md
     </p>
-    <p>3</p>
+    <p>4</p>
   </div>
   <aside>
     Chọn iterate. Không stop vì pain có hai nguồn khớp nhau và chi phí rất thấp.

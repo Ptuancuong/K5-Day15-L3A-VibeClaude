@@ -196,3 +196,4 @@ flowchart TD
 | Thời điểm | Đổi gì | Vì sao |
 | --------- | ------ | ------ |
 | 28/11 14:51 | Slide rút còn 3 trang (vấn đề · giải pháp · kết luận gồm đánh giá và chi phí); tách rõ "399/1.968 lượt sai" và "chỉ 2 lượt làm lại" | Theo góp ý trước demo; dòng "20,3% · 2/1.970" cũ gộp hai số nên dễ đọc nhầm. Không đổi số liệu nào |
+| 28/11 16:25 | Thêm slide bìa (tên đề tài, 4 thành viên); slide còn lại đánh số 2–4 | Theo yêu cầu đội trưởng. Không đổi số liệu nào |
