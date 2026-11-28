@@ -1,7 +1,6 @@
 # AI SPEC — Ôn lại sau một câu ôn cuối ngày · Nhóm VibeClaude · Lớp L3A
 
 > Mốc nộp: §7 chốt chuẩn "đạt" tại **CP2 19:30 Thứ Sáu 27/11** · §0–§7 nộp **CP3 10:00 Thứ Bảy 28/11** · đủ §0–§10 **CP4 14:30 Thứ Bảy 28/11** · §10 changelog ghi tiếp đến **23:59 Thứ Bảy 28/11**.
-> Ô ghi **⏳** là phần đang chờ dữ liệu (phỏng vấn, kiểm câu luyện, kết quả chạy), sẽ điền trước mốc ghi bên cạnh.
 
 Track: [x] A · [ ] B · [ ] C · [ ] D · [ ] E — bài toán: hướng A4 "Lớp học kiểu mới", nhánh **học từ lỗi và tự giải thích**: sau một câu ở phần ôn tập cuối ngày trên trang pre-class.
 Data BTC cấp đã dùng (không commit nguyên file): `data/preclass/answers.csv`, `data/preclass/events.csv`, `data/preclass/column_dictionary.csv` — chỉ dùng để đào bằng chứng, xem `evidence/data-mining.md`.

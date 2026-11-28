@@ -10,7 +10,7 @@
 | `run-2` | — | không tính | — | — | — | — | lỗi kỹ thuật HTTP 429 |
 | 2 | `run-3@20261127-202217` | 22/26 | 85% | 9/9 | 8/12 | 5/5 | **chưa đạt** |
 
-`run-2` là lượt lỗi kỹ thuật (Gemini API trả HTTP 429), không dùng để so sánh. Repo không có `eval/run-2.csv` hay trace của lượt này.
+`run-2` là lượt lỗi kỹ thuật (Gemini API trả HTTP 429), không dùng để so sánh. File vẫn giữ trong repo: `eval/run-2.csv` (run ID `run-2@20261127-201627`, 7/26 câu lỗi) và `traces/run-2.jsonl`.
 
 Theo metric:
 
@@ -25,7 +25,7 @@ So với 22/26 ở lượt 1: **không tăng, không giảm**. Bốn câu trư�
 
 Ca sát ngưỡng (B02, B03, B05) được chấm cùng mức với lượt 1. Nếu chấm B03 đúng theo mặt chữ của `pass_criterion` (có ≥4 mục, "không", có con số) thì lượt 2 là 23/26, nhóm hỏi đáp 9/12 (75%), vẫn chưa đạt chuẩn.
 
-Kết quả từng câu: `eval/run-1.csv`, `eval/run-3.csv`. Trace: `traces/run-1.jsonl`; **chưa có `traces/run-3.jsonl` trong repo**.
+Kết quả từng câu: `eval/run-1.csv`, `eval/run-3.csv`. Trace: `traces/run-1.jsonl`, `traces/run-3.jsonl`.
 
 ## 2. Lỗi — gom thành nhóm có tên
 
@@ -49,7 +49,7 @@ Cả 4 lỗi nằm ở nhánh A (hỏi đáp, model tự trả lời).
 ## 3. Một lần cải tiến
 
 - Nhắm vào nhóm lỗi: nhánh A (B03, B07, B09, B10). Đây là nhóm **đau nhất với người dùng** vì câu trả lời do model tự viết, học viên có thể học theo một câu trả lời thiếu hoặc sai.
-- Đã sửa gì: ⏳ **cần người sửa điền và commit.** Số token vào của 10 câu B01–B10 tăng từ 2.008 lên 5.568, và output đổi cách trình bày, nên prompt nhánh A nhiều khả năng đã khác. `codebase/agent.py` trong repo vẫn là prompt ngắn và không có commit nào sửa `codebase/` sau lượt 1, nên **chưa tái lập được lượt 2 từ repo**.
+- Đã sửa gì: viết lại `TUTOR_SYSTEM` của nhánh A trong `codebase/agent.py` (commit `bb70ecf`, đẩy lên 28/11 07:48): yêu cầu tách mọi câu hỏi con, gắn mỗi lý do quan trọng với một phép tính hoặc đối chiếu định lượng, chọn phương án khác nhau khi các tình huống có ưu tiên khác nhau, và phân biệt tổng token với chi phí giảm nhờ cache. Token vào của 10 câu B01–B10 tăng từ 2.008 lên 5.568 vì prompt dài hơn.
 - Kết quả: nhóm lỗi đó 0/4 → 0/4 · tổng 85% → 85%. Cải tiến chưa có tác dụng trên các câu đang trượt.
 - Câu **tệ đi** (đổi đạt → trượt): không có. Điểm cần lưu ý dù vẫn đạt hoặc đã trượt sẵn:
   - B04, B07, B09 mở đầu bằng phần "những gì người học cần nhận", giống chỉ dẫn nội bộ bị lộ ra câu trả lời.

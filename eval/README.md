@@ -33,8 +33,8 @@ Chi tiết ở `data/DATA_CARD.md`. Nhật ký pre-class của BTC (1.968 lượ
 | Lượt | Run ID | Model | Cấu hình (prompt / công cụ / thay đổi) | Đạt / tổng | % | Đạt chuẩn? |
 |---|---|---|---|---|---|---|
 | 1 | `run-1@20261127-190607` | `gemini-3.5-flash-lite` | Bản đầu CP3 | 22/26 | 85% | chưa |
-| `run-2` | — | — | Lượt lỗi kỹ thuật: HTTP 429. Không chấm, không so sánh; file không có trong repo | — | — | — |
-| 2 (`run-3`) | `run-3@20261127-202217` | `gemini-3.5-flash-lite` | Chạy lại; ⏳ ghi thay đổi prompt nhánh A (chưa commit) | 22/26 | 85% | chưa |
+| `run-2` | `run-2@20261127-201627` | `gemini-3.5-flash-lite` | Lượt lỗi kỹ thuật: HTTP 429 ở 7/26 câu. Không chấm, không so sánh; giữ `eval/run-2.csv`, `traces/run-2.jsonl` | — | — | — |
+| 2 (`run-3`) | `run-3@20261127-202217` | `gemini-3.5-flash-lite` | Viết lại `TUTOR_SYSTEM` nhánh A (`codebase/agent.py`, commit `bb70ecf`) | 22/26 | 85% | chưa |
 
 Lượt chạy lại vì lỗi kỹ thuật, lượt sau CP4: ghi thêm dòng, không sửa dòng cũ.
 
