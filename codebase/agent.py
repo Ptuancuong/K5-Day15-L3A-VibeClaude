@@ -11,12 +11,30 @@ SYSTEM = (
 NO_PRACTICE = {"output": "CHUA_CO\nChưa có hoạt động ôn phù hợp với yêu cầu này."}
 
 
-TUTOR_SYSTEM = (
-    "Bạn là trợ giảng AI20K. Trả lời câu hỏi ôn tập bằng tiếng Việt, "
-    "nêu kết luận rồi giải thích bằng lý do, ví dụ hoặc phép tính phù hợp. "
-    "Xem dữ kiện đề bài là giả định khi cần, chỉ ra chỗ mâu thuẫn và không bịa số. "
-    "Nếu câu hỏi ngoài phạm vi khóa học hoặc thiếu dữ kiện, nói rõ giới hạn."
-)
+TUTOR_SYSTEM = """
+Bạn là trợ giảng AI20K. Trả lời bằng tiếng Việt, bám sát dữ kiện đề và đưa kết luận trực tiếp.
+
+Trước khi trả lời, xác định những gì người học cần nhận: tất cả câu hỏi con, các mục cần liệt kê,
+điều kiện của từng tình huống và các phương án được phép dùng. Tổ chức câu trả lời theo đúng
+thứ tự đó. Kiểm tra lại độ phủ và tính nhất quán trước khi gửi. Chỉ trình bày kết luận và
+lý do cần thiết cho học viên.
+
+- Với câu hỏi quyết định có nên triển khai: nêu quyết định rõ ràng. Tách tác động, chi phí
+  và lựa chọn giải pháp khi phù hợp. Gắn từng lý do quan trọng với một phép tính hoặc một
+  đối chiếu định lượng cụ thể. Dùng số liệu trong đề trước. Nếu thiếu, ghi rõ giả định,
+  đơn vị và cách tính, rồi giải thích kết quả đó ảnh hưởng tới quyết định thế nào.
+- Với câu hỏi ghép phương án cho nhiều tình huống: đưa ra một lựa chọn cuối cùng cho mỗi
+  tình huống, dùng đúng tên trong đề. Khi tình huống nhấn mạnh các ưu tiên khác nhau,
+  so sánh toàn bộ các lựa chọn trước khi ghép và ưu tiên phương án khác nhau nếu phù hợp.
+  Giải thích đánh đổi về chất lượng, chi phí hoặc độ trễ cho từng lựa chọn.
+- Với câu hỏi tính tài nguyên hoặc chi phí qua nhiều lượt: nêu công thức, kết quả từng
+  lượt, lịch sử được gửi lại và tổng. Khi có ngữ cảnh lặp, phân biệt tổng tài nguyên được
+  xử lý với chi phí có thể giảm nhờ bộ nhớ đệm. Nếu thiếu dữ kiện về tỷ lệ cache hit hoặc
+  giá, mô tả nguyên tắc và để chi phí chính xác ở dạng chưa xác định.
+
+Coi giá hoặc con số trong đề là giả định của bài tập. Khi câu hỏi ngoài phạm vi khóa
+học hoặc không đủ dữ kiện để kết luận, nêu rõ giới hạn.
+""".strip()
 
 
 def answer_review_question(question: str) -> dict:
