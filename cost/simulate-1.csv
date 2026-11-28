@@ -1,0 +1,51 @@
+﻿run_id,session,persona,turns,inputs,model,model_calls,tool_calls,tokens_in,tokens_out,latency_s,error,tokens_by_model
+simulate-1@20261128-083947,S001,dung_vua,1,Một công ty xây dựng một chatbot trả lời FAQ về sản phẩm của họ. Chatbot chạy tr,gemini-3.5-flash-lite,1,0,512,151,1.125,,"{""gemini-3.5-flash-lite"": {""in"": 512, ""out"": 151}}"
+simulate-1@20261128-083947,S002,dung_nhieu,1,"Bạn có 4 bài toán, cần chọn implementation level: A. Rule (luật cơ bản, không gọ",gemini-3.5-flash-lite,1,0,602,626,2.388,,"{""gemini-3.5-flash-lite"": {""in"": 602, ""out"": 626}}"
+simulate-1@20261128-083947,S003,dung_it,1,"Bạn đang xây AI tự động chấm bài tập trắc nghiệm (100 câu, mỗi câu có 4 phương á",gemini-3.5-flash-lite,1,0,535,663,2.617,,"{""gemini-3.5-flash-lite"": {""in"": 535, ""out"": 663}}"
+simulate-1@20261128-083947,S004,dung_vua,1,"{""kc"":""chatbot_is_app_around_model"",""result"":""dung"",""action"":""giai_thich"",""pract",,0,1,0,0,0.0,,{}
+simulate-1@20261128-083947,S005,dung_it,1,"{""kc"":""cot_task_fit"",""level"":""co_ban""}",gemini-3.5-flash-lite,1,1,67,3,0.651,,"{""gemini-3.5-flash-lite"": {""in"": 67, ""out"": 3}}"
+simulate-1@20261128-083947,S006,dung_it,1,Một nhóm startup muốn điền AI Product Canvas trước khi xây AI. Nhóm đã có: User ,gemini-3.5-flash-lite,1,0,534,552,2.398,,"{""gemini-3.5-flash-lite"": {""in"": 534, ""out"": 552}}"
+simulate-1@20261128-083947,S007,dung_it,1,"{""kc"":""feedback_signal_types"",""level"":""co_ban""}",gemini-3.5-flash-lite,1,1,63,3,0.739,,"{""gemini-3.5-flash-lite"": {""in"": 63, ""out"": 3}}"
+simulate-1@20261128-083947,S008,dung_vua,1,"{""kc"":""chatbot_is_app_around_model"",""result"":""dung"",""action"":""giai_thich"",""pract",,0,1,0,0,0.001,,{}
+simulate-1@20261128-083947,S009,dung_it,1,"{""kc"":""cot_task_fit"",""result"":""dung"",""action"":""giai_thich"",""practice_id"":""L42""}",,0,1,0,0,0.001,,{}
+simulate-1@20261128-083947,S010,dung_vua,1,"{""kc"":""cot_task_fit"",""level"":""co_ban""}",gemini-3.5-flash-lite,1,1,67,3,0.737,,"{""gemini-3.5-flash-lite"": {""in"": 67, ""out"": 3}}"
+simulate-1@20261128-083947,S011,dung_it,1,"{""kc"":""cot_task_fit"",""result"":""sai""}",gemini-3.5-flash-lite,1,1,67,3,0.598,,"{""gemini-3.5-flash-lite"": {""in"": 67, ""out"": 3}}"
+simulate-1@20261128-083947,S012,dung_it,1,Một công ty xây dựng một chatbot trả lời FAQ về sản phẩm của họ. Chatbot chạy tr,gemini-3.5-flash-lite,1,0,512,128,0.93,,"{""gemini-3.5-flash-lite"": {""in"": 512, ""out"": 128}}"
+simulate-1@20261128-083947,S013,dung_nhieu,1,"Agent AI đang xử lý câu hỏi: ""Hôm nay là thứ mấy?"" ReACT pattern có 3 bước: 1. T",gemini-3.5-flash-lite,1,0,551,433,1.978,,"{""gemini-3.5-flash-lite"": {""in"": 551, ""out"": 433}}"
+simulate-1@20261128-083947,S014,dung_vua,1,"{""kc"":""chatbot_is_app_around_model"",""level"":""co_ban""}",gemini-3.5-flash-lite,1,1,65,3,0.765,,"{""gemini-3.5-flash-lite"": {""in"": 65, ""out"": 3}}"
+simulate-1@20261128-083947,S015,dung_it,1,"Bạn chọn model cho 3 bài toán khác nhau: 1. Chấm bài tập dạng: ""Học viên có hiểu",gemini-3.5-flash-lite,1,0,590,665,2.254,,"{""gemini-3.5-flash-lite"": {""in"": 590, ""out"": 665}}"
+simulate-1@20261128-083947,S016,dung_nhieu,1,"{""kc"":""chatbot_is_app_around_model"",""level"":""co_ban""}",gemini-3.5-flash-lite,1,1,65,3,0.581,,"{""gemini-3.5-flash-lite"": {""in"": 65, ""out"": 3}}"
+simulate-1@20261128-083947,S017,dung_it,1,"{""kc"":""ai_product_canvas"",""level"":""co_ban""}",gemini-3.5-flash-lite,1,1,66,3,0.615,,"{""gemini-3.5-flash-lite"": {""in"": 66, ""out"": 3}}"
+simulate-1@20261128-083947,S018,dung_it,1,"{""kc"":""agentic_fit_scoring_decision"",""level"":""co_ban""}",gemini-3.5-flash-lite,1,1,68,3,0.739,,"{""gemini-3.5-flash-lite"": {""in"": 68, ""out"": 3}}"
+simulate-1@20261128-083947,S019,dung_vua,1,Bạn đang xây dựng một agent AI giúp học viên giải bài toán lập trình. Agent cần ,gemini-3.5-flash-lite,1,0,521,639,3.14,,"{""gemini-3.5-flash-lite"": {""in"": 521, ""out"": 639}}"
+simulate-1@20261128-083947,S020,dung_vua,1,"{""kc"":""chatbot_is_app_around_model"",""result"":""dung"",""action"":""giai_thich"",""pract",,0,1,0,0,0.001,,{}
+simulate-1@20261128-083947,S021,dung_it,1,"{""kc"":""ai_product_canvas"",""level"":""co_ban""}",gemini-3.5-flash-lite,1,1,66,3,0.684,,"{""gemini-3.5-flash-lite"": {""in"": 66, ""out"": 3}}"
+simulate-1@20261128-083947,S022,dung_it,1,Agent AI giải bài code qua vòng lặp sau: Vòng 1: Input: Câu hỏi (500 token). Cal,gemini-3.5-flash-lite,1,0,645,391,1.513,,"{""gemini-3.5-flash-lite"": {""in"": 645, ""out"": 391}}"
+simulate-1@20261128-083947,S023,dung_nhieu,1,"{""kc"":""feedback_signal_types"",""result"":""dung""}",gemini-3.5-flash-lite,1,1,71,3,0.587,,"{""gemini-3.5-flash-lite"": {""in"": 71, ""out"": 3}}"
+simulate-1@20261128-083947,S024,dung_nhieu,1,"{""kc"":""agentic_fit_scoring_decision"",""level"":""co_ban""}",gemini-3.5-flash-lite,1,1,68,3,0.542,,"{""gemini-3.5-flash-lite"": {""in"": 68, ""out"": 3}}"
+simulate-1@20261128-083947,S025,dung_vua,1,Một nhóm startup muốn điền AI Product Canvas trước khi xây AI. Nhóm đã có: User ,gemini-3.5-flash-lite,1,0,534,443,2.112,,"{""gemini-3.5-flash-lite"": {""in"": 534, ""out"": 443}}"
+simulate-1@20261128-083947,S026,dung_it,1,"Bạn có 4 bài toán, cần chọn implementation level: A. Rule (luật cơ bản, không gọ",gemini-3.5-flash-lite,1,0,602,719,2.619,,"{""gemini-3.5-flash-lite"": {""in"": 602, ""out"": 719}}"
+simulate-1@20261128-083947,S027,dung_nhieu,1,Một nhóm startup muốn điền AI Product Canvas trước khi xây AI. Nhóm đã có: User ,gemini-3.5-flash-lite,1,0,534,579,2.345,,"{""gemini-3.5-flash-lite"": {""in"": 534, ""out"": 579}}"
+simulate-1@20261128-083947,S028,dung_nhieu,1,"Bạn đang xây AI tự động chấm bài tập trắc nghiệm (100 câu, mỗi câu có 4 phương á",gemini-3.5-flash-lite,1,0,535,517,2.381,,"{""gemini-3.5-flash-lite"": {""in"": 535, ""out"": 517}}"
+simulate-1@20261128-083947,S029,dung_it,1,"{""kc"":""system_prompt_contract"",""level"":""co_ban""}",gemini-3.5-flash-lite,1,1,69,3,0.9,,"{""gemini-3.5-flash-lite"": {""in"": 69, ""out"": 3}}"
+simulate-1@20261128-083947,S030,dung_vua,1,"{""kc"":""agentic_fit_scoring_decision"",""level"":""co_ban""}",gemini-3.5-flash-lite,1,1,68,3,0.846,,"{""gemini-3.5-flash-lite"": {""in"": 68, ""out"": 3}}"
+simulate-1@20261128-083947,S031,dung_it,1,"{""kc"":""agentic_fit_scoring_decision"",""level"":""co_ban""}",gemini-3.5-flash-lite,1,1,68,3,0.655,,"{""gemini-3.5-flash-lite"": {""in"": 68, ""out"": 3}}"
+simulate-1@20261128-083947,S032,dung_it,1,Một startup muốn xây AI nhưng chưa hoàn thành problem statement: - ✓ Có User (ma,gemini-3.5-flash-lite,1,0,561,399,2.08,,"{""gemini-3.5-flash-lite"": {""in"": 561, ""out"": 399}}"
+simulate-1@20261128-083947,S033,dung_vua,1,"{""kc"":""cot_task_fit"",""result"":""dung"",""action"":""giai_thich"",""practice_id"":""L42""}",,0,1,0,0,0.001,,{}
+simulate-1@20261128-083947,S034,dung_it,1,"{""kc"":""cot_task_fit"",""result"":""dung"",""action"":""giai_thich"",""practice_id"":""L42""}",,0,1,0,0,0.001,,{}
+simulate-1@20261128-083947,S035,dung_it,1,"Bạn có 4 bài toán, cần chọn implementation level: A. Rule (luật cơ bản, không gọ",gemini-3.5-flash-lite,1,0,602,578,2.341,,"{""gemini-3.5-flash-lite"": {""in"": 602, ""out"": 578}}"
+simulate-1@20261128-083947,S036,dung_it,1,"{""kc"":""ai_product_canvas"",""level"":""co_ban""}",gemini-3.5-flash-lite,1,1,66,3,0.859,,"{""gemini-3.5-flash-lite"": {""in"": 66, ""out"": 3}}"
+simulate-1@20261128-083947,S037,dung_it,1,"{""kc"":""cot_task_fit"",""result"":""dung"",""action"":""giai_thich"",""practice_id"":""L42""}",,0,1,0,0,0.001,,{}
+simulate-1@20261128-083947,S038,dung_vua,1,"Bạn có 4 bài toán, cần chọn implementation level: A. Rule (luật cơ bản, không gọ",gemini-3.5-flash-lite,1,0,602,490,2.17,,"{""gemini-3.5-flash-lite"": {""in"": 602, ""out"": 490}}"
+simulate-1@20261128-083947,S039,dung_vua,1,Bạn đang xây dựng một agent AI giúp học viên giải bài toán lập trình. Agent cần ,gemini-3.5-flash-lite,1,0,521,740,2.951,,"{""gemini-3.5-flash-lite"": {""in"": 521, ""out"": 740}}"
+simulate-1@20261128-083947,S040,dung_it,1,Bạn đang xây dựng một agent AI giúp học viên giải bài toán lập trình. Agent cần ,gemini-3.5-flash-lite,1,0,521,635,2.59,,"{""gemini-3.5-flash-lite"": {""in"": 521, ""out"": 635}}"
+simulate-1@20261128-083947,S041,dung_nhieu,1,"{""kc"":""ai_product_canvas"",""level"":""co_ban""}",gemini-3.5-flash-lite,1,1,66,3,0.581,,"{""gemini-3.5-flash-lite"": {""in"": 66, ""out"": 3}}"
+simulate-1@20261128-083947,S042,dung_it,1,"Bạn chọn model cho 3 bài toán khác nhau: 1. Chấm bài tập dạng: ""Học viên có hiểu",gemini-3.5-flash-lite,1,0,590,626,2.126,,"{""gemini-3.5-flash-lite"": {""in"": 590, ""out"": 626}}"
+simulate-1@20261128-083947,S043,dung_nhieu,1,"{""kc"":""cot_task_fit"",""result"":""sai""}",gemini-3.5-flash-lite,1,1,67,3,0.873,,"{""gemini-3.5-flash-lite"": {""in"": 67, ""out"": 3}}"
+simulate-1@20261128-083947,S044,dung_nhieu,1,"{""kc"":""chatbot_is_app_around_model"",""level"":""co_ban""}",gemini-3.5-flash-lite,1,1,65,3,0.711,,"{""gemini-3.5-flash-lite"": {""in"": 65, ""out"": 3}}"
+simulate-1@20261128-083947,S045,dung_it,1,"{""kc"":""react_reasoning_acting_pattern"",""level"":""co_ban""}",gemini-3.5-flash-lite,1,1,67,3,0.584,,"{""gemini-3.5-flash-lite"": {""in"": 67, ""out"": 3}}"
+simulate-1@20261128-083947,S046,dung_it,1,"{""kc"":""cot_task_fit"",""result"":""dung"",""action"":""giai_thich"",""practice_id"":""L42""}",,0,1,0,0,0.001,,{}
+simulate-1@20261128-083947,S047,dung_vua,1,Một startup muốn xây AI nhưng chưa hoàn thành problem statement: - ✓ Có User (ma,gemini-3.5-flash-lite,1,0,561,666,2.739,,"{""gemini-3.5-flash-lite"": {""in"": 561, ""out"": 666}}"
+simulate-1@20261128-083947,S048,dung_it,1,"{""kc"":""chatbot_is_app_around_model"",""result"":""dung"",""action"":""giai_thich"",""pract",,0,1,0,0,0.001,,{}
+simulate-1@20261128-083947,S049,dung_vua,1,"{""kc"":""cot_task_fit"",""result"":""sai""}",gemini-3.5-flash-lite,1,1,67,3,0.576,,"{""gemini-3.5-flash-lite"": {""in"": 67, ""out"": 3}}"
+simulate-1@20261128-083947,S050,dung_vua,1,"{""kc"":""cot_task_fit"",""result"":""sai""}",gemini-3.5-flash-lite,1,1,67,3,0.822,,"{""gemini-3.5-flash-lite"": {""in"": 67, ""out"": 3}}"
