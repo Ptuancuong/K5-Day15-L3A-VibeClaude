@@ -12,7 +12,7 @@ Data BTC cấp đã dùng (không commit nguyên file): `data/preclass/answers.c
   1. Học viên học xong bài trong ngày, làm phần ôn tập cuối ngày (`nguon = pre_post_post` trong `answers.csv`).
   2. Trả lời sai một câu → trang hiện phản hồi / lời giải (cả 399/399 lượt sai lần đầu đều có `co_feedback = True`).
   3. Học viên đọc lời giải rồi đi tiếp. Trong 1.970 lượt trả lời ôn cuối ngày chỉ có **2 lượt** là lần làm thứ hai (`lan_thu = 2`) — gần như không ai thử lại.
-- Công cụ đang có: phản hồi sau câu trả lời; trợ giảng AI dưới video; Sổ hiểu bài. Trang có cho làm lại câu ôn hay không, có câu luyện thêm hay không: **chưa kiểm** ⏳ (chụp màn hình tài khoản của nhóm, che thông tin — trước CP3).
+- Công cụ đang có: phản hồi sau câu trả lời; trợ giảng AI dưới video (học viên gọi là "Snoop" trong khảo sát); Sổ hiểu bài. Trang có cho làm lại câu ôn hay có câu luyện thêm hay không: **chưa kiểm** — nhóm chưa chụp được màn hình từ tài khoản của mình; số liệu 2/1.970 lượt làm lại ở trên là bằng chứng gián tiếp.
 
 ## §1. Người dùng & bằng chứng _(guide 1.1, 1.2)_
 
@@ -148,20 +148,31 @@ flowchart TD
   - Tổng **22/26 (85%)** · thuong 9/9 · kho 8/12 · tu_choi 5/5.
   - So với chuẩn "đạt": chọn câu luyện **9/9 (100%) — đạt** · hỏi đáp và tra lời giải **8/12 (67%) — chưa đạt** (cần ≥ 90%) · từ chối **5/5 (100%) — đạt** · chỉ số học: chưa đo (người dùng thử, CP4).
   - **Kết luận lượt 1: chưa đạt chuẩn** — trượt cả 4 ở nhánh A (hỏi đáp): B03, B09 thiếu lý do có số; B07 chọn trùng model cho hai bài và gọi sai tên model; B10 thiếu ý về caching. Đúng rủi ro đã ghi ở §4 (nhánh A trả lời từ trí nhớ model).
-- Lượt 2: ⏳ CP4 (`eval/run-3.csv` đã chạy lúc 20:22, chưa chấm) → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
+- **Kết quả lượt 2** — run ID `run-3@20261127-202217`, model `gemini-3.5-flash-lite`, cùng bộ 26 câu, sau một lần cải tiến (viết lại `TUTOR_SYSTEM` của nhánh A — `codebase/agent.py`):
+  - Tổng **22/26 (85%)** · thuong 9/9 · kho 8/12 · tu_choi 5/5 — **không đổi so với lượt 1**; 4 câu trượt vẫn là B03, B07, B09, B10.
+  - So với chuẩn "đạt": chọn câu luyện 9/9 đạt · hỏi đáp và tra lời giải 8/12 (67%) **chưa đạt** · từ chối 5/5 đạt · chỉ số học: **chưa đo** (chưa có người dùng thử).
+  - **Kết luận: chưa đạt chuẩn ở cả hai lượt.** Cải tiến prompt không sửa được nhóm lỗi nhánh A, còn làm token vào tăng 2.611 → 6.171.
+  - `run-2` (`run-2@20261127-201627`) là lượt lỗi kỹ thuật — Gemini trả HTTP 429 ở 7/26 câu; không chấm, không dùng để so sánh, giữ file trong repo.
+  - Chi tiết lỗi và cải tiến: `eval/report.md`; hồ sơ: `eval/README.md`.
 
-## §8. Chi phí khi dùng thật _(guide 4.2)_ — ⏳ CP4
+## §8. Chi phí khi dùng thật _(guide 4.2)_
 
-- Persona + giá: `cost/personas.yaml` · lượt mô phỏng: `cost/simulate-__.csv`
-- Chi phí / task thành công: __ · __
-- Chi phí / tháng ở quy mô thật (lớp L3 >700, cả khoá >1.000): thấp __ · cơ sở __ · cao __
-- So với impact / người / tháng (§2):
+- Persona + giá: `cost/personas.yaml` (3 kiểu từ data BTC: dùng ít 31/77 · vừa 26/77 · nhiều 20/77; nhóm "dùng ít" gộp 8 học viên không sai câu nào) · lượt mô phỏng: `cost/simulate-1.csv` (50 phiên, seed 42, run ID `simulate-1@20261128-083947`, 0 phiên lỗi, chạy thật qua bản chạy thử).
+- Giá (link + ngày xem trong `cost/cost-estimate.md`): `gemini-3.5-flash-lite` vào 0,30 · ra 2,50 USD / 1M token · `gemini-4-hydrogen` vào 1,50 · ra 7,50 USD / 1M token.
+- **Chi phí / task thành công** (= chi phí / phiên ÷ tỉ lệ đạt 85% của lượt 2, cùng model): **$0,00072** (`gemini-3.5-flash-lite`) · $0,0023 (`gemini-4-hydrogen`, dùng số token đo trên flash-lite).
+- **Chi phí / tháng ở quy mô thật** (`gemini-3.5-flash-lite`): thấp **$0,37** (77 học viên đang làm ôn) · cơ sở **$0,59** (124 = 77/436 × 700, _tự ước tính_) · cao **$3,36** (cả 700 học viên L3). Model lớn: $1,20 · $1,93 · $10,91.
+- **So với impact:** chi phí ≈ **$0,005 / học viên / tháng** (cơ sở) so với ≈ **127 phút / học viên / tháng** học viên đang tốn cho câu sai (§2). Chi phí model không phải rào cản; rào cản là **chất lượng nhánh hỏi đáp** (8/12, chưa đạt chuẩn) và **chưa đo được học viên có học được không**.
+- Chưa tính: hosting, giờ công người chấm metric `tra_loi_va_giai_thich`, giờ công soạn và kiểm ngân hàng câu luyện. Chi tiết: `cost/cost-estimate.md`.
 
-## §9. Rủi ro & an toàn — ⏳ CP4
+## §9. Rủi ro & an toàn
 
 - Dữ liệu: data BTC chỉ dùng local (đã chặn trong `.gitignore`); repo chỉ chứa số tổng hợp. Model chỉ nhận câu hỏi ôn và câu luyện nhóm tự viết, không nhận mã học viên.
 - AI **không được**: viết câu luyện / lời giải mẫu mới · đưa lời giải câu luyện trước khi học viên làm · nhận xét, chấm điểm học viên.
 - Ai bị hại nếu AI sai: học viên học sai — nặng nhất ở nhánh A (model tự trả lời). Chặn hiện có: `TUTOR_SYSTEM` + người chấm; xem "Rủi ro đã biết" ở §4.
+- **Lỗi nguy hiểm nhất đã thấy trong lượt chạy:** nhánh A trả lời **trông đầy đủ nhưng thiếu ý hoặc sai ràng buộc đề** (B07 chọn trùng model cho hai bài; B10 bỏ ý caching) — học viên khó tự phát hiện. Lượt 2 còn để lộ phần "những gì người học cần nhận" (chỉ dẫn nội bộ) ra câu trả lời ở B04, B07, B09.
+- Chặn đã cài và đã đo: lộ lời giải của mã khác (B21), xin lời giải khi chưa trả lời đúng (B26), chèn khoá lạ (B19), thiếu mã kiến thức (B25) — **5/5 câu từ chối đạt ở cả hai lượt**.
+- API key: chỉ trong `.env` (bị `.gitignore` chặn), không có trong repo. Dữ liệu khảo sát đã bỏ dấu thời gian và liên hệ; Discord và phiếu chỉ trích ≤2 câu, không tên.
+- Gói miễn phí Gemini có thể dùng dữ liệu gửi lên để huấn luyện — nhóm chỉ gửi câu hỏi ôn và câu luyện tự viết.
 
 ## §10. Phân công & changelog
 
@@ -176,6 +187,10 @@ flowchart TD
 | 27/11 18:59–19:06 (trước chốt) | Bộ câu thử 21 → 26 câu (B22–B26, 3 câu từ phiếu khảo sát); `metric_spec.yaml` cập nhật số câu theo bộ 26, giữ nguyên tỉ lệ                    | Thêm câu từ lời người dùng (khảo sát KS10, KS17, KS18/KS20) — commit `62f6d11`, `6b3df6c` |
 | 27/11 19:57                    | Nối Gemini thật (`codebase/ai.py`), lượt 1 `run-1@20261127-190607`                                                                            | Bắt buộc gọi AI thật từ CP3                                                               |
 | 28/11 sáng                     | spec §4 (thật / giả), §5 (thêm B22–B26), §7: ghi bộ 26 câu, kết quả lượt 1 22/26 và đối chiếu chuẩn "đạt". **Câu chuẩn "đạt" giữ nguyên chữ** | Đồng bộ spec với bộ câu thử và lượt 1 đã chạy                                             |
+| 27/11 20:16 | `run-2@20261127-201627` lỗi HTTP 429 ở 7/26 câu — giữ file, không chấm | Gói miễn phí Gemini giới hạn lượt / phút |
+| 27/11 20:22 (đẩy lên 28/11 07:48) | Cải tiến nhánh A: viết lại `TUTOR_SYSTEM` (tách câu hỏi con, gắn lý do với số, ghép phương án khác nhau, nêu caching) → lượt 2 `run-3@20261127-202217` | Nhắm nhóm lỗi nhánh A ở lượt 1: B03, B09 thiếu lý do có số · B07 chọn trùng model · B10 thiếu caching |
+| 28/11 08:39 | Mô phỏng chi phí 50 phiên `simulate-1@20261128-083947`, persona từ data BTC | Guide 4.2 |
+| 28/11 trưa | spec §0 (ghi "chưa kiểm"), §7 (lượt 2), §8 (chi phí), §9 (lỗi nguy hiểm nhất); thêm `demo-slides.pdf` | Hoàn thiện CP4 |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)**
 
